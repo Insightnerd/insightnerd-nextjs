@@ -2,126 +2,77 @@
 
 import { ScrollReveal } from "@/components/effects/ScrollReveal"
 
-export default function ArticlePage() {
+const articles = [
+  {
+    title: "25 Essential AI Tools Every Professional Should Know in 2026",
+    slug: "25-ai-tools-2026",
+    category: "AI",
+    readTime: 18,
+    date: "November 30, 2025",
+    excerpt: "Discover the most transformative AI tools every professional needs to know in 2026, from productivity boosters to strategic decision-making platforms."
+  },
+  {
+    title: "Break Into Data Analytics in 2026: Your Complete Guide",
+    slug: "break-into-data-analytics-2026",
+    category: "Data Analytics",
+    readTime: 20,
+    date: "December 20, 2025",
+    excerpt: "A comprehensive roadmap for transitioning into data analytics, covering essential skills, tools, portfolio projects, and job market insights for 2026."
+  },
+  {
+    title: "Resume Red Flags That Scare Tech Employers",
+    slug: "resume-red-flags-tech-career",
+    category: "Career",
+    readTime: 15,
+    date: "January 15, 2026",
+    excerpt: "Learn to identify and fix common resume mistakes that make tech employers skip your application, with specific examples from real hiring data."
+  },
+];
+
+export default function ArticlesPage() {
   return (
     <div className="max-w-full">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="text-sm text-muted-foreground mb-6">
-          <span className="hover:text-foreground transition-colors">
-            <a href="/">Home</a>
-          </span>
+          <a href="/" className="hover:text-foreground transition-colors">Home</a>
           <span className="mx-2">/</span>
-          <span className="hover:text-foreground transition-colors">
-            <a href="/categories/ai">AI</a>
-          </span>
-          <span className="mx-2">/</span>
-          <span className="text-foreground">Article Title</span>
+          <span className="text-foreground">Articles</span>
         </nav>
 
-        <article>
-          <header className="mb-12">
-            <ScrollReveal>
-              <div className="mb-4">
-                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                  AI
+        <ScrollReveal>
+          <h1 className="text-4xl font-bold mb-2">All Articles</h1>
+          <p className="text-lg text-muted-foreground mb-10">
+            Guides written by practitioners, not theorists.
+          </p>
+        </ScrollReveal>
+
+        <div className="flex flex-col gap-5">
+          {articles.map((article) => (
+            <a
+              key={article.slug}
+              href={`/posts/${article.slug}`}
+              className="article-card"
+            >
+              <div className="article-meta">
+                <span className="article-category">{article.category}</span>
+                <span className="article-stats">
+                  {article.date} · {article.readTime} min read
                 </span>
               </div>
-              <h1 className="text-5xl font-bold mb-6">
-                Building Scalable Backend Systems with Node.js
-              </h1>
-              <div className="flex items-center gap-6 text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span>July 20, 2026</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>12 min read</span>
-                </div>
-              </div>
-            </ScrollReveal>
-          </header>
+              <h2 className="article-title">{article.title}</h2>
+              <p className="article-desc">{article.excerpt}</p>
+            </a>
+          ))}
+        </div>
 
-          <ScrollReveal delay={0.1}>
-            <div className="prose prose-lg dark:prose-invert max-w-none mb-16">
-              <p className="lead">
-                Learn how to build scalable backend systems using Node.js and best practices for handling high-traffic applications.
-              </p>
-
-              <h2>Introduction</h2>
-              <p>
-                In today's competitive tech landscape, building a scalable backend system is crucial for any application's success. Whether you're running a startup or an established enterprise, your backend architecture determines how well your application can handle growth, traffic spikes, and evolving user demands.
-              </p>
-
-              <h2>Key Principles</h2>
-              <p>
-                When designing scalable systems, focus on these core principles: stateless services, horizontal scaling, efficient resource management, and robust error handling.
-              </p>
-
-              <h3>1. Stateless Services</h3>
-              <p>
-                Stateless services allow you to easily scale by adding more instances. Each request should be independent, carrying all necessary context within the request itself.
-              </p>
-
-              <h3>2. Horizontal Scaling</h3>
-              <p>
-                Instead of scaling vertically (adding more resources to a single server), scale horizontally by adding more servers to your cluster.
-              </p>
-
-              <h3>3. Efficient Resource Management</h3>
-              <p>
-                Implement caching, connection pooling, and efficient database queries to optimize resource usage.
-              </p>
-
-              <h2>Implementation Strategies</h2>
-              <p>
-                We'll explore practical implementation strategies including microservices architecture, message queues, and load balancing techniques.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
-            <div className="border-t pt-8 mt-12">
-              <h3 className="text-2xl font-semibold mb-6">Related Articles</h3>
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="card p-6">
-                  <div className="text-sm text-muted-foreground mb-2">Data</div>
-                  <h4 className="font-semibold mb-2">
-                    <a href="/posts/data-pipeline-architecture-for-analytics" className="hover:text-primary transition-colors">
-                      Data Pipeline Architecture for Analytics
-                    </a>
-                  </h4>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    Design and implement robust data pipelines...
-                  </p>
-                </div>
-                <div className="card p-6">
-                  <div className="text-sm text-muted-foreground mb-2">AI</div>
-                  <h4 className="font-semibold mb-2">
-                    <a href="/posts/ai-agents-practical-implementation-guide" className="hover:text-primary transition-colors">
-                      AI Agents: Practical Implementation Guide
-                    </a>
-                  </h4>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    A comprehensive guide to implementing AI agents...
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.3}>
-            <div className="mt-12">
-              <button className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors">
-                Share Article
-              </button>
-            </div>
-          </ScrollReveal>
-        </article>
+        {articles.length === 0 && (
+          <div className="text-center py-16">
+            <h3 className="text-xl font-medium mb-2">No articles yet</h3>
+            <p className="text-muted-foreground">
+              New guides are landing soon. Check back later!
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

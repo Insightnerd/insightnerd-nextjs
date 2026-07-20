@@ -56,27 +56,11 @@ export default function AICategoryPage() {
 
 const articles = [
   {
-    title: "Building Scalable Backend Systems with Node.js",
-    slug: "building-scalable-backend-systems-with-nodejs",
-    readTime: 12,
-    date: "July 20, 2026",
-    category: "Coding",
-    excerpt: "Learn how to build scalable backend systems using Node.js and best practices for handling high-traffic applications."
-  },
-  {
-    title: "AI Agents: Practical Implementation Guide",
-    slug: "ai-agents-practical-implementation-guide",
-    readTime: 15,
-    date: "July 18, 2026",
+    title: "25 Essential AI Tools Every Professional Should Know in 2026",
+    slug: "25-ai-tools-2026",
+    readTime: 18,
+    date: "November 30, 2025",
     category: "AI",
-    excerpt: "A comprehensive guide to implementing AI agents, from basic concepts to advanced deployment strategies in production environments."
-  },
-  {
-    title: "Data Pipeline Architecture for Analytics",
-    slug: "data-pipeline-architecture-for-analytics",
-    readTime: 10,
-    date: "July 15, 2026",
-    category: "Data",
-    excerpt: "Design and implement robust data pipelines that can handle large volumes of data while maintaining performance and reliability."
+    excerpt: "Discover the most transformative AI tools every professional needs to know in 2026, from productivity boosters to strategic decision-making platforms."
   },
 ];

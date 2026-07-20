@@ -56,11 +56,11 @@ export default function DataAnalyticsCategoryPage() {
 
 const articles = [
   {
-    title: "Data Pipeline Architecture for Analytics",
-    slug: "data-pipeline-architecture-for-analytics",
-    readTime: 10,
-    date: "July 15, 2026",
-    category: "Data",
-    excerpt: "Design and implement robust data pipelines that can handle large volumes of data while maintaining performance and reliability."
+    title: "Break Into Data Analytics in 2026: Your Complete Guide",
+    slug: "break-into-data-analytics-2026",
+    readTime: 20,
+    date: "December 20, 2025",
+    category: "Data Analytics",
+    excerpt: "A comprehensive roadmap for transitioning into data analytics, covering essential skills, tools, portfolio projects, and job market insights for 2026."
   },
 ];

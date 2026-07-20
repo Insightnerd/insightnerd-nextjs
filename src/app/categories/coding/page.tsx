@@ -54,13 +54,4 @@ export default function CodingCategoryPage() {
   );
 }
 
-const articles = [
-  {
-    title: "Building Scalable Backend Systems with Node.js",
-    slug: "building-scalable-backend-systems-with-nodejs",
-    readTime: 12,
-    date: "July 20, 2026",
-    category: "Coding",
-    excerpt: "Learn how to build scalable backend systems using Node.js and best practices for handling high-traffic applications."
-  },
-];
+const articles: { title: string; slug: string; readTime: number; date: string; category: string; excerpt: string }[] = [];

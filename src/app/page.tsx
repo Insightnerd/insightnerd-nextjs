@@ -4,34 +4,34 @@ import { ScrollReveal } from "@/components/effects/ScrollReveal"
 
 export default function Home() {
   const topics = [
-    { name: "AI", slug: "ai", icon: "🤖", description: "Machine learning and AI engineering", count: 3 },
-    { name: "Coding", slug: "coding", icon: "💻", description: "Programming languages and code", count: 2 },
-    { name: "Data", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization", count: 4 },
-    { name: "Tutorials", slug: "tutorials", icon: "📚", description: "Step-by-step guides", count: 8 },
+    { name: "AI", slug: "ai", icon: "🤖", description: "Machine learning and AI engineering", count: 1 },
+    { name: "Coding", slug: "coding", icon: "💻", description: "Programming languages and code", count: 0 },
+    { name: "Data", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization", count: 1 },
+    { name: "Tutorials", slug: "tutorials", icon: "📚", description: "Step-by-step guides", count: 0 },
     { name: "Career", slug: "career", icon: "🎯", description: "Career switch and job search", count: 1 }
   ];
 
   const latestArticles = [
     {
-      title: "Building Scalable Backend Systems with Node.js",
-      slug: "building-scalable-backend-systems-with-nodejs",
-      category: "Coding",
-      readTime: 12,
-      description: "Learn how to build scalable backend systems using Node.js and best practices for handling high-traffic applications."
-    },
-    {
-      title: "AI Agents: Practical Implementation Guide",
-      slug: "ai-agents-practical-implementation-guide",
+      title: "25 Essential AI Tools Every Professional Should Know in 2026",
+      slug: "25-ai-tools-2026",
       category: "AI",
-      readTime: 15,
-      description: "A comprehensive guide to implementing AI agents, from basic concepts to advanced deployment strategies in production environments."
+      readTime: 18,
+      description: "Discover the most transformative AI tools every professional needs to know in 2026, from productivity boosters to strategic decision-making platforms."
     },
     {
-      title: "Data Pipeline Architecture for Analytics",
-      slug: "data-pipeline-architecture-for-analytics",
-      category: "Data",
-      readTime: 10,
-      description: "Design and implement robust data pipelines that can handle large volumes of data while maintaining performance and reliability."
+      title: "Break Into Data Analytics in 2026: Your Complete Guide",
+      slug: "break-into-data-analytics-2026",
+      category: "Data Analytics",
+      readTime: 20,
+      description: "A comprehensive roadmap for transitioning into data analytics, covering essential skills, tools, portfolio projects, and job market insights for 2026."
+    },
+    {
+      title: "Resume Red Flags That Scare Tech Employers",
+      slug: "resume-red-flags-tech-career",
+      category: "Career",
+      readTime: 15,
+      description: "Learn to identify and fix common resume mistakes that make tech employers skip your application, with specific examples from real hiring data."
     }
   ];
 

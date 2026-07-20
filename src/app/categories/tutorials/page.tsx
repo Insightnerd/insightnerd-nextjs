@@ -54,29 +54,4 @@ export default function TutorialsCategoryPage() {
   );
 }
 
-const articles = [
-  {
-    title: "Step-by-Step Guide to Setting Up a Development Environment",
-    slug: "step-by-step-guide-to-setting-up-a-development-environment",
-    readTime: 8,
-    date: "July 19, 2026",
-    category: "Tutorials",
-    excerpt: "A complete walkthrough of setting up a modern development environment with all the essential tools and configurations."
-  },
-  {
-    title: "How to Build a REST API with Express.js",
-    slug: "how-to-build-a-rest-api-with-expressjs",
-    readTime: 14,
-    date: "July 17, 2026",
-    category: "Coding",
-    excerpt: "Learn the fundamentals of building RESTful APIs with Express.js, including routing, middleware, and database integration."
-  },
-  {
-    title: "Data Visualization with D3.js",
-    slug: "data-visualization-with-d3js",
-    readTime: 18,
-    date: "July 14, 2026",
-    category: "Data",
-    excerpt: "Create interactive data visualizations using D3.js, from basic charts to complex dashboard components."
-  },
-];
+const articles: { title: string; slug: string; readTime: number; date: string; category: string; excerpt: string }[] = [];

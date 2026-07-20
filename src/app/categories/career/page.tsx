@@ -56,11 +56,11 @@ export default function CareerCategoryPage() {
 
 const articles = [
   {
-    title: "Navigating a Career Switch into Tech",
-    slug: "navigating-a-career-switch-into-tech",
-    readTime: 20,
-    date: "July 16, 2026",
+    title: "Resume Red Flags That Scare Tech Employers",
+    slug: "resume-red-flags-tech-career",
+    readTime: 15,
+    date: "January 15, 2026",
     category: "Career",
-    excerpt: "A comprehensive guide for career switchers, covering skill transitions, job hunting strategies, and building a tech career from scratch."
+    excerpt: "Learn to identify and fix common resume mistakes that make tech employers skip your application, with specific examples from real hiring data."
   },
 ];

@@ -28,7 +28,7 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-medium mb-2">Email</h3>
-                <p className="text-muted-foreground">collaborations@insightnerd.in</p>
+                <p className="text-muted-foreground">insightnerd@outlook.com</p>
               </div>
 
               <div>
