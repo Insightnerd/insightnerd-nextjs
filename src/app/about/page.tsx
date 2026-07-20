@@ -1,5 +1,8 @@
+import { ContentPageAnimations } from "@/components/ContentPageAnimations";
+
 export default function AboutPage() {
   return (
+    <ContentPageAnimations>
     <div className="max-w-full">
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
@@ -42,5 +45,6 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
+    </ContentPageAnimations>
   );
 }

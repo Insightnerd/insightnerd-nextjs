@@ -28,15 +28,15 @@ export function Navigation() {
               <Link
                 key={category.slug}
                 href={`/categories/${category.slug}`}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className="nav-link text-sm font-medium transition-colors hover:text-primary"
               >
                 {category.name}
               </Link>
             ))}
-            <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href="/about" className="nav-link text-sm font-medium transition-colors hover:text-primary">
               About
             </Link>
-            <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href="/contact" className="nav-link text-sm font-medium transition-colors hover:text-primary">
               Contact
             </Link>
           </nav>
@@ -53,16 +53,21 @@ export function Navigation() {
 
 function ThemeToggle() {
   const [theme, setTheme] = useState("dark");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    setMounted(true);
+  }, []);
 
+  useEffect(() => {
+    if (!mounted) return;
+    const root = window.document.documentElement;
     if (theme === "light") {
       root.classList.add("light");
     } else {
       root.classList.remove("light");
     }
-  }, [theme]);
+  }, [theme, mounted]);
 
   return (
     <Button
@@ -70,8 +75,28 @@ function ThemeToggle() {
       size="sm"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="hidden md:flex"
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
-      {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+      <div className="theme-icon-wrapper">
+        <div
+          className="theme-icon"
+          style={{
+            opacity: theme === "dark" ? 1 : 0,
+            transform: theme === "dark" ? "rotate(0deg) scale(1)" : "rotate(90deg) scale(0.75)",
+          }}
+        >
+          <Sun className="h-4 w-4" />
+        </div>
+        <div
+          className="theme-icon"
+          style={{
+            opacity: theme === "light" ? 1 : 0,
+            transform: theme === "light" ? "rotate(0deg) scale(1)" : "rotate(90deg) scale(0.75)",
+          }}
+        >
+          <Moon className="h-4 w-4" />
+        </div>
+      </div>
     </Button>
   );
 }
@@ -84,7 +109,7 @@ function MobileMenu() {
           <Menu className="h-4 w-4" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right">
+      <SheetContent side="right" className="sheet-content">
         <div className="flex flex-col space-y-4 mt-8">
           {categories.map((category) => (
             <Link

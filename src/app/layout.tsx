@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { LenisProvider } from "@/components/LenisProvider";
+import { PageTransition } from "@/components/PageTransition";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -50,11 +52,13 @@ export default function RootLayout({
       suppressHydrationWarning={true}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <Navigation />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <LenisProvider>
+          <Navigation />
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+        </LenisProvider>
       </body>
     </html>
   );

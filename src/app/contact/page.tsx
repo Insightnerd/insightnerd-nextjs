@@ -1,5 +1,8 @@
+import { ContentPageAnimations } from "@/components/ContentPageAnimations";
+
 export default function ContactPage() {
   return (
+    <ContentPageAnimations>
     <div className="max-w-full">
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
@@ -78,5 +81,6 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
+    </ContentPageAnimations>
   );
 }

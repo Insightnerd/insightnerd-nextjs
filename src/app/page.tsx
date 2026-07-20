@@ -1,6 +1,7 @@
 "use client"
 
-import { ScrollReveal } from "@/components/effects/ScrollReveal"
+import { HomeAnimations } from "@/components/HomeAnimations"
+import { HeroBackground } from "@/components/HeroBackground"
 
 export default function Home() {
   const topics = [
@@ -51,9 +52,11 @@ export default function Home() {
   };
 
   return (
-    <div className="max-w-full w-full">
+    <HomeAnimations>
+      <div className="max-w-full w-full">
       {/* Hero Section */}
       <section className="hero-section">
+        <HeroBackground />
         <div className="max-w-full">
           <div className="max-c">
             <div className="max-c-inner">
@@ -101,14 +104,12 @@ export default function Home() {
       <section id="browse-topics">
         <div className="max-w-full">
           <div className="max-c">
-            <ScrollReveal>
-              <h2 className="section-title">
-                Browse by Topic
-              </h2>
-              <p className="section-desc">
-                Jump into the topics that matter most to you
-              </p>
-            </ScrollReveal>
+            <h2 className="section-title">
+              Browse by Topic
+            </h2>
+            <p className="section-desc">
+              Jump into the topics that matter most to you
+            </p>
 
             <div className="topics-grid">
               {topics.map((topic, index) => (
@@ -136,14 +137,12 @@ export default function Home() {
         <section id="latest-articles">
           <div className="max-w-full">
             <div className="max-c">
-              <ScrollReveal>
-                <h2 className="section-title">
-                  Latest Articles
-                </h2>
-                <p className="section-desc">
-                  Fresh content from our library
-                </p>
-              </ScrollReveal>
+              <h2 className="section-title">
+                Latest Articles
+              </h2>
+              <p className="section-desc">
+                Fresh content from our library
+              </p>
               <div className="articles-list">
                 {latestArticles.map((article) => (
                   <a
@@ -173,5 +172,6 @@ export default function Home() {
           </div>
         </section>
       </div>
+    </HomeAnimations>
       );
     }
