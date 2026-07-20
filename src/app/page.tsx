@@ -1,65 +1,177 @@
-import Image from "next/image";
+"use client"
+
+import { ScrollReveal } from "@/components/effects/ScrollReveal"
 
 export default function Home() {
+  const topics = [
+    { name: "AI", slug: "ai", icon: "🤖", description: "Machine learning and AI engineering", count: 3 },
+    { name: "Coding", slug: "coding", icon: "💻", description: "Programming languages and code", count: 2 },
+    { name: "Data", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization", count: 4 },
+    { name: "Tutorials", slug: "tutorials", icon: "📚", description: "Step-by-step guides", count: 8 },
+    { name: "Career", slug: "career", icon: "🎯", description: "Career switch and job search", count: 1 }
+  ];
+
+  const latestArticles = [
+    {
+      title: "Building Scalable Backend Systems with Node.js",
+      slug: "building-scalable-backend-systems-with-nodejs",
+      category: "Coding",
+      readTime: 12,
+      description: "Learn how to build scalable backend systems using Node.js and best practices for handling high-traffic applications."
+    },
+    {
+      title: "AI Agents: Practical Implementation Guide",
+      slug: "ai-agents-practical-implementation-guide",
+      category: "AI",
+      readTime: 15,
+      description: "A comprehensive guide to implementing AI agents, from basic concepts to advanced deployment strategies in production environments."
+    },
+    {
+      title: "Data Pipeline Architecture for Analytics",
+      slug: "data-pipeline-architecture-for-analytics",
+      category: "Data",
+      readTime: 10,
+      description: "Design and implement robust data pipelines that can handle large volumes of data while maintaining performance and reliability."
+    }
+  ];
+
+  const handleTopicClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    console.log("Topic clicked");
+  };
+
+  const handleTopicMouseEnter = (e: React.MouseEvent) => {
+    e.preventDefault();
+    console.log("Topic mouse entered");
+  };
+
+  const handleArticleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    console.log("Article clicked");
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
-}
+    <div className="max-w-full w-full">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="max-w-full">
+          <div className="max-c">
+            <div className="max-c-inner">
+              <div className="max-c-inner-inner">
+                <h1 className="max-h1">
+                  Decode the signal. Skip the noise.
+                </h1>
+                <p className="max-p">
+                  Guides written by practitioners, not theorists.
+                </p>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+
+      {/* Animated Stats Strip */}
+      <section className="stats-section">
+        <div className="max-w-full">
+          <div className="max-c">
+            <div className="max-c-inner">
+              {topics.map((topic, index) => (
+                <div
+                  key={topic.slug}
+                  className="stat-item"
+                  onClick={handleTopicClick}
+                >
+                  <div className="stat-icon">
+                    {topic.icon}
+                  </div>
+                  <div className="stat-count">
+                    {topic.count} +Guides
+                  </div>
+                  <div className="stat-name">
+                    {topic.name}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          </div>
+        </section>
+
+      {/* Browse Topics Section */}
+      <section id="browse-topics">
+        <div className="max-w-full">
+          <div className="max-c">
+            <ScrollReveal>
+              <h2 className="section-title">
+                Browse by Topic
+              </h2>
+              <p className="section-desc">
+                Jump into the topics that matter most to you
+              </p>
+            </ScrollReveal>
+
+            <div className="topics-grid">
+              {topics.map((topic, index) => (
+                <a
+                  key={topic.slug}
+                  href={`/categories/${topic.slug}`}
+                  className="topic-card"
+                  onMouseEnter={handleTopicMouseEnter}
+                  onClick={handleTopicClick}
+                >
+                  <div className="topic-icon">
+                    {topic.icon}
+                  </div>
+                  <div className="topic-name">
+                    {topic.name}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+          </div>
+        </section>
+
+        {/* Latest Articles */}
+        <section id="latest-articles">
+          <div className="max-w-full">
+            <div className="max-c">
+              <ScrollReveal>
+                <h2 className="section-title">
+                  Latest Articles
+                </h2>
+                <p className="section-desc">
+                  Fresh content from our library
+                </p>
+              </ScrollReveal>
+              <div className="articles-list">
+                {latestArticles.map((article) => (
+                  <a
+                    key={article.slug}
+                    href={`/posts/${article.slug}`}
+                    className="article-card"
+                    onClick={handleArticleClick}
+                  >
+                    <div className="article-meta">
+                      <div className="article-category">
+                        {article.category}
+                      </div>
+                      <div className="article-stats">
+                        📖 {article.readTime} min
+                      </div>
+                    </div>
+                    <div className="article-title">
+                      {article.title}
+                    </div>
+                    <div className="article-desc">
+                      {article.description.substring(200)}...
+                    </div>
+                  </a>
+                ))}
+          </div>
+          </div>
+          </div>
+        </section>
+      </div>
+      );
+    }
