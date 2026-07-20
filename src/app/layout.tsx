@@ -15,11 +15,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "InsightNerd",
   description: "Decode the signal. Skip the noise.",
-  metadataBase: new URL("https://insightnerd.in"),
+  metadataBase: new URL("https://www.insightnerd.in"),
   openGraph: {
     title: "InsightNerd",
     description: "Decode the signal. Skip the noise.",
-    url: "https://insightnerd.in",
+    url: "https://www.insightnerd.in",
     siteName: "InsightNerd",
     images: [
       {
