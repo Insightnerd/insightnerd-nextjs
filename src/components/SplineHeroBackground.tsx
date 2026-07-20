@@ -2,7 +2,6 @@
 
 import { Component, useState, useEffect, type ReactNode } from "react";
 import dynamic from "next/dynamic";
-import { HeroBackground } from "@/components/HeroBackground";
 
 // ─── Error boundary — catches dynamic-import / render errors ───
 
@@ -26,12 +25,22 @@ class SplineErrorBoundary extends Component<
   }
 }
 
-// ─── Dynamic Spline background (ssr: false) ───
+// ─── Both 3D providers are dynamically imported so their Three.js copies
+//     are NOT included in the main bundle. Only the one that actually
+//     renders loads its Three.js instance, eliminating the duplication. ───
 
 const DynamicedSpline = dynamic(
   () =>
     import("@/components/blocks/3d-hero-section-boxes").then(
       (m) => ({ default: m.HeroSplineBackground })
+    ),
+  { ssr: false, loading: () => null }
+);
+
+const DynamicHeroBackground = dynamic(
+  () =>
+    import("@/components/HeroBackground").then(
+      (m) => ({ default: m.HeroBackground })
     ),
   { ssr: false, loading: () => null }
 );
@@ -64,7 +73,7 @@ export function SplineHeroBackground() {
   if (!shouldLoad || splineErrored) {
     return (
       <div className="hero-three-bg" aria-hidden="true">
-        <HeroBackground />
+        <DynamicHeroBackground />
       </div>
     );
   }

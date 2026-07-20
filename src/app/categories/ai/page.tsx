@@ -1,5 +1,6 @@
 import { CategoryPageAnimations } from "@/components/CategoryPageAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
+import { JsonLd } from "@/components/JsonLd";
 
 export default function AICategoryPage() {
   return (
@@ -11,6 +12,27 @@ export default function AICategoryPage() {
           <nav className="text-sm text-muted-foreground mb-4">
             <span>Home</span> <span className="mx-2">/</span> <span className="text-foreground">AI</span>
           </nav>
+          <JsonLd
+            id="breadcrumb-schema"
+            data={{
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.insightnerd.in/",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "AI",
+                  item: "https://www.insightnerd.in/categories/ai",
+                },
+              ],
+            }}
+          />
           <h1 className="text-4xl font-bold mb-4">AI Articles</h1>
           <p className="text-xl text-muted-foreground">
             Explore our collection of AI and machine learning guides written by practitioners

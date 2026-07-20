@@ -1,8 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-
 /* ─── Category metadata ─── */
 
 interface CategoryMeta {
@@ -47,33 +44,16 @@ interface CategoryBannerProps {
 
 /**
  * Full-width gradient banner with a large category emoji.
- * Sits above the article/category-page title.
+ * Uses CSS animation instead of GSAP to avoid pulling in the full GSAP bundle
+ * for a simple opacity fade.
  */
 export function CategoryBanner({ category }: CategoryBannerProps) {
-  const ref = useRef<HTMLDivElement>(null);
   const { icon, gradient } = categoryMeta[category] ?? defaultMeta;
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) return;
-
-    gsap.from(el, {
-      opacity: 0,
-      y: -12,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  }, []);
 
   return (
     <div
-      ref={ref}
-      className="relative h-40 rounded-xl overflow-hidden mb-8 flex items-center justify-center"
+      className="relative h-40 rounded-xl overflow-hidden mb-8 flex items-center justify-center
+                 animate-in fade-in slide-in-from-top-3 duration-500"
       style={{ background: gradient }}
       aria-hidden="true"
     >

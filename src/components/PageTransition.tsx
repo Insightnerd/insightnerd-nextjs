@@ -1,20 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 /**
- * Wraps page content with a fade + slight slide transition on route change.
+ * CSS-only page transition wrapper.
  *
- * - Exit (old page) fades/slides out, then Enter (new page) fades/slides in.
- * - Uses AnimatePresence mode="wait" so content never overlaps.
- * - Respects prefers-reduced-motion: skips animation entirely.
+ * Replaces framer-motion AnimatePresence with a lightweight opacity
+ * transition, eliminating ~30KB+ of JS from the critical bundle
+ * while preserving the same fade-in behavior on route change.
+ *
+ * - Fades in new page content on route change.
+ * - Respects prefers-reduced-motion.
  * - Does NOT wrap Navigation/Footer — only the <main> content area.
  */
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [reduced, setReduced] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const prevPathname = useRef(pathname);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -24,17 +28,26 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
+  useEffect(() => {
+    if (prevPathname.current !== pathname) {
+      prevPathname.current = pathname;
+      // Brief flash-out then fade-in on route change
+      setIsVisible(false);
+      const timer = setTimeout(() => setIsVisible(true), reduced ? 0 : 40);
+      return () => clearTimeout(timer);
+    }
+  }, [pathname, reduced]);
+
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={reduced ? {} : { opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={reduced ? {} : { opacity: 0, y: -8 }}
-        transition={{ duration: reduced ? 0 : 0.25, ease: "easeOut" }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <div
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transition: reduced
+          ? "none"
+          : "opacity 0.25s ease-out",
+      }}
+    >
+      {children}
+    </div>
   );
 }

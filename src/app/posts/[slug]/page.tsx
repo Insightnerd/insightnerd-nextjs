@@ -3,6 +3,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { ArticleAnimations } from "@/components/ArticleAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
+import { JsonLd } from "@/components/JsonLd";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -59,6 +60,49 @@ export default async function ArticlePage({ params }: Props) {
           <span className="mx-2">/</span>
           <span className="text-foreground">{frontmatter.title as string}</span>
         </nav>
+
+        <JsonLd
+          id="article-schema"
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: frontmatter.title,
+            datePublished: frontmatter.date,
+            author: {
+              "@type": "Person",
+              name: frontmatter.author,
+            },
+            description: frontmatter.excerpt,
+            image: "https://www.insightnerd.in/og-image.png",
+          }}
+        />
+        <JsonLd
+          id="breadcrumb-schema"
+          data={{
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.insightnerd.in/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: category,
+                item: `https://www.insightnerd.in/categories/${category.toLowerCase().replace(/\s+/g, "-")}`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: frontmatter.title as string,
+                item: `https://www.insightnerd.in/posts/${slug}`,
+              },
+            ],
+          }}
+        />
 
         <article>
           <header className="mb-10">

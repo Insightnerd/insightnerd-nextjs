@@ -1,17 +1,13 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import type gsap from "gsap";
 
 /**
  * GSAP scroll-triggered reveal animations for ALL category pages.
  *
- * Mirrors the homepage's HomeAnimations timing/easing so the site feels cohesive:
- *  - Title + description: fade+slide up on page load
- *  - Article cards: staggered fade+slide up via ScrollTrigger
+ * Mirrors the homepage's HomeAnimations timing/easing so the site feels cohesive.
+ * GSAP is lazy-loaded dynamically so it does NOT block first paint.
  */
 export function CategoryPageAnimations({
   children,
@@ -21,53 +17,63 @@ export function CategoryPageAnimations({
   const scopeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const scope = scopeRef.current;
-    if (!scope) return;
+    let ctx: gsap.Context | null = null;
 
-    const ctx = gsap.context(() => {
-      // 1. Category title + description — entrance on page load
-      const title = scope.querySelector<HTMLElement>("h1");
-      const desc = scope.querySelector<HTMLElement>("p");
+    const init = async () => {
+      const gsapModule = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsapModule.default.registerPlugin(ScrollTrigger);
 
-      if (title) {
-        gsap.from(title, {
-          y: 30,
-          opacity: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      }
-      if (desc) {
-        gsap.from(desc, {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-          delay: 0.15,
-          ease: "power2.out",
-        });
-      }
+      const scope = scopeRef.current;
+      if (!scope) return;
 
-      // 2. Article cards — staggered reveal on scroll
-      const cards =
-        scope.querySelectorAll<HTMLElement>("article.group");
-      if (cards.length) {
-        gsap.from(cards, {
-          y: 24,
-          opacity: 0,
-          duration: 0.45,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: cards[0].parentElement,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        });
-      }
-    }, scope);
+      ctx = gsapModule.default.context(() => {
+        // 1. Category title + description — entrance on page load
+        const title = scope.querySelector<HTMLElement>("h1");
+        const desc = scope.querySelector<HTMLElement>("p");
 
-    ScrollTrigger.refresh();
-    return () => ctx.revert();
+        if (title) {
+          gsapModule.default.from(title, {
+            y: 30,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        }
+        if (desc) {
+          gsapModule.default.from(desc, {
+            y: 20,
+            opacity: 0,
+            duration: 0.5,
+            delay: 0.15,
+            ease: "power2.out",
+          });
+        }
+
+        // 2. Article cards — staggered reveal on scroll
+        const cards = scope.querySelectorAll<HTMLElement>("article.group");
+        if (cards.length) {
+          gsapModule.default.from(cards, {
+            y: 24,
+            opacity: 0,
+            duration: 0.45,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: cards[0].parentElement,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+      }, scope);
+
+      ScrollTrigger.refresh();
+    };
+
+    init();
+
+    return () => ctx?.revert();
   }, []);
 
   return (

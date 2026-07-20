@@ -1,5 +1,6 @@
 import { CategoryPageAnimations } from "@/components/CategoryPageAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
+import { JsonLd } from "@/components/JsonLd";
 
 export default function DataAnalyticsCategoryPage() {
   return (
@@ -11,6 +12,27 @@ export default function DataAnalyticsCategoryPage() {
           <nav className="text-sm text-muted-foreground mb-4">
             <span>Home</span> <span className="mx-2">/</span> <span className="text-foreground">Data Analytics</span>
           </nav>
+          <JsonLd
+            id="breadcrumb-schema"
+            data={{
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.insightnerd.in/",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Data Analytics",
+                  item: "https://www.insightnerd.in/categories/data-analytics",
+                },
+              ],
+            }}
+          />
           <h1 className="text-4xl font-bold mb-4">Data Analytics Articles</h1>
           <p className="text-xl text-muted-foreground">
             Explore our collection of data analysis guides and analytics techniques

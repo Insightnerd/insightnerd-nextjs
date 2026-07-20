@@ -18,15 +18,40 @@ export const TextHoverEffect = ({
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
 
   useEffect(() => {
-    if (svgRef.current) {
-      const svgRect = svgRef.current.getBoundingClientRect();
-      const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
-      const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
-      setMaskPosition({
-        cx: `${cxPercentage}%`,
-        cy: `${cyPercentage}%`,
-      });
+    const handleResize = () => setMaskPosition({ cx: "50%", cy: "50%" });
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!svgRef.current) return;
+
+    const svgRect = svgRef.current.getBoundingClientRect();
+    if (svgRect.width === 0 || svgRect.height === 0) {
+      setMaskPosition({ cx: "50%", cy: "50%" });
+      return;
     }
+
+    if (cursor.x === 0 && cursor.y === 0) return;
+
+    const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
+    const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
+
+    // Safety net: the division above can produce NaN/Infinity if reflow
+    // invalidates dimensions between the guard and calculation.
+    if (!Number.isFinite(cxPercentage) || !Number.isFinite(cyPercentage)) {
+      setMaskPosition({ cx: "50%", cy: "50%" });
+      return;
+    }
+
+    // Clamp to valid range in case cursor is outside the SVG bounds
+    const clampedCx = Math.min(100, Math.max(0, cxPercentage));
+    const clampedCy = Math.min(100, Math.max(0, cyPercentage));
+
+    setMaskPosition({
+      cx: `${clampedCx}%`,
+      cy: `${clampedCy}%`,
+    });
   }, [cursor]);
 
   return (

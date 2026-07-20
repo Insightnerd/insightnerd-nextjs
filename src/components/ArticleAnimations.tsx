@@ -1,96 +1,104 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import type gsap from "gsap";
 
 /**
  * Subtle entry animations + reading-progress bar for article pages.
  *
  * Animates the header (category badge, title, meta) on load, then attaches
  * a thin scroll-linked progress bar — no body-content animations.
+ * GSAP is lazy-loaded so it does NOT block first paint.
  */
 export function ArticleAnimations({ children }: { children: ReactNode }) {
   const scopeRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const scope = scopeRef.current;
-    const progress = progressRef.current;
-    if (!scope || !progress) return;
+    let ctx: gsap.Context | null = null;
 
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const init = async () => {
+      const gsapModule = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsapModule.default.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      /* ---------- 1. Header entrance ---------- */
-      if (!prefersReduced) {
-        const header = scope.querySelector("header");
-        if (header) {
-          const category = header.querySelector<HTMLElement>(".article-category");
-          const title = header.querySelector<HTMLElement>("h1");
-          const meta = header.querySelector<HTMLElement>(".flex");
+      const scope = scopeRef.current;
+      const progress = progressRef.current;
+      if (!scope || !progress) return;
 
-          if (category) {
-            gsap.from(category, {
-              y: 12,
-              opacity: 0,
-              duration: 0.4,
-              ease: "power2.out",
-            });
+      const prefersReduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      ctx = gsapModule.default.context(() => {
+        /* ---------- 1. Header entrance ---------- */
+        if (!prefersReduced) {
+          const header = scope.querySelector("header");
+          if (header) {
+            const category = header.querySelector<HTMLElement>(".article-category");
+            const title = header.querySelector<HTMLElement>("h1");
+            const meta = header.querySelector<HTMLElement>(".flex");
+
+            if (category) {
+              gsapModule.default.from(category, {
+                y: 12,
+                opacity: 0,
+                duration: 0.4,
+                ease: "power2.out",
+              });
+            }
+            if (title) {
+              gsapModule.default.from(title, {
+                y: 30,
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.out",
+              });
+            }
+            if (meta) {
+              gsapModule.default.from(meta, {
+                y: 16,
+                opacity: 0,
+                duration: 0.5,
+                delay: 0.15,
+                ease: "power2.out",
+              });
+            }
           }
-          if (title) {
-            gsap.from(title, {
-              y: 30,
-              opacity: 0,
-              duration: 0.5,
-              ease: "power2.out",
-            });
-          }
-          if (meta) {
-            gsap.from(meta, {
-              y: 16,
-              opacity: 0,
-              duration: 0.5,
-              delay: 0.15,
-              ease: "power2.out",
-            });
+        } else {
+          const header = scope.querySelector("header");
+          if (header) {
+            const category = header.querySelector<HTMLElement>(".article-category");
+            const title = header.querySelector<HTMLElement>("h1");
+            const meta = header.querySelector<HTMLElement>(".flex");
+            category?.style.setProperty("opacity", "1");
+            title?.style.setProperty("opacity", "1");
+            meta?.style.setProperty("opacity", "1");
           }
         }
-      } else {
-        // Reduced motion: ensure everything is visible immediately
-        const header = scope.querySelector("header");
-        if (header) {
-          const category = header.querySelector<HTMLElement>(".article-category");
-          const title = header.querySelector<HTMLElement>("h1");
-          const meta = header.querySelector<HTMLElement>(".flex");
-          category?.style.setProperty("opacity", "1");
-          title?.style.setProperty("opacity", "1");
-          meta?.style.setProperty("opacity", "1");
+
+        /* ---------- 2. Reading progress bar ---------- */
+        const article = scope.querySelector("article");
+        if (article) {
+          gsapModule.default.to(progress, {
+            scaleX: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: article,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: true,
+            },
+          });
         }
-      }
+      }, scope);
 
-      /* ---------- 2. Reading progress bar ---------- */
-      const article = scope.querySelector("article");
-      if (article) {
-        gsap.to(progress, {
-          scaleX: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: article,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: true,
-          },
-        });
-      }
-    }, scope);
+      ScrollTrigger.refresh();
+    };
 
-    ScrollTrigger.refresh();
-    return () => ctx.revert();
+    init();
+
+    return () => ctx?.revert();
   }, []);
 
   return (
