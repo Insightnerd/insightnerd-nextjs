@@ -8,7 +8,7 @@ export default function ContactPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h1 className="text-4xl font-bold mb-8">Contact Us</h1>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
+          <div className="prose prose-lg prose-invert max-w-none mb-12">
             <p>
               We value your feedback, questions, and suggestions. Whether you have ideas for new articles, want to contribute content, or just have questions about anything on InsightNerd, we'd love to hear from you.
             </p>

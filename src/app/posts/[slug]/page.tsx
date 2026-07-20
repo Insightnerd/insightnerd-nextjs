@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { ArticleAnimations } from "@/components/ArticleAnimations";
+import { CategoryBanner } from "@/components/CategoryBanner";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -47,7 +48,8 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <ArticleAnimations>
     <div className="max-w-full">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <CategoryBanner category={category} />
         <nav className="text-sm text-muted-foreground mb-8">
           <a href="/" className="hover:text-foreground transition-colors">Home</a>
           <span className="mx-2">/</span>

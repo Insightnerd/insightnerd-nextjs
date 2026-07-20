@@ -1,7 +1,7 @@
 "use client"
 
 import { HomeAnimations } from "@/components/HomeAnimations"
-import { HeroBackground } from "@/components/HeroBackground"
+import { SplineHeroBackground } from "@/components/SplineHeroBackground"
 
 export default function Home() {
   const topics = [
@@ -56,7 +56,7 @@ export default function Home() {
       <div className="max-w-full w-full">
       {/* Hero Section */}
       <section className="hero-section">
-        <HeroBackground />
+        <SplineHeroBackground />
         <div className="max-w-full">
           <div className="max-c">
             <div className="max-c-inner">

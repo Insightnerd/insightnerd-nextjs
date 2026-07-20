@@ -1,10 +1,12 @@
 import { CategoryPageAnimations } from "@/components/CategoryPageAnimations";
+import { CategoryBanner } from "@/components/CategoryBanner";
 
 export default function DataAnalyticsCategoryPage() {
   return (
     <CategoryPageAnimations>
     <div className="max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <CategoryBanner category="Data Analytics" />
         <div className="mb-12">
           <nav className="text-sm text-muted-foreground mb-4">
             <span>Home</span> <span className="mx-2">/</span> <span className="text-foreground">Data Analytics</span>

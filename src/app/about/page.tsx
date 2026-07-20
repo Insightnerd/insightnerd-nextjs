@@ -8,7 +8,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h1 className="text-4xl font-bold mb-8">About InsightNerd</h1>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          <div className="prose prose-lg prose-invert max-w-none">
             <p>
               InsightNerd is your go-to destination for practical, practitioner-written guides about AI, coding, data analysis, and career development in tech.
             </p>
