@@ -2,7 +2,7 @@ name: Daily Content Fetch
 
 on:
   schedule:
-    - cron: '30 2 * * *'   # 2:30 AM UTC = ~8:00 AM IST daily
+    - cron: '0 * * * *'   # 2:30 AM UTC = ~8:00 AM IST daily
   workflow_dispatch: {}     # lets you trigger it manually from the Actions tab
 
 permissions:
