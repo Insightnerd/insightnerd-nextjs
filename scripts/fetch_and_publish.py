@@ -38,7 +38,7 @@ MANIFEST_PATH = REPO_ROOT / "src" / "content" / ".manifest.json"
 # "openrouter" -> FREE (rate-limited, ~20 req/min & 200/day) or cheap paid models, cloud-hosted.
 #                 Works from GitHub Actions too, since it doesn't need a local model running.
 # "anthropic"  -> PAID, highest quality writing. Flip to this once ready for real launch.
-LLM_BACKEND = os.environ.get("LLM_BACKEND", "ollama")
+LLM_BACKEND = os.environ.get("LLM_BACKEND", "openrouter")
 
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.1")  # pull with: ollama pull llama3.1
@@ -46,7 +46,7 @@ OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.1")  # pull with: ollama p
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 # Free model IDs on OpenRouter rotate over time — verify at https://openrouter.ai/models
 # (filter: prompt price = 0) before relying on this long-term. Stable as of July 2026.
-OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct:free")
+OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL", "google/gemma-4-26b-a4b-it:free")
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 CLAUDE_MODEL = "claude-sonnet-5"
