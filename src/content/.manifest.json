@@ -1,0 +1,28 @@
+{
+  "published": [
+    {
+      "url_hash": "3541dee7b7e96528",
+      "title": "Beyond MLOps: Engineering Reliable LLM Pipelines",
+      "category": "AI",
+      "url": "https://www.anaconda.com/blog/scaling-gen-ai-production-best-practices-and-pitfalls"
+    },
+    {
+      "url_hash": "56f8ec5efc4bbe08",
+      "title": "Beyond Monitoring: A Practitioner's Guide to Data Observability",
+      "category": "Data Analytics",
+      "url": "https://www.gartner.com/reviews/market/data-observability-tools"
+    },
+    {
+      "url_hash": "eb8625539def09b1",
+      "title": "Navigating the 2026 Tech Job Market: Where the Growth Is",
+      "category": "Career",
+      "url": "https://www.comptia.org/en-us/resources/research/state-of-the-tech-workforce-2026"
+    },
+    {
+      "url_hash": "adfccfb51db98354",
+      "title": "Building a Data Stack: A Framework for Tool Selection",
+      "category": "Tutorials",
+      "url": "https://medium.com/@kanerika/an-expert-guide-to-15-best-data-engineering-tools-048e44eab3be"
+    }
+  ]
+}
