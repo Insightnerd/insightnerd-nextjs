@@ -1,0 +1,34 @@
+{
+  "published": [
+    {
+      "url_hash": "d908bf1956d8d0c4",
+      "title": "LLMOps: A Practical Guide to Managing LLMs in Production",
+      "category": "AI",
+      "url": "https://blog.gopenai.com/day-8-llmops-managing-llms-in-production-519504c82d48"
+    },
+    {
+      "url_hash": "66a36f02512a45db",
+      "title": "Bridging the Gap Between App and Data Observability",
+      "category": "Data Analytics",
+      "url": "https://www.msspalert.com/news/datadog-expands-into-data-observability-with-metaplane-acquisition"
+    },
+    {
+      "url_hash": "ed32cac061a466a6",
+      "title": "Beyond Flaccid Scrum: Engineering Excellence in 2026",
+      "category": "Coding",
+      "url": "https://distantjob.com/blog/software-engineering-best-practices"
+    },
+    {
+      "url_hash": "eca9c94eeea51bb5",
+      "title": "The 2026 Data Analyst Roadmap: Navigating Growth and AI",
+      "category": "Career",
+      "url": "https://skillifysolutions.com/blogs/data-science/data-analyst-job-outlook"
+    },
+    {
+      "url_hash": "adfccfb51db98354",
+      "title": "How to Build a Modern Data Engineering Tool Stack",
+      "category": "Tutorials",
+      "url": "https://medium.com/@kanerika/an-expert-guide-to-15-best-data-engineering-tools-048e44eab3be"
+    }
+  ]
+}
