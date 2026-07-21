@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { HomeAnimations } from "@/components/HomeAnimations"
 import { SplineHeroBackground } from "@/components/SplineHeroBackground"
 
@@ -36,21 +37,6 @@ export default function Home() {
     }
   ];
 
-  const handleTopicClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    console.log("Topic clicked");
-  };
-
-  const handleTopicMouseEnter = (e: React.MouseEvent) => {
-    e.preventDefault();
-    console.log("Topic mouse entered");
-  };
-
-  const handleArticleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    console.log("Article clicked");
-  };
-
   return (
     <HomeAnimations>
       <div className="max-w-full w-full">
@@ -78,11 +64,11 @@ export default function Home() {
         <div className="max-w-full">
           <div className="max-c">
             <div className="max-c-inner">
-              {topics.map((topic, index) => (
-                <div
+              {topics.map((topic) => (
+                <Link
                   key={topic.slug}
+                  href={`/categories/${topic.slug}`}
                   className="stat-item"
-                  onClick={handleTopicClick}
                 >
                   <div className="stat-icon">
                     {topic.icon}
@@ -93,7 +79,7 @@ export default function Home() {
                   <div className="stat-name">
                     {topic.name}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -112,13 +98,11 @@ export default function Home() {
             </p>
 
             <div className="topics-grid">
-              {topics.map((topic, index) => (
-                <a
+              {topics.map((topic) => (
+                <Link
                   key={topic.slug}
                   href={`/categories/${topic.slug}`}
                   className="topic-card"
-                  onMouseEnter={handleTopicMouseEnter}
-                  onClick={handleTopicClick}
                 >
                   <div className="topic-icon">
                     {topic.icon}
@@ -126,7 +110,7 @@ export default function Home() {
                   <div className="topic-name">
                     {topic.name}
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -145,11 +129,10 @@ export default function Home() {
               </p>
               <div className="articles-list">
                 {latestArticles.map((article) => (
-                  <a
+                  <Link
                     key={article.slug}
                     href={`/posts/${article.slug}`}
                     className="article-card"
-                    onClick={handleArticleClick}
                   >
                     <div className="article-meta">
                       <div className="article-category">
@@ -165,7 +148,7 @@ export default function Home() {
                     <div className="article-desc">
                       {article.description.substring(200)}...
                     </div>
-                  </a>
+                  </Link>
                 ))}
           </div>
           </div>
