@@ -36,12 +36,11 @@ jobs:
 
       - name: Read run summary
         id: summary
+        shell: bash
         run: |
-          {
-            echo 'body<<EOF'
-            cat scripts/_last_run_summary.txt
-            echo 'EOF'
-          } >> "$GITHUB_OUTPUT"
+          echo "body<<EOF" >> "$GITHUB_OUTPUT"
+          cat scripts/_last_run_summary.txt >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Open pull request with new content
         uses: peter-evans/create-pull-request@v6
