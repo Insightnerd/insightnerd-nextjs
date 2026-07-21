@@ -1,35 +1,9 @@
-"use client"
-
-import { ScrollReveal } from "@/components/effects/ScrollReveal"
-
-const articles = [
-  {
-    title: "25 Essential AI Tools Every Professional Should Know in 2026",
-    slug: "25-ai-tools-2026",
-    category: "AI",
-    readTime: 18,
-    date: "November 30, 2025",
-    excerpt: "Discover the most transformative AI tools every professional needs to know in 2026, from productivity boosters to strategic decision-making platforms."
-  },
-  {
-    title: "Break Into Data Analytics in 2026: Your Complete Guide",
-    slug: "break-into-data-analytics-2026",
-    category: "Data Analytics",
-    readTime: 20,
-    date: "December 20, 2025",
-    excerpt: "A comprehensive roadmap for transitioning into data analytics, covering essential skills, tools, portfolio projects, and job market insights for 2026."
-  },
-  {
-    title: "Resume Red Flags That Scare Tech Employers",
-    slug: "resume-red-flags-tech-career",
-    category: "Career",
-    readTime: 15,
-    date: "January 15, 2026",
-    excerpt: "Learn to identify and fix common resume mistakes that make tech employers skip your application, with specific examples from real hiring data."
-  },
-];
+import { ScrollReveal } from "@/components/effects/ScrollReveal";
+import { getAllPosts, formatPostDate } from "@/lib/posts";
 
 export default function ArticlesPage() {
+  const articles = getAllPosts();
+
   return (
     <div className="max-w-full">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -54,9 +28,9 @@ export default function ArticlesPage() {
               className="article-card"
             >
               <div className="article-meta">
-                <span className="article-category">{article.category}</span>
+                <span className="article-category">{article.categories[0]}</span>
                 <span className="article-stats">
-                  {article.date} · {article.readTime} min read
+                  {formatPostDate(article.date)} · {article.reading_time} min read
                 </span>
               </div>
               <h2 className="article-title">{article.title}</h2>
