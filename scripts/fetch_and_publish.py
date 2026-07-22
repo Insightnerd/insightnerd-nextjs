@@ -16,6 +16,7 @@ import os
 import re
 import json
 import time
+import base64
 import hashlib
 import datetime
 from pathlib import Path
@@ -30,6 +31,7 @@ from rapidfuzz import fuzz
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = REPO_ROOT / "src" / "content" / "posts"
+IMAGES_DIR = REPO_ROOT / "public" / "images" / "posts"
 MANIFEST_PATH = REPO_ROOT / "src" / "content" / ".manifest.json"
 
 # --- LLM backend switch -----------------------------------------------------
@@ -52,6 +54,25 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 CLAUDE_MODEL = "claude-sonnet-5"
 
 TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY")
+# --- Cover image generation --------------------------------------------------
+# Toggle this off any time with GENERATE_IMAGES=false — the rest of the pipeline
+# works fine without it.
+GENERATE_IMAGES = os.environ.get("GENERATE_IMAGES", "true").lower() == "true"
+
+# "huggingface" -> FREE (rate-limited/queued), runs on HF's hosted GPUs, no key cost.
+#                  Uses FLUX.1-schnell by default — Apache 2.0 licensed, safe for a
+#                  commercial site. (FLUX.1-dev / FLUX.2-dev are non-commercial-only
+#                  licenses — don't use those for a monetized site without checking.)
+# "openrouter"  -> PAID, billed per image (a few cents each), faster/more reliable,
+#                  more model choice (Gemini "Nano Banana", GPT Image, etc).
+IMAGE_BACKEND = os.environ.get("IMAGE_BACKEND", "huggingface")
+
+HF_TOKEN = os.environ.get("HF_TOKEN")
+HF_IMAGE_MODEL = os.environ.get("HF_IMAGE_MODEL", "black-forest-labs/FLUX.1-schnell")
+
+IMAGE_MODEL = os.environ.get("IMAGE_MODEL", "google/gemini-2.5-flash-image")  # OpenRouter only
+IMAGE_ASPECT_RATIO = os.environ.get("IMAGE_ASPECT_RATIO", "16:9")  # good for blog cover images
+IMAGE_RESOLUTION = os.environ.get("IMAGE_RESOLUTION", "1K")  # 512 / 1K / 2K / 4K — OpenRouter only
 
 MAX_ITEMS_PER_CATEGORY_PER_RUN = 1  # start conservative; raise once you trust output
 MIN_RELEVANCE_SCORE = 0.30  # Tavily relevance score threshold (0-1)
@@ -307,15 +328,108 @@ def clean_and_write(raw_title: str, raw_content: str, source_url: str, category:
     return parsed
 
 
-def write_mdx(parsed: dict, category: str, source_url: str) -> Path:
-    slug = slugify(parsed["title"])
-    filepath = POSTS_DIR / f"{slug}.mdx"
-
-    # avoid filename collisions
+def unique_slug(title: str) -> str:
+    """Compute a filesystem-safe slug, appending -2, -3, ... if the .mdx already exists.
+    Used for both the post filename and the cover image filename, so they match."""
+    base = slugify(title)
+    candidate = base
     counter = 2
-    while filepath.exists():
-        filepath = POSTS_DIR / f"{slug}-{counter}.mdx"
+    while (POSTS_DIR / f"{candidate}.mdx").exists():
+        candidate = f"{base}-{counter}"
         counter += 1
+    return candidate
+
+
+def _build_image_prompt(title: str, excerpt: str, category: str) -> str:
+    return (
+        f"A clean, modern editorial illustration for a technical blog article titled "
+        f"'{title}'. Context: {excerpt}. Category: {category}. Style: minimal, professional, "
+        f"tech-blog cover image, no text or words in the image, no logos, no watermarks, "
+        f"flat design or subtle 3D, suitable as a header banner."
+    )
+
+
+def _generate_image_huggingface(prompt: str) -> tuple[bytes, str]:
+    """Calls HF's free-tier hosted Inference API. Returns (raw_image_bytes, media_type)."""
+    if not HF_TOKEN:
+        raise RuntimeError("HF_TOKEN not set (required when IMAGE_BACKEND=huggingface)")
+    resp = requests.post(
+        f"https://api-inference.huggingface.co/models/{HF_IMAGE_MODEL}",
+        headers={"Authorization": f"Bearer {HF_TOKEN}"},
+        json={"inputs": prompt},
+        timeout=180,
+    )
+    resp.raise_for_status()
+    content_type = resp.headers.get("content-type", "image/jpeg")
+    if "json" in content_type:
+        # Free-tier Spaces sometimes return a JSON "model is loading, retry" response
+        # instead of an image while the model cold-starts.
+        raise RuntimeError(f"HF returned JSON instead of an image (likely cold-start/queue): {resp.text[:200]}")
+    return resp.content, content_type
+
+
+def _generate_image_openrouter(prompt: str) -> tuple[bytes, str]:
+    """Calls OpenRouter's paid Image API. Returns (raw_image_bytes, media_type)."""
+    if not OPENROUTER_API_KEY:
+        raise RuntimeError("OPENROUTER_API_KEY not set (required when IMAGE_BACKEND=openrouter)")
+    resp = requests.post(
+        "https://openrouter.ai/api/v1/images",
+        headers={
+            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "Content-Type": "application/json",
+        },
+        json={
+            "model": IMAGE_MODEL,
+            "prompt": prompt,
+            "aspect_ratio": IMAGE_ASPECT_RATIO,
+            "resolution": IMAGE_RESOLUTION,
+            "output_format": "png",
+        },
+        timeout=120,
+    )
+    resp.raise_for_status()
+    result = resp.json()
+    image_entry = result["data"][0]
+    image_bytes = base64.b64decode(image_entry["b64_json"])
+    media_type = image_entry.get("media_type", "image/png")
+    cost = result.get("usage", {}).get("cost")
+    if cost is not None:
+        print(f"    (OpenRouter image cost: ${cost:.4f})")
+    return image_bytes, media_type
+
+
+def generate_cover_image(title: str, excerpt: str, category: str, slug: str) -> str | None:
+    """Generates a cover image and saves it under public/images/posts/.
+    Returns the site-relative path (e.g. "/images/posts/my-slug.png") or None on any
+    failure — image generation is never allowed to block publishing the article itself."""
+    if not GENERATE_IMAGES:
+        return None
+
+    prompt = _build_image_prompt(title, excerpt, category)
+
+    try:
+        if IMAGE_BACKEND == "huggingface":
+            image_bytes, media_type = _generate_image_huggingface(prompt)
+        elif IMAGE_BACKEND == "openrouter":
+            image_bytes, media_type = _generate_image_openrouter(prompt)
+        else:
+            raise ValueError(f"Unknown IMAGE_BACKEND: {IMAGE_BACKEND}")
+
+        ext = {"image/png": "png", "image/jpeg": "jpg", "image/jpg": "jpg", "image/webp": "webp"}.get(
+            media_type.split(";")[0].strip(), "jpg"
+        )
+        IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+        filepath = IMAGES_DIR / f"{slug}.{ext}"
+        filepath.write_bytes(image_bytes)
+        print(f"  + generated cover image ({IMAGE_BACKEND}): {filepath.relative_to(REPO_ROOT)}")
+        return f"/images/posts/{slug}.{ext}"
+    except Exception as e:
+        print(f"  ! image generation failed ({IMAGE_BACKEND}), publishing without a cover image: {e}")
+        return None
+
+
+def write_mdx(parsed: dict, category: str, source_url: str, slug: str, cover_image: str | None = None) -> Path:
+    filepath = POSTS_DIR / f"{slug}.mdx"
 
     now = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M")
     frontmatter = {
@@ -328,6 +442,8 @@ def write_mdx(parsed: dict, category: str, source_url: str) -> Path:
         "excerpt": parsed["excerpt"],
         "source_url": source_url,
     }
+    if cover_image:
+        frontmatter["cover_image"] = cover_image
 
     fm_yaml = yaml.safe_dump(frontmatter, sort_keys=False, allow_unicode=True).strip()
     content = f"---\n{fm_yaml}\n---\n\n{parsed['body_markdown']}\n"
@@ -393,7 +509,9 @@ def main():
                 if parsed is None:
                     continue
 
-                filepath = write_mdx(parsed, category, url)
+                slug = unique_slug(parsed["title"])
+                cover_image = generate_cover_image(parsed["title"], parsed["excerpt"], category, slug)
+                filepath = write_mdx(parsed, category, url, slug, cover_image)
                 manifest["published"].append(
                     {"url_hash": url_hash(url), "title": parsed["title"], "category": category, "url": url}
                 )
