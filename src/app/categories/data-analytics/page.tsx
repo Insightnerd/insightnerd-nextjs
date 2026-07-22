@@ -1,85 +1,62 @@
-import { CategoryPageAnimations } from "@/components/CategoryPageAnimations";
-import { CategoryBanner } from "@/components/CategoryBanner";
-import { JsonLd } from "@/components/JsonLd";
-import { getPostsByCategory, formatPostDate } from "@/lib/posts";
+import { ScrollReveal } from "@/components/effects/ScrollReveal";
+import { getAllPosts, formatPostDate } from "@/lib/posts";
 
-export default function DataAnalyticsCategoryPage() {
-  const articles = getPostsByCategory("Data Analytics");
+export default function ArticlesPage() {
+  const articles = getAllPosts();
+
   return (
-    <CategoryPageAnimations>
     <div className="max-w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <CategoryBanner category="Data Analytics" />
-        <div className="mb-12">
-          <nav className="text-sm text-muted-foreground mb-4">
-            <span>Home</span> <span className="mx-2">/</span> <span className="text-foreground">Data Analytics</span>
-          </nav>
-          <JsonLd
-            id="breadcrumb-schema"
-            data={{
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://www.insightnerd.in/",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Data Analytics",
-                  item: "https://www.insightnerd.in/categories/data-analytics",
-                },
-              ],
-            }}
-          />
-          <h1 className="text-4xl font-bold mb-4">Data Analytics Articles</h1>
-          <p className="text-xl text-muted-foreground">
-            Explore our collection of data analysis guides and analytics techniques
-          </p>
-        </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="text-sm text-muted-foreground mb-6">
+          <a href="/" className="hover:text-foreground transition-colors">Home</a>
+          <span className="mx-2">/</span>
+          <span className="text-foreground">Articles</span>
+        </nav>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ScrollReveal>
+          <h1 className="text-4xl font-bold mb-2">All Articles</h1>
+          <p className="text-lg text-muted-foreground mb-10">
+            Guides written by practitioners, not theorists.
+          </p>
+        </ScrollReveal>
+
+        <div className="flex flex-col gap-5">
           {articles.map((article) => (
-            <article key={article.slug} className="group">
-              <div className="card h-full">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                        <a href={`/posts/${article.slug}`}>{article.title}</a>
-                      </h2>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span>{article.reading_time} min read</span>
-                        <span>•</span>
-                        <span>{formatPostDate(article.date)}</span>
-                      </div>
-                    </div>
-                    <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                      {article.categories[0]}
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                </div>
+            <a
+              key={article.slug}
+              href={`/posts/${article.slug}`}
+              className="article-card"
+            >
+              <div className="article-meta">
+                <span className="article-category">{article.categories[0]}</span>
+                <span className="article-stats">
+                  {formatPostDate(article.date)} · {article.reading_time} min read
+                </span>
               </div>
-            </article>
+              {article.cover_image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={article.cover_image}
+                  alt={article.title}
+                  className="w-full h-40 object-cover rounded-lg mb-3"
+                  loading="lazy"
+                />
+              )}
+              <h2 className="article-title">{article.title}</h2>
+              <p className="article-desc">{article.excerpt}</p>
+            </a>
           ))}
         </div>
 
         {articles.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-16">
             <h3 className="text-xl font-medium mb-2">No articles yet</h3>
             <p className="text-muted-foreground">
-              New guides are landing soon in this topic. Check back later!
+              New guides are landing soon. Check back later!
             </p>
           </div>
         )}
       </div>
     </div>
-    </CategoryPageAnimations>
   );
 }
