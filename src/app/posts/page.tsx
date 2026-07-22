@@ -33,6 +33,15 @@ export default function ArticlesPage() {
                   {formatPostDate(article.date)} · {article.reading_time} min read
                 </span>
               </div>
+              {article.cover_image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={article.cover_image}
+                  alt={article.title}
+                  className="w-full h-40 object-cover rounded-lg mb-3"
+                  loading="lazy"
+                />
+              )}
               <h2 className="article-title">{article.title}</h2>
               <p className="article-desc">{article.excerpt}</p>
             </a>
