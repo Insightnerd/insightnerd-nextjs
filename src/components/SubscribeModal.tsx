@@ -4,25 +4,20 @@ import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 
 export function SubscribeModal() {
-  const [visible, setVisible] = useState(false);
+  const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
-  const [dismissed, setDismissed] = useState(true);
 
   useEffect(() => {
     const flag = localStorage.getItem("insightnerd-subscribe-dismissed");
-    if (flag === "true") {
-      setDismissed(true);
-      return;
+    if (flag !== "true") {
+      const timer = setTimeout(() => setShow(true), 3000);
+      return () => clearTimeout(timer);
     }
-    setDismissed(false);
-    const timer = setTimeout(() => setVisible(true), 3000);
-    return () => clearTimeout(timer);
   }, []);
 
   function close() {
-    setVisible(false);
+    setShow(false);
     localStorage.setItem("insightnerd-subscribe-dismissed", "true");
-    setDismissed(true);
   }
 
   function handleSubscribe() {
@@ -31,7 +26,7 @@ export function SubscribeModal() {
     close();
   }
 
-  if (!visible || dismissed) return null;
+  if (!show) return null;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
