@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react";
-import { animate } from "animejs";
 
 export interface ScrollRevealProps {
   children: React.ReactNode;
@@ -32,24 +31,21 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
       return;
     }
 
+    const offsetY = direction === "up" ? 30 : direction === "down" ? -30 : 0;
+    const offsetX = direction === "left" ? -30 : direction === "right" ? 30 : 0;
+
+    element.style.opacity = "0";
+    element.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    element.style.transition = `opacity 600ms ease-out, transform 600ms ease-out`;
+    element.style.transitionDelay = `${delay * 100}ms`;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const offsetY = direction === "up" ? 30 : direction === "down" ? -30 : 0;
-            const offsetX = direction === "left" ? -30 : direction === "right" ? 30 : 0;
-
-            animate(element, {
-              opacity: [0, 1],
-              translateY: [offsetY, 0],
-              translateX: [offsetX, 0],
-              easing: "easeOutQuad",
-              duration: 600,
-              delay: delay * 100,
-              complete: () => {
-                observer.disconnect();
-              },
-            });
+            element.style.opacity = "1";
+            element.style.transform = "translate(0, 0)";
+            observer.disconnect();
           }
         });
       },
@@ -58,9 +54,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
     observer.observe(element);
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [delay, direction]);
 
   return (

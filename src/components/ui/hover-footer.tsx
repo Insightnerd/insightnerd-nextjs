@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
 
 /* ─── TextHoverEffect ─── */
 
@@ -16,8 +15,10 @@ export const TextHoverEffect = ({
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleResize = () => setMaskPosition({ cx: "50%", cy: "50%" });
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -37,14 +38,11 @@ export const TextHoverEffect = ({
     const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
     const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
 
-    // Safety net: the division above can produce NaN/Infinity if reflow
-    // invalidates dimensions between the guard and calculation.
     if (!Number.isFinite(cxPercentage) || !Number.isFinite(cyPercentage)) {
       setMaskPosition({ cx: "50%", cy: "50%" });
       return;
     }
 
-    // Clamp to valid range in case cursor is outside the SVG bounds
     const clampedCx = Math.min(100, Math.max(0, cxPercentage));
     const clampedCy = Math.min(100, Math.max(0, cyPercentage));
 
@@ -85,17 +83,16 @@ export const TextHoverEffect = ({
           )}
         </linearGradient>
 
-        <motion.radialGradient
+        <radialGradient
           id="revealMask"
           gradientUnits="userSpaceOnUse"
           r="20%"
-          initial={{ cx: "50%", cy: "50%" }}
-          animate={maskPosition}
-          transition={{ duration: duration ?? 0, ease: "easeOut" }}
+          cx={maskPosition.cx}
+          cy={maskPosition.cy}
         >
           <stop offset="0%" stopColor="white" />
           <stop offset="100%" stopColor="black" />
-        </motion.radialGradient>
+        </radialGradient>
         <mask id="textMask">
           <rect
             x="0"
@@ -117,25 +114,21 @@ export const TextHoverEffect = ({
       >
         {text}
       </text>
-      <motion.text
+      <text
         x="50%"
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
         className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
-        initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
-        animate={{
-          strokeDashoffset: 0,
+        style={{
           strokeDasharray: 1000,
-        }}
-        transition={{
-          duration: 4,
-          ease: "easeInOut",
+          strokeDashoffset: mounted ? 0 : 1000,
+          transition: `stroke-dashoffset ${duration ?? 4}s ease-in-out`,
         }}
       >
         {text}
-      </motion.text>
+      </text>
       <text
         x="50%"
         y="50%"

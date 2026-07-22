@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CategoryPageAnimations } from "@/components/CategoryPageAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -13,7 +14,9 @@ export default function AICategoryPage() {
         <CategoryBanner category="AI" />
         <div className="mb-12">
           <nav className="text-sm text-muted-foreground mb-4">
-            <span>Home</span> <span className="mx-2">/</span> <span className="text-foreground">AI</span>
+            <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <span className="text-foreground">AI</span>
           </nav>
           <JsonLd
             id="breadcrumb-schema"

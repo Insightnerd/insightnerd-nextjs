@@ -56,6 +56,13 @@ function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const saved = localStorage.getItem("insightnerd-theme");
+    if (saved === "light" || saved === "dark") {
+      setTheme(saved);
+    } else {
+      const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+      setTheme(prefersLight ? "light" : "dark");
+    }
     setMounted(true);
   }, []);
 
@@ -67,6 +74,7 @@ function ThemeToggle() {
     } else {
       root.classList.remove("light");
     }
+    localStorage.setItem("insightnerd-theme", theme);
   }, [theme, mounted]);
 
   return (
