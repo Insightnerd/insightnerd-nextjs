@@ -24,6 +24,27 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
+      - name: Verify required secrets are set
+        run: |
+          missing=0
+          if [ -z "${TAVILY_API_KEY}" ]; then
+            echo "::error::TAVILY_API_KEY is empty or not set in repo secrets."
+            missing=1
+          fi
+          if [ "${LLM_BACKEND}" = "openrouter" ] && [ -z "${OPENROUTER_API_KEY}" ]; then
+            echo "::error::LLM_BACKEND is openrouter but OPENROUTER_API_KEY is empty or not set."
+            missing=1
+          fi
+          if [ "$missing" = "1" ]; then
+            echo "::error::Fix the secret(s) above in Settings > Secrets and variables > Actions, then re-run."
+            exit 1
+          fi
+          echo "All required secrets are present."
+        env:
+          LLM_BACKEND: openrouter
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+
       - name: Run content agent
         run: python scripts/fetch_and_publish.py
         env:
@@ -33,6 +54,18 @@ jobs:
           LLM_BACKEND: openrouter
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+
+      - name: Show what actually changed
+        run: |
+          echo "--- _last_run_summary.txt ---"
+          cat scripts/_last_run_summary.txt || echo "(file missing)"
+          echo ""
+          echo "--- git status ---"
+          git status --porcelain
+          echo ""
+          if [ -z "$(git status --porcelain src/content)" ]; then
+            echo "No new content this run — this is normal if fresh results were already published or below the relevance bar. Only a red X on 'Run content agent' above means something is actually broken."
+          fi
 
       - name: Read run summary
         id: summary
