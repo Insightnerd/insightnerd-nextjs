@@ -35,8 +35,8 @@ export function SubscribeModal() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div className="fixed inset-0 bg-black/60" onClick={close} />
-      <div className="relative bg-background border border-border rounded-xl p-6 w-full max-w-sm shadow-2xl animate-fade-in">
+      <div className="fixed inset-0 bg-[#cccccc]/70 dark:bg-black/70" onClick={close} />
+      <div className="relative bg-white dark:bg-neutral-950 border border-border rounded-xl p-6 w-full max-w-sm shadow-2xl animate-fade-in">
         <button
           onClick={close}
           className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
