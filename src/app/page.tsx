@@ -1,41 +1,27 @@
-"use client"
-
 import Link from "next/link"
 import { HomeAnimations } from "@/components/HomeAnimations"
 import { SplineHeroBackground } from "@/components/SplineHeroBackground"
+import { getAllPosts } from "@/lib/posts"
 
 export default function Home() {
-  const topics = [
-    { name: "AI", slug: "ai", icon: "🤖", description: "Machine learning and AI engineering", count: 1 },
-    { name: "Coding", slug: "coding", icon: "💻", description: "Programming languages and code", count: 0 },
-    { name: "Data", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization", count: 1 },
-    { name: "Tutorials", slug: "tutorials", icon: "📚", description: "Step-by-step guides", count: 0 },
-    { name: "Career", slug: "career", icon: "🎯", description: "Career switch and job search", count: 1 }
-  ];
+  const allPosts = getAllPosts()
 
-  const latestArticles = [
-    {
-      title: "25 Essential AI Tools Every Professional Should Know in 2026",
-      slug: "25-ai-tools-2026",
-      category: "AI",
-      readTime: 18,
-      description: "Discover the most transformative AI tools every professional needs to know in 2026, from productivity boosters to strategic decision-making platforms."
-    },
-    {
-      title: "Break Into Data Analytics in 2026: Your Complete Guide",
-      slug: "break-into-data-analytics-2026",
-      category: "Data Analytics",
-      readTime: 20,
-      description: "A comprehensive roadmap for transitioning into data analytics, covering essential skills, tools, portfolio projects, and job market insights for 2026."
-    },
-    {
-      title: "Resume Red Flags That Scare Tech Employers",
-      slug: "resume-red-flags-tech-career",
-      category: "Career",
-      readTime: 15,
-      description: "Learn to identify and fix common resume mistakes that make tech employers skip your application, with specific examples from real hiring data."
-    }
-  ];
+  const categoryConfig = [
+    { name: "AI", slug: "ai", icon: "🤖", description: "Machine learning and AI engineering" },
+    { name: "Coding", slug: "coding", icon: "💻", description: "Programming languages and code" },
+    { name: "Data", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization" },
+    { name: "Tutorials", slug: "tutorials", icon: "📚", description: "Step-by-step guides" },
+    { name: "Career", slug: "career", icon: "🎯", description: "Career switch and job search" }
+  ]
+
+  const topics = categoryConfig.map((c) => ({
+    ...c,
+    count: allPosts.filter((p) =>
+      p.categories.some((cat) => cat.toLowerCase() === c.name.toLowerCase())
+    ).length,
+  }))
+
+  const latestArticles = allPosts.slice(0, 3)
 
   return (
     <HomeAnimations>
@@ -136,25 +122,25 @@ export default function Home() {
                   >
                     <div className="article-meta">
                       <div className="article-category">
-                        {article.category}
+                        {article.categories[0]}
                       </div>
                       <div className="article-stats">
-                        📖 {article.readTime} min
+                        📖 {article.reading_time} min
                       </div>
                     </div>
                     <div className="article-title">
                       {article.title}
                     </div>
                     <div className="article-desc">
-                      {article.description.substring(200)}...
+                      {article.excerpt}
                     </div>
                   </Link>
                 ))}
-          </div>
-          </div>
-          </div>
-        </section>
-      </div>
-    </HomeAnimations>
-      );
-    }
+            </div>
+            </div>
+            </div>
+          </section>
+        </div>
+      </HomeAnimations>
+    );
+  }

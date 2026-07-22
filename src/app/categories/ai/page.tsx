@@ -1,8 +1,11 @@
 import { CategoryPageAnimations } from "@/components/CategoryPageAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
 import { JsonLd } from "@/components/JsonLd";
+import { getPostsByCategory, formatPostDate } from "@/lib/posts";
 
 export default function AICategoryPage() {
+  const articles = getPostsByCategory("AI");
+
   return (
     <CategoryPageAnimations>
     <div className="max-w-full">
@@ -50,13 +53,13 @@ export default function AICategoryPage() {
                         <a href={`/posts/${article.slug}`}>{article.title}</a>
                       </h2>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span>{article.readTime} min read</span>
+                        <span>{article.reading_time} min read</span>
                         <span>•</span>
-                        <span>{article.date}</span>
+                        <span>{formatPostDate(article.date)}</span>
                       </div>
                     </div>
                     <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                      {article.category}
+                      {article.categories[0]}
                     </div>
                   </div>
                   <p className="text-muted-foreground line-clamp-3">
@@ -81,14 +84,3 @@ export default function AICategoryPage() {
     </CategoryPageAnimations>
   );
 }
-
-const articles = [
-  {
-    title: "25 Essential AI Tools Every Professional Should Know in 2026",
-    slug: "25-ai-tools-2026",
-    readTime: 18,
-    date: "November 30, 2025",
-    category: "AI",
-    excerpt: "Discover the most transformative AI tools every professional needs to know in 2026, from productivity boosters to strategic decision-making platforms."
-  },
-];

@@ -1,8 +1,11 @@
 import { CategoryPageAnimations } from "@/components/CategoryPageAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
 import { JsonLd } from "@/components/JsonLd";
+import { getPostsByCategory, formatPostDate } from "@/lib/posts";
 
 export default function DataAnalyticsCategoryPage() {
+  const articles = getPostsByCategory("Data Analytics");
+
   return (
     <CategoryPageAnimations>
     <div className="max-w-full">
@@ -50,13 +53,13 @@ export default function DataAnalyticsCategoryPage() {
                         <a href={`/posts/${article.slug}`}>{article.title}</a>
                       </h2>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span>{article.readTime} min read</span>
+                        <span>{article.reading_time} min read</span>
                         <span>•</span>
-                        <span>{article.date}</span>
+                        <span>{formatPostDate(article.date)}</span>
                       </div>
                     </div>
                     <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                      {article.category}
+                      {article.categories[0]}
                     </div>
                   </div>
                   <p className="text-muted-foreground line-clamp-3">
@@ -81,14 +84,3 @@ export default function DataAnalyticsCategoryPage() {
     </CategoryPageAnimations>
   );
 }
-
-const articles = [
-  {
-    title: "Break Into Data Analytics in 2026: Your Complete Guide",
-    slug: "break-into-data-analytics-2026",
-    readTime: 20,
-    date: "December 20, 2025",
-    category: "Data Analytics",
-    excerpt: "A comprehensive roadmap for transitioning into data analytics, covering essential skills, tools, portfolio projects, and job market insights for 2026."
-  },
-];
