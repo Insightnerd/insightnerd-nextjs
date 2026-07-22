@@ -9,7 +9,7 @@ export default function Home() {
   const categoryConfig = [
     { name: "AI", slug: "ai", icon: "🤖", description: "Machine learning and AI engineering" },
     { name: "Coding", slug: "coding", icon: "💻", description: "Programming languages and code" },
-    { name: "Data", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization" },
+    { name: "Data Analytics", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization" },
     { name: "Tutorials", slug: "tutorials", icon: "📚", description: "Step-by-step guides" },
     { name: "Career", slug: "career", icon: "🎯", description: "Career switch and job search" }
   ]
