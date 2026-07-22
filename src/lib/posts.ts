@@ -12,6 +12,7 @@ export interface PostMeta {
   reading_time: number;
   excerpt: string;
   source_url?: string;
+  cover_image?: string;
 }
 
 const postsDirectory = path.join(process.cwd(), "src/content/posts");
@@ -48,6 +49,7 @@ export function getPostMeta(slug: string): PostMeta | null {
       reading_time: typeof data.reading_time === "number" ? data.reading_time : 5,
       excerpt: data.excerpt ?? "",
       source_url: data.source_url ?? undefined,
+      cover_image: data.cover_image ?? undefined,
     };
   } catch {
     // Malformed frontmatter shouldn't crash the whole site build
