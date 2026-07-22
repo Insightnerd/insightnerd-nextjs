@@ -43,7 +43,7 @@ export function Navigation() {
 
           <div className="flex items-center space-x-2">
             <Button variant="default" size="sm" asChild className="hidden md:inline-flex">
-              <a href="https://insightnerd.substack.com" target="_blank" rel="noopener noreferrer">Subscribe</a>
+              <a href="mailto:insightnerd@outlook.com">Subscribe</a>
             </Button>
             <ThemeToggle />
             <MobileMenu />
@@ -138,9 +138,7 @@ function MobileMenu() {
             Contact
           </Link>
           <a
-            href="https://insightnerd.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:insightnerd@outlook.com"
             className="text-lg font-semibold text-primary hover:text-primary/80 transition-colors"
           >
             Subscribe
