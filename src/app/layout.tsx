@@ -5,6 +5,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { LenisProvider } from "@/components/LenisProvider";
 import { PageTransition } from "@/components/PageTransition";
+import { SubscribeModal } from "@/components/SubscribeModal";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -75,6 +76,7 @@ export default function RootLayout({
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
+          <SubscribeModal />
         </LenisProvider>
       </body>
     </html>
