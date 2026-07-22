@@ -1,41 +1,31 @@
-"use client"
-
 import Link from "next/link"
 import { HomeAnimations } from "@/components/HomeAnimations"
 import { SplineHeroBackground } from "@/components/SplineHeroBackground"
+import { getAllPosts, formatPostDate } from "@/lib/posts"
 
 export default function Home() {
+  const allPosts = getAllPosts();
+  const aiCount = allPosts.filter(p => p.categories.some(c => c.toLowerCase() === "ai")).length;
+  const codingCount = allPosts.filter(p => p.categories.some(c => c.toLowerCase() === "coding")).length;
+  const dataCount = allPosts.filter(p => p.categories.some(c => c.toLowerCase() === "data analytics" || c.toLowerCase() === "data")).length;
+  const tutorialsCount = allPosts.filter(p => p.categories.some(c => c.toLowerCase() === "tutorials")).length;
+  const careerCount = allPosts.filter(p => p.categories.some(c => c.toLowerCase() === "career")).length;
+
   const topics = [
-    { name: "AI", slug: "ai", icon: "🤖", description: "Machine learning and AI engineering", count: 1 },
-    { name: "Coding", slug: "coding", icon: "💻", description: "Programming languages and code", count: 0 },
-    { name: "Data", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization", count: 1 },
-    { name: "Tutorials", slug: "tutorials", icon: "📚", description: "Step-by-step guides", count: 0 },
-    { name: "Career", slug: "career", icon: "🎯", description: "Career switch and job search", count: 1 }
+    { name: "AI", slug: "ai", icon: "🤖", description: "Machine learning and AI engineering", count: aiCount },
+    { name: "Coding", slug: "coding", icon: "💻", description: "Programming languages and code", count: codingCount },
+    { name: "Data", slug: "data-analytics", icon: "📊", description: "Data analysis and visualization", count: dataCount },
+    { name: "Tutorials", slug: "tutorials", icon: "📚", description: "Step-by-step guides", count: tutorialsCount },
+    { name: "Career", slug: "career", icon: "🎯", description: "Career switch and job search", count: careerCount }
   ];
 
-  const latestArticles = [
-    {
-      title: "25 Essential AI Tools Every Professional Should Know in 2026",
-      slug: "25-ai-tools-2026",
-      category: "AI",
-      readTime: 18,
-      description: "Discover the most transformative AI tools every professional needs to know in 2026, from productivity boosters to strategic decision-making platforms."
-    },
-    {
-      title: "Break Into Data Analytics in 2026: Your Complete Guide",
-      slug: "break-into-data-analytics-2026",
-      category: "Data Analytics",
-      readTime: 20,
-      description: "A comprehensive roadmap for transitioning into data analytics, covering essential skills, tools, portfolio projects, and job market insights for 2026."
-    },
-    {
-      title: "Resume Red Flags That Scare Tech Employers",
-      slug: "resume-red-flags-tech-career",
-      category: "Career",
-      readTime: 15,
-      description: "Learn to identify and fix common resume mistakes that make tech employers skip your application, with specific examples from real hiring data."
-    }
-  ];
+  const latestArticles = allPosts.slice(0, 6).map(p => ({
+    title: p.title,
+    slug: p.slug,
+    category: p.categories[0],
+    readTime: p.reading_time,
+    description: p.excerpt
+  }));
 
   return (
     <HomeAnimations>
@@ -146,7 +136,7 @@ export default function Home() {
                       {article.title}
                     </div>
                     <div className="article-desc">
-                      {article.description.substring(200)}...
+                      {article.description}
                     </div>
                   </Link>
                 ))}
