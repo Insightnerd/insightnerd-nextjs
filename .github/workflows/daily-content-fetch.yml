@@ -100,4 +100,4 @@ jobs:
           add-paths: |
             src/content/posts/**
             src/content/.manifest.json
-            public/images/posts/**
+            
