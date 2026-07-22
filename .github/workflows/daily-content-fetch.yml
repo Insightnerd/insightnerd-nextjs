@@ -54,6 +54,11 @@ jobs:
           LLM_BACKEND: openrouter
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          # Cover images: free by default via Hugging Face's hosted Inference API (FLUX.1-schnell).
+          # Set IMAGE_BACKEND to "openrouter" instead if you want faster/paid generation.
+          GENERATE_IMAGES: "true"
+          IMAGE_BACKEND: huggingface
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
 
       - name: Show what actually changed
         run: |
@@ -95,3 +100,4 @@ jobs:
           add-paths: |
             src/content/posts/**
             src/content/.manifest.json
+            public/images/posts/**
