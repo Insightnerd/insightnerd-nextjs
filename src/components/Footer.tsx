@@ -97,7 +97,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/in/insightnerd"
+                  href="https://www.linkedin.com/in/insight-nerd-5ab23b424"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-muted-foreground hover:text-[hsl(260_100%_65%)] transition-colors text-sm"
