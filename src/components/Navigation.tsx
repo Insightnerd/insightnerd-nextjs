@@ -42,6 +42,9 @@ export function Navigation() {
           </nav>
 
           <div className="flex items-center space-x-2">
+            <Button variant="default" size="sm" asChild className="hidden md:inline-flex">
+              <a href="https://insightnerd.substack.com" target="_blank" rel="noopener noreferrer">Subscribe</a>
+            </Button>
             <ThemeToggle />
             <MobileMenu />
           </div>
@@ -134,6 +137,14 @@ function MobileMenu() {
           <Link href="/contact" className="text-lg font-medium transition-colors hover:text-primary">
             Contact
           </Link>
+          <a
+            href="https://insightnerd.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lg font-semibold text-primary hover:text-primary/80 transition-colors"
+          >
+            Subscribe
+          </a>
         </div>
       </SheetContent>
     </Sheet>
