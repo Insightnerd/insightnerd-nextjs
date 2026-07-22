@@ -71,6 +71,18 @@
       "title": "Mastering the Data Engineering Stack: A Practitioner's Roadmap",
       "category": "Tutorials",
       "url": "https://hello.learndataengineering.com/quickstart-guide"
+    },
+    {
+      "url_hash": "3578256e30522fb3",
+      "title": "When Agents Escape: The Implications of Autonomous AI Hacking",
+      "category": "AI",
+      "url": "https://www.businessinsider.com/smart-people-react-openai-hugging-face-hacking-cybersecurity-incident-2026-7"
+    },
+    {
+      "url_hash": "0c0c73d2da5be986",
+      "title": "The Data Engineering Roadmap: A Practical Guide for Beginners",
+      "category": "Tutorials",
+      "url": "https://medium.com/@TheWuraolah/introduction-to-data-engineering-a-complete-beginners-guide-0b955f5eb50c"
     }
   ]
 }
