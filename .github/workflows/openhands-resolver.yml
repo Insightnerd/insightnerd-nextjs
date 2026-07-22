@@ -1,0 +1,57 @@
+name: OpenHands Issue Resolver
+
+on:
+  issues:
+    types: [labeled]
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [labeled]
+  pull_request_review_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  resolve:
+    if: |
+      github.event.label.name == 'fix-me' ||
+      github.event.label.name == 'fix-me-experimental' ||
+      (
+        (github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment') &&
+        contains(github.event.comment.body, vars.OPENHANDS_MACRO || '@openhands-agent')
+      ) ||
+      (
+        github.event_name == 'pull_request_review' &&
+        contains(github.event.review.body, vars.OPENHANDS_MACRO || '@openhands-agent')
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install OpenHands Resolver
+        run: |
+          pip install openhands-resolver
+
+      - name: Resolve Issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ vars.LLM_MODEL || 'anthropic/claude-sonnet-4-20250514' }}
+        run: |
+          ISSUE_NUMBER="${{ github.event.issue.number || github.event.pull_request.number }}"
+          python -m openhands_resolver.resolve_issue \
+            --repo ${{ github.repository }} \
+            --issue-number $ISSUE_NUMBER

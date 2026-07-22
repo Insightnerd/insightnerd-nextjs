@@ -1,0 +1,29 @@
+# InsightNerd — OpenHands Instructions
+
+This is a Next.js 16 blog/portfolio site deployed to GitHub Pages at insightnerd.in.
+
+## Project structure
+- `src/app/` — Next.js App Router pages (layout.tsx, page.tsx, etc.)
+- `src/components/` — React components (Navigation, Footer, animations, UI)
+- `src/content/posts/` — MDX blog posts (do NOT modify unless explicitly asked)
+- `src/content/.manifest.json` — Content manifest (do NOT modify)
+- `scripts/fetch_and_publish.py` — Daily content agent (do NOT modify)
+- `public/` — Static assets
+
+## Tech stack
+- Next.js 16.2.10 + React 19 + TypeScript
+- Tailwind CSS v4
+- Framer Motion / Motion for animations
+- MDX for content
+
+## Engineering conventions
+- Run `npm run lint` before finishing changes
+- Run `npx tsc --noEmit` to type-check
+- Prefer existing utility components from `src/lib/utils.ts` and `src/components/ui/`
+- Use Tailwind utility classes, not custom CSS
+- Keep React Server Components as the default; add 'use client' only when needed
+- Match the existing code style — minimal comments, clean structure
+
+## Content rules
+- NEVER modify files in `src/content/` or `scripts/`
+- NEVER modify `.github/workflows/` unless the task explicitly asks
