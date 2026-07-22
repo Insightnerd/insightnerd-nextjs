@@ -35,10 +35,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run OpenHands Maintenance
-        uses: All-Hands-AI/openhands-github-action@v1
-        with:
-          prompt: |
+      - name: Install Python deps
+        run: pip install requests
+
+      - name: Run OpenHands Maintenance (V1 API)
+        id: openhands
+        shell: python
+        env:
+          OPENHANDS_API_KEY: ${{ secrets.OPENHANDS_API_KEY }}
+          PROMPT: |
             You are working in the InsightNerd repository — a Next.js 16 blog/portfolio site.
 
             Task: ${{ inputs.task || 'Fix lint errors, update outdated npm dependencies (patch/minor only), and improve code quality' }}
@@ -52,10 +57,78 @@ jobs:
             - Make focused, minimal changes
             - Commit each logical change separately
             - After finishing, verify with `npm run lint`
-          openhands-api-key: ${{ secrets.OPENHANDS_API_KEY }}
-          repository: ${{ github.repository }}
-          poll: true
-          timeout-seconds: 1800
+          REPOSITORY: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          import json, os, sys, time
+          import requests
+
+          api_key = os.environ["OPENHANDS_API_KEY"]
+          prompt = os.environ["PROMPT"]
+          repo = os.environ["REPOSITORY"]
+          branch = os.environ.get("BRANCH", "")
+          base_url = "https://app.all-hands.dev"
+
+          session = requests.Session()
+          session.headers.update({
+              "Authorization": f"Bearer {api_key}",
+              "Content-Type": "application/json",
+          })
+
+          body = {
+              "initial_message": {
+                  "content": [{"type": "text", "text": prompt}]
+              },
+              "selected_repository": repo,
+          }
+          if branch:
+              body["selected_branch"] = branch
+
+          print("Creating conversation...")
+          resp = session.post(f"{base_url}/api/v1/app-conversations", json=body)
+          resp.raise_for_status()
+          task = resp.json()
+          task_id = task["id"]
+          print(f"Start task: {task_id}")
+
+          for _ in range(60):
+              resp = session.get(f"{base_url}/api/v1/app-conversations/start-tasks?ids={task_id}")
+              resp.raise_for_status()
+              tasks = resp.json()
+              t = tasks[0] if isinstance(tasks, list) else task if isinstance(tasks, dict) else task
+              status = t.get("status", "")
+              print(f"  Status: {status}")
+              if status == "READY":
+                  break
+              if status == "ERROR":
+                  raise RuntimeError(f"Start task failed: {t.get('detail', '')}")
+              time.sleep(5)
+
+          conv_id = t.get("app_conversation_id") or t.get("id")
+          print(f"Conversation: {base_url}/conversations/{conv_id}")
+
+          timeout = 1800
+          start = time.time()
+          while time.time() - start < timeout:
+              resp = session.get(f"{base_url}/api/v1/app-conversations?ids={conv_id}")
+              resp.raise_for_status()
+              convs = resp.json()
+              c = convs[0] if isinstance(convs, list) else t
+              s = str(c.get("status", "")).upper()
+              print(f"  Status: {s}")
+              if s in ("STOPPED", "FAILED", "ERROR", "CANCELLED"):
+                  break
+              time.sleep(30)
+
+          github_output = os.environ.get("GITHUB_OUTPUT")
+          if github_output:
+              with open(github_output, "a") as f:
+                  f.write(f"conversation-id={conv_id}\n")
+                  f.write(f"status={s}\n")
+                  f.write(f"conversation-url={base_url}/conversations/{conv_id}\n")
+
+          if s in ("FAILED", "ERROR", "CANCELLED"):
+              sys.exit(1)
 
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v6
