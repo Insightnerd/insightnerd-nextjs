@@ -54,41 +54,65 @@ CLAUDE_MODEL = "claude-sonnet-5"
 TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY")
 
 MAX_ITEMS_PER_CATEGORY_PER_RUN = 1  # start conservative; raise once you trust output
-MIN_RELEVANCE_SCORE = 0.35  # Tavily relevance score threshold (0-1)
-TITLE_DUP_THRESHOLD = 85  # rapidfuzz similarity score (0-100) above which we treat as duplicate
+MIN_RELEVANCE_SCORE = 0.30  # Tavily relevance score threshold (0-1)
+TITLE_DUP_THRESHOLD = 88  # rapidfuzz similarity score (0-100) above which we treat as duplicate
+SEARCH_RECENCY_DAYS = 3  # only consider results published within this many days (news mode)
+RESULTS_PER_QUERY = 8  # pull more candidates per query so there's runway before duplicates exhaust it
 
 # Site categories -> search queries. `tags` map to your finer taxonomy
 # (Applications / Data Quality / AI Analytics / Data Engineering) even though
 # the live site only has 5 top-level categories today. Edit freely.
+# NOTE: every category has multiple queries on purpose — a single evergreen query
+# returns nearly the same top results every day, so once those are published once,
+# every future run finds "nothing new" and correctly skips them. More queries =
+# more runway before you need to add fresh ones.
 TAXONOMY = {
     "AI": {
+        "topic": "news",
         "queries": [
-            ("LLM Ops production best practices", ["AI Analytics", "LLM Ops"]),
-            ("RAG fine tuning techniques 2026", ["AI Analytics", "RAG Tuning"]),
+            ("LLM Ops production news", ["AI Analytics", "LLM Ops"]),
+            ("RAG fine tuning techniques news", ["AI Analytics", "RAG Tuning"]),
             ("AI agent tooling news", ["Applications", "Automation"]),
+            ("machine learning model release news", ["AI Analytics"]),
+            ("AI startup funding news", ["Applications"]),
         ],
     },
     "Data Analytics": {
+        "topic": "news",
         "queries": [
             ("data observability tools news", ["Data Quality", "Observability"]),
-            ("data governance PII masking practices", ["Data Quality", "Governance"]),
+            ("data governance PII masking news", ["Data Quality", "Governance"]),
             ("data pipeline ingestion CDC news", ["Data Engineering", "Ingestion"]),
-            ("DBT pipelines best practices 2026", ["Data Engineering", "Transformation"]),
+            ("DBT pipelines news", ["Data Engineering", "Transformation"]),
+            ("data engineering tools news", ["Data Engineering"]),
+            ("business intelligence analytics news", ["Data Quality"]),
         ],
     },
     "Coding": {
+        "topic": "news",
         "queries": [
             ("software engineering best practices news", ["Applications", "Dashboards"]),
+            ("programming language release news", ["Applications"]),
+            ("developer tools news", ["Applications"]),
         ],
     },
     "Career": {
+        "topic": "news",
         "queries": [
-            ("tech hiring trends data analyst 2026", []),
+            ("tech hiring trends data analyst news", []),
+            ("data analyst job market news", []),
+            ("tech layoffs hiring news", []),
         ],
     },
     "Tutorials": {
+        # Evergreen how-to content isn't "news" — a 3-day recency window would starve
+        # this category. Use general search instead; rely on query variety + dedupe
+        # to keep finding different guides over time.
+        "topic": "general",
         "queries": [
-            ("how to guide data engineering tool", []),
+            ("data engineering tool tutorial guide", []),
+            ("Python SQL tutorial guide", []),
+            ("AI tool how-to guide", []),
         ],
     },
 }
@@ -133,20 +157,20 @@ def is_duplicate(manifest: dict, url: str, title: str, category: str) -> bool:
     return False
 
 
-def tavily_search(query: str, max_results: int = 5) -> list[dict]:
+def tavily_search(query: str, topic: str = "news", max_results: int = RESULTS_PER_QUERY) -> list[dict]:
     if not TAVILY_API_KEY:
         raise RuntimeError("TAVILY_API_KEY not set")
-    resp = requests.post(
-        "https://api.tavily.com/search",
-        json={
-            "api_key": TAVILY_API_KEY,
-            "query": query,
-            "search_depth": "advanced",
-            "max_results": max_results,
-            "include_answer": False,
-        },
-        timeout=30,
-    )
+    payload = {
+        "api_key": TAVILY_API_KEY,
+        "query": query,
+        "search_depth": "advanced",
+        "topic": topic,
+        "max_results": max_results,
+        "include_answer": False,
+    }
+    if topic == "news":
+        payload["days"] = SEARCH_RECENCY_DAYS  # only valid/meaningful in news mode
+    resp = requests.post("https://api.tavily.com/search", json=payload, timeout=30)
     resp.raise_for_status()
     data = resp.json()
     return data.get("results", [])
@@ -323,17 +347,26 @@ def main():
     manifest = load_manifest()
     written = []
 
+    total_queries = 0
+    failed_queries = 0
+    total_candidates = 0  # results returned by search, before dedup/relevance filtering
+
     for category, cfg in TAXONOMY.items():
         count_this_category = 0
+        topic = cfg.get("topic", "news")
         for query, tags in cfg["queries"]:
             if count_this_category >= MAX_ITEMS_PER_CATEGORY_PER_RUN:
                 break
-            print(f"[{category}] searching: {query}")
+            total_queries += 1
+            print(f"[{category}] searching ({topic}): {query}")
             try:
-                results = tavily_search(query)
+                results = tavily_search(query, topic=topic)
             except Exception as e:
                 print(f"  ! search failed: {e}")
+                failed_queries += 1
                 continue
+
+            total_candidates += len(results)
 
             for r in results:
                 if count_this_category >= MAX_ITEMS_PER_CATEGORY_PER_RUN:
@@ -373,10 +406,19 @@ def main():
     print(f"\nDone. Wrote {len(written)} new post(s):")
     for w in written:
         print(f"  - {w}")
+    print(f"\nQueries run: {total_queries}, failed: {failed_queries}, candidates seen: {total_candidates}")
 
     # Write a summary file GitHub Actions can use in the PR body
     summary_path = REPO_ROOT / "scripts" / "_last_run_summary.txt"
     summary_path.write_text("\n".join(written) if written else "No new posts this run.")
+
+    # Distinguish "genuinely broken" from "just nothing new today":
+    # if every single query failed outright (bad key, network, Tavily down), that's
+    # a real problem worth failing the CI job over. If queries succeeded but every
+    # candidate was a duplicate or below the relevance bar, that's a normal quiet day.
+    if total_queries > 0 and failed_queries == total_queries:
+        print("\n::error::Every search query failed — check TAVILY_API_KEY and network access.")
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
