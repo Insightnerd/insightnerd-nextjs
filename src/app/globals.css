@@ -16,12 +16,90 @@
 html.light {
   --background: hsl(0 0% 100%);
   --foreground: hsl(220 10% 10%);
-  --primary: hsl(260 85% 60%);
+  --primary: hsl(25 65% 45%);
   --primary-foreground: hsl(0 0% 100%);
-  --muted: hsl(220 10% 96%);
-  --muted-foreground: hsl(220 10% 40%);
-  --border: hsl(220 10% 90%);
-  --accent: hsl(260 85% 60%);
+  --muted: hsl(40 15% 92%);
+  --muted-foreground: hsl(25 20% 35%);
+  --border: hsl(40 15% 82%);
+  --accent: hsl(25 65% 55%);
+}
+
+html.light .max-p {
+  color: hsl(25 20% 40%);
+}
+
+html.light .stats-section {
+  background: hsl(40 20% 95%);
+  border-color: hsl(40 15% 82%);
+}
+
+html.light .stat-item {
+  background: hsl(40 15% 92%);
+  border-color: hsl(40 15% 82%);
+}
+
+html.light .stat-item:hover {
+  background: hsl(40 15% 88%);
+  border-color: hsl(25 65% 45% / 0.3);
+}
+
+html.light .stat-count {
+  color: hsl(25 65% 40%);
+}
+
+html.light .stat-name {
+  color: hsl(25 20% 45%);
+}
+
+html.light .section-desc {
+  color: hsl(25 20% 45%);
+}
+
+html.light .topic-card {
+  background: hsl(40 15% 95%);
+  border-color: hsl(40 15% 82%);
+}
+
+html.light .topic-card:hover {
+  background: hsl(40 15% 90%);
+  border-color: hsl(25 65% 45% / 0.35);
+  box-shadow: 0 4px 24px hsl(25 65% 45% / 0.1), 0 1px 4px hsl(25 65% 45% / 0.05);
+}
+
+html.light .topic-name {
+  color: hsl(220 10% 15%);
+}
+
+html.light .article-card {
+  background: hsl(40 15% 95%);
+  border-color: hsl(40 15% 82%);
+}
+
+html.light .article-card:hover {
+  background: hsl(40 15% 90%);
+  border-color: hsl(25 65% 45% / 0.35);
+}
+
+html.light .article-category {
+  background: hsl(25 65% 45% / 0.12);
+  color: hsl(25 65% 40%);
+  border-color: hsl(25 65% 45% / 0.2);
+}
+
+html.light .article-stats {
+  color: hsl(25 20% 45%);
+}
+
+html.light .article-title {
+  color: hsl(220 10% 15%);
+}
+
+html.light .article-card:hover .article-title {
+  color: hsl(25 65% 40%);
+}
+
+html.light .article-desc {
+  color: hsl(25 20% 45%);
 }
 
 body {
