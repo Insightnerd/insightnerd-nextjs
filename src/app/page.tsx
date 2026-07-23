@@ -33,7 +33,6 @@ export default function Home() {
   }))
 
   const latestArticles = allPosts.slice(0, 8)
-  const showCarousel = latestArticles.length > 4
 
   return (
     <HomeAnimations>
@@ -133,59 +132,30 @@ export default function Home() {
               <p className="section-desc">
                 Fresh content from our library
               </p>
-              {showCarousel ? (
-                <div className="articles-carousel-wrapper" style={{ marginTop: "3rem" }}>
-                  <div className="articles-list" data-slider="latest">
-                    {latestArticles.map((article) => (
-                      <Link
-                        key={article.slug}
-                        href={`/posts/${article.slug}`}
-                        className="article-card"
-                      >
-                        <div className="article-meta">
-                          <div className="article-category">
-                            {article.categories[0]}
-                          </div>
-                          <div className="article-stats">
-                            📖 {article.reading_time} min
-                          </div>
-                        </div>
-                        <div className="article-title">
-                          {article.title}
-                        </div>
-                        <div className="article-desc">
-                          {article.excerpt}
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="articles-list" style={{ marginTop: "3rem" }}>
-                  {latestArticles.map((article) => (
-                    <Link
-                      key={article.slug}
-                      href={`/posts/${article.slug}`}
-                      className="article-card"
-                    >
-                      <div className="article-meta">
-                        <div className="article-category">
-                          {article.categories[0]}
-                        </div>
-                        <div className="article-stats">
-                          📖 {article.reading_time} min
-                        </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ marginTop: "3rem" }}>
+                {latestArticles.map((article) => (
+                  <Link
+                    key={article.slug}
+                    href={`/posts/${article.slug}`}
+                    className="article-card"
+                  >
+                    <div className="article-meta">
+                      <div className="article-category">
+                        {article.categories[0]}
                       </div>
-                      <div className="article-title">
-                        {article.title}
+                      <div className="article-stats">
+                        📖 {article.reading_time} min
                       </div>
-                      <div className="article-desc">
-                        {article.excerpt}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
+                    </div>
+                    <div className="article-title">
+                      {article.title}
+                    </div>
+                    <div className="article-desc">
+                      {article.excerpt}
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </section>

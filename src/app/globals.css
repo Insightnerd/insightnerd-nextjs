@@ -575,15 +575,6 @@ html.light .prose {
     padding-block: 4rem 5rem;
   }
 
-  .articles-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-top: 3rem;
-    max-width: 800px;
-    margin-inline: auto;
-  }
-
   .article-card {
     display: block;
     padding: 1.5rem 1.75rem;

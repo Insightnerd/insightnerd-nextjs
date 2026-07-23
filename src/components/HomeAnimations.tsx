@@ -16,8 +16,6 @@ export function HomeAnimations({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let ctx: gsap.Context | null = null;
-    let rafId = 0;
-    let slider: any = null;
 
     const init = async () => {
       const scope = scopeRef.current;
@@ -61,12 +59,6 @@ export function HomeAnimations({ children }: { children: ReactNode }) {
       const gsapModule = await import("gsap");
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
       gsapModule.default.registerPlugin(ScrollTrigger);
-
-      /* Pre-load smooothy for carousel (if needed) */
-      const Core =
-        scope.querySelector('[data-slider="latest"]')
-          ? (await import("smooothy")).default
-          : null;
 
       const reduced = prefersReducedMotion();
 
@@ -159,45 +151,24 @@ export function HomeAnimations({ children }: { children: ReactNode }) {
           });
         }
 
-        /* ── Latest articles ── */
+        /* ── Latest articles stagger ── */
         const articleSection = scope.querySelector("#latest-articles");
         if (articleSection) {
-          const carouselEl =
-            articleSection.querySelector<HTMLElement>(
-              '[data-slider="latest"]',
-            );
-          if (carouselEl && Core) {
-            slider = new Core(carouselEl, {
-              infinite: false,
-              snap: true,
-              dragSensitivity: 0.005,
-              scrollSensitivity: 1,
-              lerpFactor: 0.25,
+          const cards =
+            articleSection.querySelectorAll<HTMLElement>(".article-card");
+          if (cards.length) {
+            gsapModule.default.from(cards, {
+              y: 24,
+              opacity: 0,
+              duration: DURATION.normal,
+              stagger: DURATION.articleStagger,
+              ease: EASE,
+              scrollTrigger: {
+                trigger: articleSection,
+                start: SCROLL_TRIGGER.start,
+                toggleActions: SCROLL_TRIGGER.toggleActions,
+              },
             });
-            const loop = () => {
-              if (!slider) return;
-              slider.update();
-              rafId = requestAnimationFrame(loop);
-            };
-            rafId = requestAnimationFrame(loop);
-          } else {
-            /* ── Standard list stagger ── */
-            const cards =
-              articleSection.querySelectorAll<HTMLElement>(".article-card");
-            if (cards.length) {
-              gsapModule.default.from(cards, {
-                y: 24,
-                opacity: 0,
-                duration: DURATION.normal,
-                stagger: DURATION.articleStagger,
-                ease: EASE,
-                scrollTrigger: {
-                  trigger: articleSection,
-                  start: SCROLL_TRIGGER.start,
-                  toggleActions: SCROLL_TRIGGER.toggleActions,
-                },
-              });
-            }
           }
         }
       }, scope);
@@ -210,8 +181,6 @@ export function HomeAnimations({ children }: { children: ReactNode }) {
 
     return () => {
       ctx?.revert();
-      if (rafId) cancelAnimationFrame(rafId);
-      slider?.destroy();
     };
   }, []);
 
