@@ -18,6 +18,7 @@ export function ArticleAnimations({ children }: { children: ReactNode }) {
     let rafId = 0;
     let slider: any = null;
     let tocObserver: IntersectionObserver | null = null;
+    let active = true;
 
     const init = async () => {
       const scope = scopeRef.current;
@@ -124,6 +125,43 @@ export function ArticleAnimations({ children }: { children: ReactNode }) {
 
       ScrollTrigger.refresh();
       flushInViewScrollTriggers(ScrollTrigger);
+
+      /* ── 2b‑bis. Re‑refresh after all images finish loading ── */
+      {
+        const imgs = scope.querySelectorAll<HTMLImageElement>("img");
+        if (imgs.length > 0) {
+          let loaded = 0;
+          const onImageDone = () => {
+            if (!active) return;
+            loaded++;
+            if (loaded >= imgs.length) {
+              requestAnimationFrame(() => {
+                if (!active) return;
+                ScrollTrigger.refresh();
+                requestAnimationFrame(() => {
+                  if (!active) return;
+                  ScrollTrigger.refresh();
+                  flushInViewScrollTriggers(ScrollTrigger);
+                  import("@fiddle-digital/string-tune").then(
+                    ({ StringTune }) => {
+                      if (!active) return;
+                      StringTune.getInstance().onRebuild();
+                    },
+                  );
+                });
+              });
+            }
+          };
+          imgs.forEach((img) => {
+            if (img.complete) {
+              onImageDone();
+            } else {
+              img.addEventListener("load", onImageDone, { once: true });
+              img.addEventListener("error", onImageDone, { once: true });
+            }
+          });
+        }
+      }
 
       /* ── 2c. TOC generation + scroll‑spy ── */
       const prose = scope.querySelector(".prose");
@@ -233,6 +271,7 @@ export function ArticleAnimations({ children }: { children: ReactNode }) {
     init();
 
     return () => {
+      active = false;
       ctx?.revert();
       tocObserver?.disconnect();
       if (rafId) cancelAnimationFrame(rafId);

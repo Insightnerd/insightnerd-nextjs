@@ -831,6 +831,12 @@ html.light .prose {
   height: auto;
   object-fit: cover;
   display: block;
+  aspect-ratio: 16 / 9;
+}
+
+.prose img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 /* ===================================================== */
