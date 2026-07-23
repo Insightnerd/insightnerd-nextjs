@@ -2,6 +2,7 @@ import Link from "next/link"
 import { HomeAnimations } from "@/components/HomeAnimations"
 import { SplineHeroBackground } from "@/components/SplineHeroBackground"
 import { getAllPosts } from "@/lib/posts"
+import ImageGenerator from "@/components/ImageGenerator"
 
 export default function Home() {
   const allPosts = getAllPosts()
@@ -26,6 +27,7 @@ export default function Home() {
   return (
     <HomeAnimations>
       <div className="max-w-full w-full">
+        <ImageGenerator /> 
       {/* Hero Section */}
       <section className="hero-section">
         <SplineHeroBackground />

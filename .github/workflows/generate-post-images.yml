@@ -1,0 +1,57 @@
+name: Generate Post Images
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/content/posts/**/*.mdx"
+  workflow_dispatch:
+    # Allows manual trigger from the Actions tab for testing / one-off runs
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository (with full history for git diff)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run image generation script
+        run: npm run generate-images
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+
+      - name: Check for changes
+        id: git-check
+        shell: bash
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit."
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push generated images
+        if: steps.git-check.outputs.has_changes == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/images/posts/ src/content/posts/
+          git commit -m "chore: auto-generate images for new posts [skip ci]"
+          git push
