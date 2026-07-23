@@ -83,6 +83,36 @@
       "title": "The Data Engineering Roadmap: A Practical Guide for Beginners",
       "category": "Tutorials",
       "url": "https://medium.com/@TheWuraolah/introduction-to-data-engineering-a-complete-beginners-guide-0b955f5eb50c"
+    },
+    {
+      "url_hash": "749849e52700f0af",
+      "title": "The Compute Crunch: Why Massive AI Demand Breaks Infrastructure",
+      "category": "AI",
+      "url": "https://abcnews.com/Technology/wireStory/chinas-new-ai-model-halts-new-subscriptions-demand-134909820"
+    },
+    {
+      "url_hash": "6cbaa2397c0b4118",
+      "title": "Expanding Observability: Why Digital Experience Monitoring is Next",
+      "category": "Data Analytics",
+      "url": "https://www.tradingview.com/news/zacks:768162d65094b:0-panw-to-buy-embrace-will-it-strengthen-the-observability-platform"
+    },
+    {
+      "url_hash": "9b847d8defeb2c1d",
+      "title": "Why Deep Technical Knowledge Matters More in the Age of AI",
+      "category": "Coding",
+      "url": "https://timesofindia.indiatimes.com/technology/tech-news/google-deepmind-ceo-demis-hassabis-on-importance-of-computer-science-degree-in-ai-age-you-are-still-going-to-need-to-know-best-software-engineering-practices-as-those-who-understand-deep-technical-will-be-able-to-use-/articleshow/132515258.cms"
+    },
+    {
+      "url_hash": "5d8f2bbfb0042a2a",
+      "title": "The AI Reorganization: Why Tech Giants are Cutting Jobs to Fund Models",
+      "category": "Career",
+      "url": "https://www.ndtv.com/business-news/amazon-uber-to-lay-off-more-employees-as-ai-reshapes-tech-workforce-11810379"
+    },
+    {
+      "url_hash": "725c97b70d128684",
+      "title": "Building Robust Data Pipelines: A Practical Guide to Data Engineering",
+      "category": "Tutorials",
+      "url": "https://www.dremio.com/resources/guides/data-engineering"
     }
   ]
 }
