@@ -255,7 +255,7 @@ function hasCoverImage(data: Record<string, unknown>): boolean {
 
 /**
  * Call Hugging Face Inference API (FLUX.1-schnell) to generate an image.
- * Returns a Buffer with the PNG data, or null on failure.
+ * Returns `{ buffer: Buffer }` on success, or `{ buffer: null, error: string }` on failure.
  *
  * Retries up to MAX_RETRIES times with a delay — the free Inference API
  * queues requests on shared GPUs, so first attempts often time out.
@@ -264,8 +264,10 @@ async function generateImage(
   client: InferenceClient,
   categories: string[],
   excerpt: string,
-): Promise<Buffer | null> {
+): Promise<{ buffer: Buffer; error?: undefined } | { buffer: null; error: string }> {
   const prompt = buildPrompt(categories, excerpt);
+
+  let lastError = "Unknown error";
 
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
@@ -281,13 +283,15 @@ async function generateImage(
 
       const buffer = Buffer.from(await blob.arrayBuffer());
       if (buffer.length === 0) {
+        lastError = "Empty image returned";
         console.warn(`  ⚠  Empty image returned (attempt ${attempt}).`);
       } else {
-        return buffer;
+        return { buffer };
       }
     } catch (err) {
       const isLast = attempt === MAX_RETRIES;
       const message = err instanceof Error ? err.message : String(err);
+      lastError = message;
       console.warn(`  ⚠  HF API error (attempt ${attempt}/${MAX_RETRIES}): ${message}`);
 
       if (!isLast) {
@@ -297,7 +301,7 @@ async function generateImage(
     }
   }
 
-  return null;
+  return { buffer: null, error: lastError };
 }
 
 /**
@@ -417,17 +421,17 @@ async function main(): Promise<void> {
     console.log(`   Category: ${categories.join(", ") || "(none)"}`);
     console.log(`   Visual concept from excerpt: ${excerpt.slice(0, 100)}…`);
 
-    const imageBuffer = await generateImage(client, categories, excerpt);
+    const result = await generateImage(client, categories, excerpt);
 
-    if (!imageBuffer) {
+    if (!result.buffer) {
       console.error(`  ✗ Failed to generate image for "${title}" after ${MAX_RETRIES} attempts`);
-      failed.push({ slug, reason: "HF API returned no image after retries" });
+      failed.push({ slug, reason: result.error ?? "HF API returned no image" });
       continue;
     }
 
     try {
-      const imageUrl = saveImage(slug, imageBuffer);
-      console.log(`   ✅ Image saved → public${imageUrl} (${formatBytes(imageBuffer.length)})`);
+      const imageUrl = saveImage(slug, result.buffer);
+      console.log(`   ✅ Image saved → public${imageUrl} (${formatBytes(result.buffer.length)})`);
 
       updateFrontmatter(filePath, post.raw, imageUrl);
       console.log(`   ✅ Frontmatter updated: ${FRONTMATTER_IMAGE_FIELD}: "${imageUrl}"`);
@@ -444,6 +448,9 @@ async function main(): Promise<void> {
   console.log("  Summary");
   console.log("=".repeat(60));
 
+  const total = succeeded.length + failed.length;
+  console.log(`\n📊 ${succeeded.length} succeeded, ${failed.length} failed (out of ${total} attempted).`);
+
   if (succeeded.length > 0) {
     console.log(`\n✅ Generated images for:`);
     for (const slug of succeeded) {
@@ -456,8 +463,21 @@ async function main(): Promise<void> {
     for (const { slug, reason } of failed) {
       console.log(`   • ${slug} — ${reason}`);
     }
-    // Exit with non-zero so CI can detect failures
-    process.exitCode = 1;
+
+    // Check whether any failures were caused by credit/quota exhaustion
+    const creditMsg = failed.find(({ reason }) =>
+      /depleted.*(?:credit|quota|monthly)|quota|rate.?limit/i.test(reason),
+    );
+    if (creditMsg) {
+      console.log(`\n⚠️  Hugging Face free-tier credits exhausted. Remaining posts will need to be generated after credits reset, or upgrade to HF PRO. Re-run this workflow manually later to continue where it left off (already-completed posts will be skipped automatically).`);
+    }
+
+    // Exit code: non-zero only if EVERYTHING failed. Partial success is normal
+    // (e.g. free-tier credit exhaustion mid-run) — the CI should commit whatever
+    // images were generated successfully.
+    if (succeeded.length === 0) {
+      process.exitCode = 1;
+    }
   }
 
   console.log("\nDone.");
