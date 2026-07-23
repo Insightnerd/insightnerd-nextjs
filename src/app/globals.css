@@ -776,13 +776,47 @@ html.light .prose {
   display: block;
 }
 
-/* ============================= */
-/* TOC scroll-spy                 */
-/* ============================= */
+/* ===================================================== */
+/* TOC sidebar  (mobile: compact card; lg: sticky panel) */
+/* ===================================================== */
+
+.toc-wrapper {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--muted);
+}
+
+.toc-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+}
+
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* ─── TOC link base ─── */
 
 .toc-link {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+  text-decoration: none;
   transition: color 0.2s ease;
   position: relative;
+}
+
+.toc-link:hover {
+  color: var(--foreground);
 }
 
 .toc-link.active {
@@ -792,13 +826,37 @@ html.light .prose {
 .toc-link.active::before {
   content: "";
   position: absolute;
-  left: -12px;
+  left: -14px;
   top: 50%;
   translate: 0 -50%;
   width: 3px;
   height: 60%;
   background: var(--primary);
   border-radius: 2px;
+}
+
+/* ─── Heading-level modifiers ─── */
+
+.toc-h2 {
+  font-weight: 500;
+}
+
+.toc-h3 {
+  font-weight: 400;
+  padding-left: 1.25rem;
+  font-size: 0.82rem;
+}
+
+/* ─── lg+ (desktop): no frame, sticky behaviour ─── */
+
+@media (min-width: 1024px) {
+  .toc-wrapper {
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+  }
 }
 
 /* ============================= */

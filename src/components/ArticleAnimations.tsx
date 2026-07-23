@@ -146,10 +146,6 @@ export function ArticleAnimations({ children }: { children: ReactNode }) {
             li.href = `#${h.id || ""}`;
             li.textContent = h.textContent || "";
             li.className = `toc-link ${tag === "h3" ? "toc-h3" : "toc-h2"}`;
-            if (tag === "h3") {
-              li.style.paddingLeft = "1.25rem";
-              li.style.fontSize = "0.875rem";
-            }
             tocList.appendChild(li);
             items.push(li);
           });

@@ -128,52 +128,60 @@ export default async function ArticlePage({ params }: Props) {
           />
 
           <article className="article-root">
-            <header className="mb-10">
-              <div className="mb-4">
-                <span className="article-category">{category}</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                {frontmatter.title as string}
-              </h1>
-              <div className="meta-line flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
-                <span>{frontmatter.author as string}</span>
-                <span>·</span>
-                <span>{new Date(frontmatter.date as string).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
-                <span>·</span>
-                <span>{frontmatter.reading_time as number} min read</span>
-              </div>
-            </header>
-
-            {coverImage && (
-              <div
-                className="cover-image-wrapper"
+            {/* Two‑column layout: TOC sidebar (left) + content (right) on lg+ */}
+            <div className="lg:grid lg:grid-cols-[minmax(0,280px)_1fr] lg:gap-8 xl:gap-12">
+              {/* TOC Sidebar — left column, sticky */}
+              <aside
+                className="toc-wrapper lg:sticky lg:top-24 lg:self-start"
+                data-toc
               >
-                <img
-                  src={coverImage}
-                  alt={`Cover image for ${frontmatter.title as string}`}
-                  loading="eager"
-                />
+                <h3 className="toc-label">On this page</h3>
+                <nav className="toc-list" data-toc-list />
+              </aside>
+
+              {/* Right column: header + cover + prose */}
+              <div className="min-w-0">
+                <header className="mb-10">
+                  <div className="mb-4">
+                    <span className="article-category">{category}</span>
+                  </div>
+                  <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                    {frontmatter.title as string}
+                  </h1>
+                  <div className="meta-line flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                    <span>{frontmatter.author as string}</span>
+                    <span>·</span>
+                    <span>{new Date(frontmatter.date as string).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
+                    <span>·</span>
+                    <span>{frontmatter.reading_time as number} min read</span>
+                  </div>
+                </header>
+
+                {coverImage && (
+                  <div className="cover-image-wrapper">
+                    <img
+                      src={coverImage}
+                      alt={`Cover image for ${frontmatter.title as string}`}
+                      loading="eager"
+                    />
+                  </div>
+                )}
+
+                <div
+                  className="prose prose-invert prose-lg max-w-none
+                    prose-headings:text-foreground prose-headings:font-bold
+                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+                    prose-strong:text-foreground
+                    prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:rounded
+                    prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:relative
+                    prose-blockquote:border-primary prose-blockquote:text-muted-foreground
+                    prose-img:rounded-lg
+                    prose-hr:border-border
+                  "
+                >
+                  {content}
+                </div>
               </div>
-            )}
-
-            <aside className="toc-wrapper" data-toc>
-              <h3 className="toc-label">On this page</h3>
-              <nav className="toc-list" data-toc-list />
-            </aside>
-
-            <div
-              className="prose prose-invert prose-lg max-w-none
-                prose-headings:text-foreground prose-headings:font-bold
-                prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-foreground
-                prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:rounded
-                prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:relative
-                prose-blockquote:border-primary prose-blockquote:text-muted-foreground
-                prose-img:rounded-lg
-                prose-hr:border-border
-              "
-            >
-              {content}
             </div>
           </article>
 
