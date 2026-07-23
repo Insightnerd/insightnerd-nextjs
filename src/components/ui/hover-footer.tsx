@@ -74,11 +74,9 @@ export const TextHoverEffect = ({
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor="#eab308" />
-              <stop offset="25%" stopColor="#ef4444" />
-              <stop offset="50%" stopColor="#3b82f6" />
-              <stop offset="75%" stopColor="#06b6d4" />
-              <stop offset="100%" stopColor="#8b5cf6" />
+              <stop offset="0%" stopColor="#D4874A" />
+              <stop offset="50%" stopColor="#E8A066" />
+              <stop offset="100%" stopColor="#C77A3E" />
             </>
           )}
         </linearGradient>
@@ -137,7 +135,7 @@ export const TextHoverEffect = ({
         stroke="url(#textGradient)"
         strokeWidth="0.3"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-7xl font-bold"
+        className="fill-transparent font-[helvetica] text-7xl font-bold footer-wordmark-gradient"
       >
         {text}
       </text>
