@@ -54,9 +54,13 @@ function getAllPostFiles(): string[] {
  * Determine which MDX files to process.
  *
  * Strategy (first-wins):
- *   1. CLI arguments → filter to .mdx files under src/content/posts/
- *   2. git diff HEAD~1 (requires at least 2 commits in history)
- *   3. Fallback: scan every post file (safe for first push / shallow clones)
+ *   1. CLI arguments (explicit file paths) → highest priority
+ *   2. GITHUB_EVENT_BEFORE / GITHUB_EVENT_AFTER (GitHub push event range,
+ *      handles merge commits correctly — never HEAD~1 which points to the
+ *      wrong parent on merge commits)
+ *   3. git diff HEAD~1 (fallback for local / manual runs outside Actions)
+ *   4. Scan every post file (safe for first push, brand-new branches, or
+ *      when git history isn't available)
  */
 function resolveTargetFiles(): string[] {
   const cliArgs = process.argv.slice(2);
@@ -69,7 +73,37 @@ function resolveTargetFiles(): string[] {
       .filter((f) => f.startsWith(path.resolve("src/content/posts")));
   }
 
-  // --- 2. Git diff against previous commit ----------------------------------
+  // --- 2. GitHub Actions push event range (merge-commit safe) ---------------
+  const eventBefore = process.env.GITHUB_EVENT_BEFORE;
+  const eventAfter = process.env.GITHUB_EVENT_AFTER;
+  if (
+    eventBefore &&
+    eventAfter &&
+    eventBefore !== "0000000000000000000000000000000000000000"
+  ) {
+    try {
+      const output = execSync(
+        `git diff --name-only ${eventBefore} ${eventAfter}`,
+        { encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] },
+      );
+      const changed = output
+        .split("\n")
+        .filter(Boolean)
+        .filter(
+          (f) => f.startsWith("src/content/posts/") && f.endsWith(".mdx"),
+        )
+        .map((f) => path.resolve(f));
+
+      console.log(
+        `ℹ️  Found ${changed.length} changed post(s) via GitHub push range (${eventBefore.slice(0, 7)}..${eventAfter.slice(0, 7)}).`,
+      );
+      return changed;
+    } catch {
+      console.warn("⚠️  git diff on GitHub push range failed — falling through.");
+    }
+  }
+
+  // --- 3. Git diff against previous commit (local runs) ---------------------
   try {
     const output = execSync("git diff --name-only HEAD~1", {
       encoding: "utf-8",
@@ -84,14 +118,14 @@ function resolveTargetFiles(): string[] {
       .map((f) => path.resolve(f));
 
     if (changed.length > 0) {
-      console.log(`ℹ️  Found ${changed.length} changed post(s) via git diff.`);
+      console.log(`ℹ️  Found ${changed.length} changed post(s) via git diff HEAD~1.`);
       return changed;
     }
   } catch {
     // HEAD~1 doesn't exist (first commit) or git isn't available
   }
 
-  // --- 3. Fallback: scan all posts ------------------------------------------
+  // --- 4. Fallback: scan all posts ------------------------------------------
   const all = getAllPostFiles();
   console.log(
     `ℹ️  Git diff unavailable — scanning all ${all.length} post(s).`,
