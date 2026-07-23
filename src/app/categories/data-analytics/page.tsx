@@ -47,30 +47,14 @@ export default function DataAnalyticsCategoryPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
-            <article key={article.slug} className="group">
-              <div className="card h-full">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                        <a href={`/posts/${article.slug}`}>{article.title}</a>
-                      </h2>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span>{article.reading_time} min read</span>
-                        <span>•</span>
-                        <span>{formatPostDate(article.date)}</span>
-                      </div>
-                    </div>
-                    <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                      {article.categories[0]}
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                </div>
+            <Link key={article.slug} href={`/posts/${article.slug}`} className="article-card">
+              <div className="article-meta">
+                <div className="article-category">{article.categories[0]}</div>
+                <div className="article-stats">{article.reading_time} min · {formatPostDate(article.date)}</div>
               </div>
-            </article>
+              <div className="article-title">{article.title}</div>
+              <div className="article-desc line-clamp-3">{article.excerpt}</div>
+            </Link>
           ))}
         </div>
 

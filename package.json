@@ -27,6 +27,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "reading-time": "^1.5.0",
+    "smooothy": "^0.0.35",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

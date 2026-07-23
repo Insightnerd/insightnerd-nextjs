@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import type gsap from "gsap";
+import { DURATION, EASE, SCROLL_TRIGGER } from "@/lib/animations/constants";
 
 /**
  * Entry animations for utility pages (About, Contact).
@@ -40,8 +41,8 @@ export function ContentPageAnimations({
             gsapModule.default.from(h1, {
               y: 30,
               opacity: 0,
-              duration: 0.5,
-              ease: "power2.out",
+              duration: DURATION.pageTitle,
+              ease: EASE,
             });
           }
         }
@@ -57,13 +58,13 @@ export function ContentPageAnimations({
             gsapModule.default.to(contentBlocks, {
               y: 0,
               opacity: 1,
-              duration: 0.4,
-              stagger: 0.07,
-              ease: "power2.out",
+              duration: DURATION.contentBlock,
+              stagger: DURATION.contentBlockStagger,
+              ease: EASE,
               scrollTrigger: {
                 trigger: contentBlocks[0].parentElement,
-                start: "top 85%",
-                toggleActions: "play none none none",
+                start: SCROLL_TRIGGER.start,
+                toggleActions: SCROLL_TRIGGER.toggleActions,
               },
             });
           }

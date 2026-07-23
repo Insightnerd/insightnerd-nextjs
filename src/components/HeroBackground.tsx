@@ -67,7 +67,7 @@ export function HeroBackground() {
             vy: (Math.random() - 0.5) * 0.3,
             size: Math.random() * 2.5 + 0.5,
             alpha: Math.random() * 0.4 + 0.1,
-            hue: 220 + Math.random() * 40, // 220–260 (blue → indigo)
+            hue: 28 + Math.random() * 17, // 28–45 (amber → gold)
           });
         }
       };

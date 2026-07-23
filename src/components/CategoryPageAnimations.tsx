@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import type gsap from "gsap";
+import { flushInViewScrollTriggers } from "@/lib/animations/reduced-motion";
+import { DURATION, EASE, SCROLL_TRIGGER } from "@/lib/animations/constants";
 
 /**
  * GSAP scroll-triggered reveal animations for ALL category pages.
@@ -36,39 +38,40 @@ export function CategoryPageAnimations({
           gsapModule.default.from(title, {
             y: 30,
             opacity: 0,
-            duration: 0.5,
-            ease: "power2.out",
+            duration: DURATION.pageTitle,
+            ease: EASE,
           });
         }
         if (desc) {
           gsapModule.default.from(desc, {
             y: 20,
             opacity: 0,
-            duration: 0.5,
-            delay: 0.15,
-            ease: "power2.out",
+            duration: DURATION.pageTitle,
+            delay: DURATION.pageDescDelay,
+            ease: EASE,
           });
         }
 
         // 2. Article cards — staggered reveal on scroll
-        const cards = scope.querySelectorAll<HTMLElement>("article.group");
+        const cards = scope.querySelectorAll<HTMLElement>(".article-card");
         if (cards.length) {
           gsapModule.default.from(cards, {
             y: 24,
             opacity: 0,
-            duration: 0.45,
-            stagger: 0.1,
-            ease: "power2.out",
+            duration: DURATION.normal,
+            stagger: DURATION.articleStagger,
+            ease: EASE,
             scrollTrigger: {
               trigger: cards[0].parentElement,
-              start: "top 85%",
-              toggleActions: "play none none none",
+              start: SCROLL_TRIGGER.start,
+              toggleActions: SCROLL_TRIGGER.toggleActions,
             },
           });
         }
       }, scope);
 
       ScrollTrigger.refresh();
+      flushInViewScrollTriggers(ScrollTrigger);
     };
 
     init();

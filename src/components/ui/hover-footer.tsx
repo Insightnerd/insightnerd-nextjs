@@ -157,7 +157,7 @@ export function FooterBackgroundGradient() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full opacity-20 blur-3xl"
         style={{
           background:
-            "radial-gradient(ellipse at center, hsl(260 85% 60% / 0.4), transparent 70%)",
+            "radial-gradient(ellipse at center, hsl(28 62% 56% / 0.25), transparent 70%)",
         }}
       />
       {/* Subtle bottom accent */}
