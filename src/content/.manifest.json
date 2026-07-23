@@ -83,6 +83,24 @@
       "title": "The Data Engineering Roadmap: A Practical Guide for Beginners",
       "category": "Tutorials",
       "url": "https://medium.com/@TheWuraolah/introduction-to-data-engineering-a-complete-beginners-guide-0b955f5eb50c"
+    },
+    {
+      "url_hash": "1780012ffc011d3b",
+      "title": "Optimizing RAG: Fine-Tuning and Evaluation Strategies for GPT Models",
+      "category": "AI",
+      "url": "https://www.sebastianduerr.com/ai_daily/2026-07-20-ai-blogs-update"
+    },
+    {
+      "url_hash": "0c8db44085763ad7",
+      "title": "Beyond Security: Why Observability is the New Data Frontier",
+      "category": "Data Analytics",
+      "url": "https://www.securityweek.com/palo-alto-networks-to-acquire-observability-platform-provider-embrace/"
+    },
+    {
+      "url_hash": "fea7649438c32424",
+      "title": "The Data Engineering Roadmap: Core Concepts and Essential Tools",
+      "category": "Tutorials",
+      "url": "https://dev.to/john_otienoh/a-beginners-guide-to-data-engineering-concepts-tools-and-responsibilities-3pd"
     }
   ]
 }
