@@ -101,6 +101,30 @@
       "title": "The Data Engineering Roadmap: Core Concepts and Essential Tools",
       "category": "Tutorials",
       "url": "https://dev.to/john_otienoh/a-beginners-guide-to-data-engineering-concepts-tools-and-responsibilities-3pd"
+    },
+    {
+      "url_hash": "707d3ebd06ec368d",
+      "title": "RAG vs. Fine-Tuning: Architecting the Right LLM Strategy",
+      "category": "AI",
+      "url": "https://www.linkedin.com/posts/piyush-ranjan-9297a632_rag-vs-llm-fine-tuning-choosing-the-right-activity-7486050011579850753-Fc65"
+    },
+    {
+      "url_hash": "7a06be815e85979c",
+      "title": "Architecting Data Governance: A Multi-Layered Framework",
+      "category": "Data Analytics",
+      "url": "https://roboticsandautomationnews.com/2026/07/22/platform-data-governance-orania-limited/103600/"
+    },
+    {
+      "url_hash": "25ec3d2dfcc7fa35",
+      "title": "AI and the Job Market: Why Displacement Isn't the End of Work",
+      "category": "Career",
+      "url": "https://www.reuters.com/business/ai-will-not-trigger-employment-collapse-staffing-company-adecco-group-says-2026-07-23/"
+    },
+    {
+      "url_hash": "725c97b70d128684",
+      "title": "Building Robust Data Pipelines: A Practitioner's Guide",
+      "category": "Tutorials",
+      "url": "https://www.dremio.com/resources/guides/data-engineering"
     }
   ]
 }
