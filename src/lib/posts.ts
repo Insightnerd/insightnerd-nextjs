@@ -34,7 +34,11 @@ export function getPostBySlug(slug: string): string | null {
 }
 
 function defaultCoverImage(slug: string): string {
-  return `/images/posts/${slug}.png`;
+  const filePath = path.join(process.cwd(), "public", "images", "posts", `${slug}.png`);
+  if (fs.existsSync(filePath)) {
+    return `/images/posts/${slug}.png`;
+  }
+  return `/api/generate-image?slug=${slug}`;
 }
 
 /** Return just the parsed frontmatter (+ slug) for a post, or null if missing/broken. */

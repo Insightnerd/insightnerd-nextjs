@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
-import { getPostBySlug, getPostSlugs, getAllPosts, formatPostDate } from "@/lib/posts";
+import { getPostBySlug, getPostMeta, getPostSlugs, getAllPosts, formatPostDate } from "@/lib/posts";
 import { ArticleAnimations } from "@/components/ArticleAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -55,7 +55,8 @@ export default async function ArticlePage({ params }: Props) {
   const category = Array.isArray(frontmatter.categories)
     ? frontmatter.categories[0]
     : (frontmatter.categories as string) ?? "";
-  const coverImage = frontmatter.cover_image as string | undefined;
+  const postMeta = getPostMeta(slug);
+  const coverImage = (frontmatter.cover_image as string | undefined) || postMeta?.cover_image;
   const relatedPosts = getRelatedPosts(slug, category);
 
   return (
