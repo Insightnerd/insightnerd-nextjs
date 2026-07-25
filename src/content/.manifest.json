@@ -101,6 +101,36 @@
       "title": "The Data Engineering Roadmap: Core Concepts and Essential Tools",
       "category": "Tutorials",
       "url": "https://dev.to/john_otienoh/a-beginners-guide-to-data-engineering-concepts-tools-and-responsibilities-3pd"
+    },
+    {
+      "url_hash": "82280504602ef126",
+      "title": "RAG vs. TAG vs. RAFT: Choosing the Right Architecture for LLMs",
+      "category": "AI",
+      "url": "https://www.eeworldonline.com/when-should-you-use-rag-tag-and-raft-ai/"
+    },
+    {
+      "url_hash": "6cbaa2397c0b4118",
+      "title": "Scaling Observability: Why PANW is Moving Toward Digital Experience",
+      "category": "Data Analytics",
+      "url": "https://www.tradingview.com/news/zacks:768162d65094b:0-panw-to-buy-embrace-will-it-strengthen-the-observability-platform"
+    },
+    {
+      "url_hash": "ebdd96abaa48baff",
+      "title": "The Rise of Research Software Engineering in High-Performance Computing",
+      "category": "Coding",
+      "url": "https://www.hpcwire.com/2026/07/24/a-home-of-their-own-pearc26-debuts-a-dedicated-research-software-engineering-special-track"
+    },
+    {
+      "url_hash": "979592353bcccb1f",
+      "title": "Mapping the Tech Career Landscape: High-Demand Roles for 2026",
+      "category": "Career",
+      "url": "https://www.pace.edu/news/in-demand-tech-jobs"
+    },
+    {
+      "url_hash": "34dc440018ab70f4",
+      "title": "Demystifying Data Engineering: A Conceptual Roadmap",
+      "category": "Tutorials",
+      "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
     }
   ]
 }
