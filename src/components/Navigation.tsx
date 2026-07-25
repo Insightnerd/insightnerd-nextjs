@@ -5,6 +5,7 @@ import { Moon, Sun, Menu } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useSubscribe } from "./SubscribeProvider";
 
 const categories = [
   { name: "AI", slug: "ai" },
@@ -15,6 +16,8 @@ const categories = [
 ];
 
 export function Navigation() {
+  const { setOpen } = useSubscribe();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
@@ -42,8 +45,8 @@ export function Navigation() {
           </nav>
 
           <div className="flex items-center space-x-2">
-            <Button variant="default" size="sm" asChild className="hidden md:inline-flex">
-              <a href="mailto:insightnerd@outlook.com">Subscribe</a>
+            <Button variant="default" size="sm" className="hidden md:inline-flex" onClick={() => setOpen(true)}>
+              Subscribe
             </Button>
             <ThemeToggle />
             <MobileMenu />
@@ -113,6 +116,8 @@ function ThemeToggle() {
 }
 
 function MobileMenu() {
+  const { setOpen } = useSubscribe();
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -137,12 +142,12 @@ function MobileMenu() {
           <Link href="/contact" className="text-lg font-medium transition-colors hover:text-primary">
             Contact
           </Link>
-          <a
-            href="mailto:insightnerd@outlook.com"
-            className="text-lg font-semibold text-primary hover:text-primary/80 transition-colors"
+          <button
+            onClick={() => setOpen(true)}
+            className="text-lg font-semibold text-primary hover:text-primary/80 transition-colors text-left"
           >
             Subscribe
-          </a>
+          </button>
         </div>
       </SheetContent>
     </Sheet>

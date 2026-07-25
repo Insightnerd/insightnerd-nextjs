@@ -1,6 +1,10 @@
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
+<<<<<<< HEAD
 import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
+=======
+import { getPostBySlug, getPostSlugs, getAllPosts, formatPostDate } from "@/lib/posts";
+>>>>>>> b4fd9aa (feat: newsletter via Buttondown API, search + pagination on /posts, related articles, redesigned community page, cover images, analytics, nav subscribe modal trigger)
 import { ArticleAnimations } from "@/components/ArticleAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -65,6 +69,15 @@ export default async function ArticlePage({ params }: Props) {
     : (frontmatter.categories as string) ?? "";
   const coverImage = frontmatter.cover_image as string | undefined;
   const relatedPosts = getRelatedPosts(slug, category);
+
+  const allPosts = getAllPosts();
+  const relatedPosts = allPosts
+    .filter(
+      (p) =>
+        p.slug !== slug &&
+        p.categories.some((c) => c.toLowerCase() === category.toLowerCase())
+    )
+    .slice(0, 3);
 
   return (
     <ArticleAnimations>
@@ -185,6 +198,7 @@ export default async function ArticlePage({ params }: Props) {
             </div>
           </article>
 
+<<<<<<< HEAD
           {/* Related articles */}
           {relatedPosts.length > 0 && (
             <section id="related-articles" className="mt-16 pt-12 border-t border-border">
@@ -221,6 +235,45 @@ export default async function ArticlePage({ params }: Props) {
             </section>
           )}
         </div>
+=======
+          <div className="prose prose-invert prose-lg max-w-none
+            prose-headings:text-foreground prose-headings:font-bold
+            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+            prose-strong:text-foreground
+            prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:rounded
+            prose-pre:bg-muted prose-pre:border prose-pre:border-border
+            prose-blockquote:border-primary prose-blockquote:text-muted-foreground
+            prose-img:rounded-lg
+            prose-hr:border-border
+          ">
+            {content}
+          </div>
+        </article>
+
+        {relatedPosts.length > 0 && (
+          <section className="mt-16 pt-10 border-t border-border">
+            <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
+            <div className="flex flex-col gap-4">
+              {relatedPosts.map((related) => (
+                <a
+                  key={related.slug}
+                  href={`/posts/${related.slug}`}
+                  className="article-card"
+                >
+                  <div className="article-meta">
+                    <span className="article-category">{related.categories[0]}</span>
+                    <span className="article-stats">
+                      {formatPostDate(related.date)} · {related.reading_time} min read
+                    </span>
+                  </div>
+                  <h3 className="article-title">{related.title}</h3>
+                  <p className="article-desc">{related.excerpt}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+>>>>>>> b4fd9aa (feat: newsletter via Buttondown API, search + pagination on /posts, related articles, redesigned community page, cover images, analytics, nav subscribe modal trigger)
       </div>
     </ArticleAnimations>
   );

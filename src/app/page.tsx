@@ -27,7 +27,7 @@ export default function Home() {
   const topics = categoryConfig.map((c) => ({
     ...c,
     count: allPosts.filter((p) =>
-      p.categories.some((cat) => cat.toLowerCase() === c.name.toLowerCase())
+      p.categories.some((cat: string) => cat.toLowerCase() === c.name.toLowerCase())
     ).length,
     Icon: topicIcons[c.name],
   }))
@@ -139,6 +139,15 @@ export default function Home() {
                     href={`/posts/${article.slug}`}
                     className="article-card"
                   >
+                    {article.cover_image && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={article.cover_image}
+                        alt={article.title}
+                        className="w-full h-40 object-cover rounded-lg mb-3"
+                        loading="lazy"
+                      />
+                    )}
                     <div className="article-meta">
                       <div className="article-category">
                         {article.categories[0]}

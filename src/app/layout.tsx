@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { LenisProvider } from "@/components/LenisProvider";
 import { PageTransition } from "@/components/PageTransition";
 import { SubscribeModal } from "@/components/SubscribeModal";
+import { SubscribeProvider } from "@/components/SubscribeProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -68,16 +69,19 @@ export default function RootLayout({
             `,
           }}
         />
+        <script defer data-domain="insightnerd.in" src="https://plausible.io/js/script.js"></script>
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <LenisProvider>
-          <Navigation />
-          <main className="flex-1">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-          <SubscribeModal />
-        </LenisProvider>
+        <SubscribeProvider>
+          <LenisProvider>
+            <Navigation />
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+            <SubscribeModal />
+          </LenisProvider>
+        </SubscribeProvider>
       </body>
     </html>
   );

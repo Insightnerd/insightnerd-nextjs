@@ -33,6 +33,10 @@ export function getPostBySlug(slug: string): string | null {
   return fs.readFileSync(filePath, "utf-8");
 }
 
+function defaultCoverImage(slug: string): string {
+  return `/images/posts/${slug}.png`;
+}
+
 /** Return just the parsed frontmatter (+ slug) for a post, or null if missing/broken. */
 export function getPostMeta(slug: string): PostMeta | null {
   const raw = getPostBySlug(slug);
@@ -49,10 +53,9 @@ export function getPostMeta(slug: string): PostMeta | null {
       reading_time: typeof data.reading_time === "number" ? data.reading_time : 5,
       excerpt: data.excerpt ?? "",
       source_url: data.source_url ?? undefined,
-      cover_image: data.cover_image ?? undefined,
+      cover_image: data.cover_image ?? defaultCoverImage(slug),
     };
   } catch {
-    // Malformed frontmatter shouldn't crash the whole site build
     return null;
   }
 }

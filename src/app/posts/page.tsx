@@ -1,5 +1,6 @@
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
-import { getAllPosts, formatPostDate } from "@/lib/posts";
+import { getAllPosts } from "@/lib/posts";
+import { ArticlesList } from "@/components/ArticlesList";
 
 export default function ArticlesPage() {
   const articles = getAllPosts();
@@ -20,42 +21,7 @@ export default function ArticlesPage() {
           </p>
         </ScrollReveal>
 
-        <div className="flex flex-col gap-5">
-          {articles.map((article) => (
-            <a
-              key={article.slug}
-              href={`/posts/${article.slug}`}
-              className="article-card"
-            >
-              <div className="article-meta">
-                <span className="article-category">{article.categories[0]}</span>
-                <span className="article-stats">
-                  {formatPostDate(article.date)} · {article.reading_time} min read
-                </span>
-              </div>
-              {article.cover_image && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={article.cover_image}
-                  alt={article.title}
-                  className="w-full h-40 object-cover rounded-lg mb-3"
-                  loading="lazy"
-                />
-              )}
-              <h2 className="article-title">{article.title}</h2>
-              <p className="article-desc">{article.excerpt}</p>
-            </a>
-          ))}
-        </div>
-
-        {articles.length === 0 && (
-          <div className="text-center py-16">
-            <h3 className="text-xl font-medium mb-2">No articles yet</h3>
-            <p className="text-muted-foreground">
-              New guides are landing soon. Check back later!
-            </p>
-          </div>
-        )}
+        <ArticlesList articles={articles} />
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export async function GET() {
       <guid>${siteUrl}/posts/${post.slug}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <description>${escapeXml(post.excerpt)}</description>
-      ${post.categories.map((c) => `      <category>${escapeXml(c)}</category>`).join("\n")}
+      ${post.categories.map((c: string) => `      <category>${escapeXml(c)}</category>`).join("\n")}
     </item>`
     )
     .join("\n");
