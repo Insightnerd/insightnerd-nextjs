@@ -17,11 +17,11 @@ export default function Home() {
   const allPosts = getAllPosts()
 
   const categoryConfig = [
-    { name: "AI", slug: "ai", description: "Machine learning and AI engineering" },
-    { name: "Coding", slug: "coding", description: "Programming languages and code" },
-    { name: "Data", slug: "data-analytics", description: "Data analysis and visualization" },
-    { name: "Tutorials", slug: "tutorials", description: "Step-by-step guides" },
-    { name: "Career", slug: "career", description: "Career switch and job search" }
+    { name: "AI", slug: "ai", cssClass: "ai", description: "Machine learning and AI engineering" },
+    { name: "Coding", slug: "coding", cssClass: "coding", description: "Programming languages and code" },
+    { name: "Data", slug: "data-analytics", cssClass: "data", description: "Data analysis and visualization" },
+    { name: "Tutorials", slug: "tutorials", cssClass: "tutorials", description: "Step-by-step guides" },
+    { name: "Career", slug: "career", cssClass: "career", description: "Career switch and job search" }
   ]
 
   const topics = categoryConfig.map((c) => ({
@@ -41,6 +41,12 @@ export default function Home() {
       {/* Hero Section */}
         <section className="hero-section">
           <SplineHeroBackground />
+          <div className="hero-grid-overlay" aria-hidden="true" />
+          <div className="hero-shapes" aria-hidden="true">
+            <div className="hero-shape" />
+            <div className="hero-shape" />
+            <div className="hero-shape" />
+          </div>
           <div className="max-w-full">
             <div className="max-c">
               <div className="max-c-inner">
@@ -73,12 +79,12 @@ export default function Home() {
                   <Link
                     key={topic.slug}
                     href={`/categories/${topic.slug}`}
-                    className="stat-item"
+                    className={`stat-item ${topic.cssClass}-stat`}
                   >
                     <div className="stat-icon">
                       <topic.Icon size={28} strokeWidth={1.5} aria-hidden="true" />
                     </div>
-                    <div className="stat-count">
+                    <div className="stat-count" data-count={topic.count}>
                       {topic.count} +Guides
                     </div>
                     <div className="stat-name">
@@ -107,7 +113,7 @@ export default function Home() {
                   <Link
                     key={topic.slug}
                     href={`/categories/${topic.slug}`}
-                    className="topic-card"
+                    className={`topic-card ${topic.cssClass}-topic`}
                   >
                     <div className="topic-icon">
                       <topic.Icon size={32} strokeWidth={1.5} aria-hidden="true" />
@@ -137,14 +143,14 @@ export default function Home() {
                   <Link
                     key={article.slug}
                     href={`/posts/${article.slug}`}
-                    className="article-card"
+                    className={`article-card ${(article.categories[0] || "").toLowerCase()}-card`}
                   >
                     {article.cover_image && (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={article.cover_image}
                         alt={article.title}
-                        className="w-full h-40 object-cover rounded-lg mb-3"
+                        className="article-card-image"
                         loading="lazy"
                       />
                     )}

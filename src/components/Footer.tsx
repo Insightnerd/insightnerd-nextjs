@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { TextHoverEffect, FooterBackgroundGradient } from "@/components/ui/hover-footer";
+import { FooterNewsletter } from "./FooterNewsletter";
 
 const footerLinks = [
   {
@@ -64,6 +65,11 @@ export function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Newsletter section */}
+          <div>
+            <FooterNewsletter />
+          </div>
 
           {/* Contact section */}
           <div>

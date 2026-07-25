@@ -9,7 +9,7 @@ export default function DataAnalyticsCategoryPage() {
 
   return (
     <CategoryPageAnimations>
-    <div className="max-w-full">
+    <div className="max-w-full category-data">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <CategoryBanner category="Data Analytics" />
         <div className="mb-12">
@@ -18,36 +18,26 @@ export default function DataAnalyticsCategoryPage() {
             <span className="mx-2">/</span>
             <span className="text-foreground">Data Analytics</span>
           </nav>
-          <JsonLd
-            id="breadcrumb-schema"
-            data={{
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://www.insightnerd.in/",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Data Analytics",
-                  item: "https://www.insightnerd.in/categories/data-analytics",
-                },
-              ],
-            }}
-          />
-          <h1 className="text-4xl font-bold mb-4">Data Analytics Articles</h1>
+          <JsonLd id="breadcrumb-schema" data={{
+            "@context": "https://schema.org", "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.insightnerd.in/" },
+              { "@type": "ListItem", position: 2, name: "Data Analytics", item: "https://www.insightnerd.in/categories/data-analytics" },
+            ],
+          }} />
+          <h1 className="text-4xl font-bold mb-4">Data Analytics</h1>
           <p className="text-xl text-muted-foreground">
-            Explore our collection of data analysis guides and analytics techniques
+            Data analysis, visualization, and pipeline engineering
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
-            <Link key={article.slug} href={`/posts/${article.slug}`} className="article-card">
+            <Link key={article.slug} href={`/posts/${article.slug}`} className="article-card data-card">
+              {article.cover_image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={article.cover_image} alt={article.title} className="article-card-image" loading="lazy" />
+              )}
               <div className="article-meta">
                 <div className="article-category">{article.categories[0]}</div>
                 <div className="article-stats">{article.reading_time} min · {formatPostDate(article.date)}</div>
@@ -61,9 +51,7 @@ export default function DataAnalyticsCategoryPage() {
         {articles.length === 0 && (
           <div className="text-center py-12">
             <h3 className="text-xl font-medium mb-2">No articles yet</h3>
-            <p className="text-muted-foreground">
-              New guides are landing soon in this topic. Check back later!
-            </p>
+            <p className="text-muted-foreground">New guides are landing soon in this topic. Check back later!</p>
           </div>
         )}
       </div>

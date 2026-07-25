@@ -7,6 +7,7 @@ import { LenisProvider } from "@/components/LenisProvider";
 import { PageTransition } from "@/components/PageTransition";
 import { SubscribeModal } from "@/components/SubscribeModal";
 import { SubscribeProvider } from "@/components/SubscribeProvider";
+import { BackToTop } from "@/components/BackToTop";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -80,6 +81,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <SubscribeModal />
+            <BackToTop />
           </LenisProvider>
         </SubscribeProvider>
       </body>

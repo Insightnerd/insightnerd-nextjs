@@ -1,47 +1,46 @@
 "use client";
 
-/* ─── Category metadata ─── */
+import { Bot, Code2, BarChart3, BookOpen, Target } from "lucide-react";
 
 interface CategoryMeta {
+  icon: React.ElementType;
   gradient: string;
 }
 
 const categoryMeta: Record<string, CategoryMeta> = {
   AI: {
-    gradient: "linear-gradient(135deg, hsl(28 62% 56% / 0.2), hsl(220 85% 60% / 0.1))",
+    icon: Bot,
+    gradient: "linear-gradient(135deg, hsl(260 85% 60% / 0.2), hsl(220 85% 60% / 0.1))",
   },
   Coding: {
-    gradient: "linear-gradient(135deg, hsl(38 80% 55% / 0.25), hsl(28 62% 56% / 0.1))",
+    icon: Code2,
+    gradient: "linear-gradient(135deg, hsl(40 85% 55% / 0.2), hsl(30 85% 50% / 0.1))",
   },
   "Data Analytics": {
-    gradient: "linear-gradient(135deg, hsl(160 70% 50% / 0.2), hsl(28 62% 56% / 0.1))",
+    icon: BarChart3,
+    gradient: "linear-gradient(135deg, hsl(160 70% 50% / 0.2), hsl(180 70% 50% / 0.1))",
   },
   Tutorials: {
-    gradient: "linear-gradient(135deg, hsl(190 80% 55% / 0.2), hsl(38 80% 55% / 0.1))",
+    icon: BookOpen,
+    gradient: "linear-gradient(135deg, hsl(190 80% 55% / 0.2), hsl(200 80% 50% / 0.1))",
   },
   Career: {
-    gradient: "linear-gradient(135deg, hsl(330 75% 55% / 0.2), hsl(28 62% 56% / 0.1))",
+    icon: Target,
+    gradient: "linear-gradient(135deg, hsl(330 75% 55% / 0.2), hsl(20 80% 55% / 0.1))",
   },
 };
 
 const defaultMeta: CategoryMeta = {
-  gradient: "linear-gradient(135deg, hsl(28 62% 56% / 0.15), hsl(38 80% 55% / 0.08))",
+  icon: Target,
+  gradient: "linear-gradient(135deg, hsl(260 85% 60% / 0.15), hsl(220 85% 60% / 0.08))",
 };
 
-/* ─── Component ─── */
-
 interface CategoryBannerProps {
-  /** Category name used to look up icon + gradient (e.g. "AI", "Data Analytics") */
   category: string;
 }
 
-/**
- * Full-width gradient banner with a large category emoji.
- * Uses CSS animation instead of GSAP to avoid pulling in the full GSAP bundle
- * for a simple opacity fade.
- */
 export function CategoryBanner({ category }: CategoryBannerProps) {
-  const { gradient } = categoryMeta[category] ?? defaultMeta;
+  const { icon: Icon, gradient } = categoryMeta[category] ?? defaultMeta;
 
   return (
     <div
@@ -49,6 +48,8 @@ export function CategoryBanner({ category }: CategoryBannerProps) {
                  animate-in fade-in slide-in-from-top-3 duration-500"
       style={{ background: gradient }}
       aria-hidden="true"
-    />
+    >
+      <Icon size={48} strokeWidth={1.2} className="opacity-60" />
+    </div>
   );
 }

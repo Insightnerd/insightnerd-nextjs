@@ -117,6 +117,24 @@ function ThemeToggle() {
 
 function MobileMenu() {
   const { setOpen } = useSubscribe();
+  const [theme, setTheme] = useState("dark");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("insightnerd-theme");
+    if (saved === "light" || saved === "dark") setTheme(saved);
+    else setTheme(window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    setMounted(true);
+  }, []);
+
+  function toggleTheme() {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    const root = window.document.documentElement;
+    if (next === "light") root.classList.add("light");
+    else root.classList.remove("light");
+    localStorage.setItem("insightnerd-theme", next);
+  }
 
   return (
     <Sheet>
@@ -148,6 +166,20 @@ function MobileMenu() {
           >
             Subscribe
           </button>
+          <hr className="border-border" />
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">Theme</span>
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                {theme === "dark" ? "Light" : "Dark"} Mode
+              </button>
+            )}
+          </div>
         </div>
       </SheetContent>
     </Sheet>

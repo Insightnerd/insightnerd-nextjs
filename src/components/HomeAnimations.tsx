@@ -116,21 +116,51 @@ export function HomeAnimations({ children }: { children: ReactNode }) {
           }
         }
 
-        /* ── Stats strip stagger ── */
+        /* ── Stats strip stagger + animated counters ── */
         const statItems = scope.querySelectorAll<HTMLElement>(".stat-item");
         if (statItems.length) {
-          gsapModule.default.from(statItems, {
-            y: 24,
-            opacity: 0,
-            duration: DURATION.statsCard,
-            stagger: DURATION.cardStagger,
-            ease: EASE,
+          const tl = gsapModule.default.timeline({
             scrollTrigger: {
               trigger: scope.querySelector(".stats-section"),
               start: SCROLL_TRIGGER.start,
               toggleActions: SCROLL_TRIGGER.toggleActions,
             },
           });
+
+          tl.from(statItems, {
+            y: 24,
+            opacity: 0,
+            duration: DURATION.statsCard,
+            stagger: DURATION.cardStagger,
+            ease: EASE,
+          });
+
+          if (!reduced) {
+            statItems.forEach((item) => {
+              const countEl = item.querySelector<HTMLElement>(".stat-count");
+              if (!countEl) return;
+              const raw = countEl.getAttribute("data-count") || countEl.textContent || "0";
+              const target = parseInt(raw, 10);
+              if (isNaN(target)) return;
+              const display = countEl;
+              display.textContent = "0 +Guides";
+              tl.fromTo(
+                display,
+                { textContent: "0" },
+                {
+                  textContent: String(target),
+                  duration: 1.2,
+                  ease: "power2.out",
+                  snap: { textContent: 1 },
+                  delay: 0.2,
+                  onUpdate() {
+                    display.textContent = `${Math.round(Number(display.textContent))} +Guides`;
+                  },
+                },
+                `<${DURATION.cardStagger * 0.5}`,
+              );
+            });
+          }
         }
 
         /* ── Topic cards reveal ── */

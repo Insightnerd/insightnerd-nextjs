@@ -326,6 +326,18 @@ html.light .prose {
 }
 
 /* ============================= */
+/* Per-category accent variables  */
+/* ============================= */
+@layer base {
+  .category-ai { --cat-h: 260; --cat-s: 85%; --cat-l: 60%; }
+  .category-coding { --cat-h: 40; --cat-s: 85%; --cat-l: 55%; }
+  .category-data { --cat-h: 160; --cat-s: 70%; --cat-l: 50%; }
+  .category-tutorials { --cat-h: 190; --cat-s: 80%; --cat-l: 55%; }
+  .category-career { --cat-h: 330; --cat-s: 75%; --cat-l: 55%; }
+  .category-default { --cat-h: 28; --cat-s: 62%; --cat-l: 56%; }
+}
+
+/* ============================= */
 /* Custom component styles       */
 /* Dark-first design system      */
 /* Signal amber accent (#D4874A) */
@@ -363,9 +375,74 @@ html.light .prose {
     z-index: 0;
   }
 
+  .hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  }
+
+  html.light .hero-grid-overlay {
+    background-image:
+      linear-gradient(hsl(0 0% 0% / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 0% / 0.04) 1px, transparent 1px);
+  }
+
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+    animation: heroFloat 20s ease-in-out infinite;
+  }
+
+  .hero-shape:nth-child(1) {
+    width: 300px; height: 300px;
+    top: 10%; left: -5%;
+    background: radial-gradient(circle, hsl(260 85% 60%), transparent);
+    animation-delay: 0s;
+    animation-duration: 25s;
+  }
+
+  .hero-shape:nth-child(2) {
+    width: 200px; height: 200px;
+    bottom: 15%; right: -3%;
+    background: radial-gradient(circle, hsl(28 72% 56%), transparent);
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+
+  .hero-shape:nth-child(3) {
+    width: 150px; height: 150px;
+    top: 50%; right: 20%;
+    background: radial-gradient(circle, hsl(190 80% 55%), transparent);
+    animation-delay: -10s;
+    animation-duration: 30s;
+  }
+
+  @keyframes heroFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -40px) scale(1.05); }
+    50% { transform: translate(-20px, 20px) scale(0.95); }
+    75% { transform: translate(40px, 30px) scale(1.02); }
+  }
+
   .hero-section > * {
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   .hero-three-bg {
@@ -533,6 +610,11 @@ html.light .prose {
     align-items: center;
     justify-content: center;
     color: hsl(28 72% 65%);
+    transition: color 0.3s, scale 0.3s;
+  }
+
+  .stat-item:hover .stat-icon {
+    scale: 1.1;
   }
 
   .stat-count {
@@ -540,6 +622,7 @@ html.light .prose {
     font-weight: 700;
     color: hsl(28 72% 65%);
     line-height: 1.2;
+    transition: color 0.3s;
   }
 
   .stat-name {
@@ -548,7 +631,20 @@ html.light .prose {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 500;
+    transition: color 0.3s;
   }
+
+  /* Per-category stat hover colors */
+  .stat-item.ai-stat:hover .stat-icon,
+  .stat-item.ai-stat:hover .stat-count { color: hsl(260 85% 65%); }
+  .stat-item.coding-stat:hover .stat-icon,
+  .stat-item.coding-stat:hover .stat-count { color: hsl(40 85% 60%); }
+  .stat-item.data-stat:hover .stat-icon,
+  .stat-item.data-stat:hover .stat-count { color: hsl(160 70% 55%); }
+  .stat-item.tutorials-stat:hover .stat-icon,
+  .stat-item.tutorials-stat:hover .stat-count { color: hsl(190 80% 60%); }
+  .stat-item.career-stat:hover .stat-icon,
+  .stat-item.career-stat:hover .stat-count { color: hsl(330 75% 60%); }
 
   /* --- Section titles (shared) --- */
   .section-title {
@@ -638,15 +734,38 @@ html.light .prose {
     border-radius: var(--radius);
     background: #18181B;
     border: 1px solid #27272A;
+    border-left: 3px solid transparent;
     text-decoration: none;
-    transition: background 0.25s, border-color 0.25s, translate 0.25s;
+    transition: background 0.25s, border-color 0.25s, translate 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .article-card .article-card-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: scale 0.4s ease;
+  }
+
+  .article-card:hover .article-card-image {
+    scale: 1.02;
   }
 
   .article-card:hover {
     background: #1A1A1E;
     border-color: hsl(28 62% 56% / 0.35);
     translate: 0 -2px;
+    box-shadow: 0 8px 32px hsl(0 0% 0% / 0.15);
   }
+
+  .article-card.ai-card:hover { border-left-color: hsl(260 85% 60%); }
+  .article-card.coding-card:hover { border-left-color: hsl(40 85% 55%); }
+  .article-card.data-card:hover { border-left-color: hsl(160 70% 50%); }
+  .article-card.tutorials-card:hover { border-left-color: hsl(190 80% 55%); }
+  .article-card.career-card:hover { border-left-color: hsl(330 75% 55%); }
 
   .article-meta {
     display: flex;
@@ -691,6 +810,58 @@ html.light .prose {
     color: #A1A1AA;
     line-height: 1.55;
   }
+}
+
+/* ── Per-category topic card hover accents ── */
+.topic-card.ai-topic:hover { border-color: hsl(260 85% 60% / 0.35); box-shadow: 0 4px 24px hsl(260 85% 60% / 0.08); }
+.topic-card.coding-topic:hover { border-color: hsl(40 85% 55% / 0.35); box-shadow: 0 4px 24px hsl(40 85% 55% / 0.08); }
+.topic-card.data-topic:hover { border-color: hsl(160 70% 50% / 0.35); box-shadow: 0 4px 24px hsl(160 70% 50% / 0.08); }
+.topic-card.tutorials-topic:hover { border-color: hsl(190 80% 55% / 0.35); box-shadow: 0 4px 24px hsl(190 80% 55% / 0.08); }
+.topic-card.career-topic:hover { border-color: hsl(330 75% 55% / 0.35); box-shadow: 0 4px 24px hsl(330 75% 55% / 0.08); }
+
+/* ── Back to top button ── */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 40;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px hsl(0 0% 0% / 0.2);
+  transition: translate 0.2s, opacity 0.2s, scale 0.2s;
+  opacity: 0;
+  pointer-events: none;
+  scale: 0.8;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  scale: 1;
+}
+
+.back-to-top:hover {
+  translate: 0 -3px;
+  scale: 1.05;
+}
+
+/* ── Smooth mobile menu backdrop ── */
+.sheet-content {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: hsl(0 0% 10% / 0.85) !important;
+}
+
+html.light .sheet-content {
+  background: hsl(0 0% 100% / 0.85) !important;
 }
 
 /* ============================= */

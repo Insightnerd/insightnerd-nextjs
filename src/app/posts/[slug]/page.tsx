@@ -1,14 +1,9 @@
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
-<<<<<<< HEAD
-import { getPostBySlug, getPostSlugs, getAllPosts } from "@/lib/posts";
-=======
 import { getPostBySlug, getPostSlugs, getAllPosts, formatPostDate } from "@/lib/posts";
->>>>>>> b4fd9aa (feat: newsletter via Buttondown API, search + pagination on /posts, related articles, redesigned community page, cover images, analytics, nav subscribe modal trigger)
 import { ArticleAnimations } from "@/components/ArticleAnimations";
 import { CategoryBanner } from "@/components/CategoryBanner";
 import { JsonLd } from "@/components/JsonLd";
-import Link from "next/link";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -34,21 +29,14 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-function getRelatedPosts(
-  slug: string,
-  category: string,
-  count = 6,
-) {
-  const all = getAllPosts().filter((p) => p.slug !== slug);
-  const sameCategory = all.filter((p) =>
-    p.categories.some((c) => c.toLowerCase() === category.toLowerCase()),
-  );
-
-  if (sameCategory.length >= count) return sameCategory.slice(0, count);
-
-  // Backfill with recent posts from other categories
-  const others = all.filter((p) => !sameCategory.includes(p));
-  return [...sameCategory, ...others].slice(0, count);
+function getRelatedPosts(slug: string, category: string) {
+  return getAllPosts()
+    .filter(
+      (p) =>
+        p.slug !== slug &&
+        p.categories.some((c: string) => c.toLowerCase() === category.toLowerCase()),
+    )
+    .slice(0, 3);
 }
 
 export default async function ArticlePage({ params }: Props) {
@@ -69,15 +57,6 @@ export default async function ArticlePage({ params }: Props) {
     : (frontmatter.categories as string) ?? "";
   const coverImage = frontmatter.cover_image as string | undefined;
   const relatedPosts = getRelatedPosts(slug, category);
-
-  const allPosts = getAllPosts();
-  const relatedPosts = allPosts
-    .filter(
-      (p) =>
-        p.slug !== slug &&
-        p.categories.some((c) => c.toLowerCase() === category.toLowerCase())
-    )
-    .slice(0, 3);
 
   return (
     <ArticleAnimations>
@@ -104,10 +83,7 @@ export default async function ArticlePage({ params }: Props) {
               "@type": "Article",
               headline: frontmatter.title,
               datePublished: frontmatter.date,
-              author: {
-                "@type": "Person",
-                name: frontmatter.author,
-              },
+              author: { "@type": "Person", name: frontmatter.author },
               description: frontmatter.excerpt,
               image: coverImage ?? "https://www.insightnerd.in/og-image.png",
             }}
@@ -118,41 +94,20 @@ export default async function ArticlePage({ params }: Props) {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://www.insightnerd.in/",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: category,
-                  item: `https://www.insightnerd.in/categories/${category.toLowerCase().replace(/\s+/g, "-")}`,
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: frontmatter.title as string,
-                  item: `https://www.insightnerd.in/posts/${slug}`,
-                },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.insightnerd.in/" },
+                { "@type": "ListItem", position: 2, name: category, item: `https://www.insightnerd.in/categories/${category.toLowerCase().replace(/\s+/g, "-")}` },
+                { "@type": "ListItem", position: 3, name: frontmatter.title as string, item: `https://www.insightnerd.in/posts/${slug}` },
               ],
             }}
           />
 
           <article className="article-root">
-            {/* Two‑column layout: TOC sidebar (left) + content (right) on lg+ */}
             <div className="lg:grid lg:grid-cols-[minmax(0,280px)_1fr] lg:gap-8 xl:gap-12">
-              {/* TOC Sidebar — left column, sticky */}
-              <aside
-                className="toc-wrapper lg:sticky lg:top-24 lg:self-start"
-                data-toc
-              >
+              <aside className="toc-wrapper lg:sticky lg:top-24 lg:self-start" data-toc>
                 <h3 className="toc-label">On this page</h3>
                 <nav className="toc-list" data-toc-list />
               </aside>
 
-              {/* Right column: header + cover + prose */}
               <div className="min-w-0">
                 <header className="mb-10">
                   <div className="mb-4">
@@ -172,108 +127,44 @@ export default async function ArticlePage({ params }: Props) {
 
                 {coverImage && (
                   <div className="cover-image-wrapper">
-                    <img
-                      src={coverImage}
-                      alt={`Cover image for ${frontmatter.title as string}`}
-                      loading="eager"
-                    />
+                    <img src={coverImage} alt={`Cover image for ${frontmatter.title as string}`} loading="eager" />
                   </div>
                 )}
 
-                <div
-                  className="prose prose-invert prose-lg max-w-none
-                    prose-headings:text-foreground prose-headings:font-bold
-                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-foreground
-                    prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:rounded
-                    prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:relative
-                    prose-blockquote:border-primary prose-blockquote:text-muted-foreground
-                    prose-img:rounded-lg
-                    prose-hr:border-border
-                  "
-                >
+                <div className="prose prose-invert prose-lg max-w-none prose-headings:text-foreground prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:rounded prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:relative prose-blockquote:border-primary prose-blockquote:text-muted-foreground prose-img:rounded-lg prose-hr:border-border">
                   {content}
                 </div>
               </div>
             </div>
           </article>
 
-<<<<<<< HEAD
-          {/* Related articles */}
           {relatedPosts.length > 0 && (
-            <section id="related-articles" className="mt-16 pt-12 border-t border-border">
-              <h2 className="section-title text-left mb-2">
-                Related Articles
-              </h2>
-              <p className="section-desc text-left mb-0">
-                Continue reading on similar topics
-              </p>
-              <div className="related-carousel -mx-3 px-3 mt-8" data-slider="related">
-                {relatedPosts.map((article) => (
-                  <Link
-                    key={article.slug}
-                    href={`/posts/${article.slug}`}
-                    className="article-card block"
-                  >
-                    <div className="article-meta">
-                      <div className="article-category">
-                        {article.categories[0]}
+            <section className="mt-16 pt-10 border-t border-border">
+              <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
+              <div className="flex flex-col gap-4">
+                {relatedPosts.map((related) => {
+                  const catClass = (related.categories[0] || "").toLowerCase();
+                  return (
+                    <a
+                      key={related.slug}
+                      href={`/posts/${related.slug}`}
+                      className={`article-card ${catClass}-card`}
+                    >
+                      <div className="article-meta">
+                        <span className="article-category">{related.categories[0]}</span>
+                        <span className="article-stats">
+                          {formatPostDate(related.date)} · {related.reading_time} min read
+                        </span>
                       </div>
-                      <div className="article-stats">
-                        📖 {article.reading_time} min
-                      </div>
-                    </div>
-                    <div className="article-title">
-                      {article.title}
-                    </div>
-                    <div className="article-desc">
-                      {article.excerpt}
-                    </div>
-                  </Link>
-                ))}
+                      <h3 className="article-title">{related.title}</h3>
+                      <p className="article-desc">{related.excerpt}</p>
+                    </a>
+                  );
+                })}
               </div>
             </section>
           )}
         </div>
-=======
-          <div className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-foreground prose-headings:font-bold
-            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-foreground
-            prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:rounded
-            prose-pre:bg-muted prose-pre:border prose-pre:border-border
-            prose-blockquote:border-primary prose-blockquote:text-muted-foreground
-            prose-img:rounded-lg
-            prose-hr:border-border
-          ">
-            {content}
-          </div>
-        </article>
-
-        {relatedPosts.length > 0 && (
-          <section className="mt-16 pt-10 border-t border-border">
-            <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
-            <div className="flex flex-col gap-4">
-              {relatedPosts.map((related) => (
-                <a
-                  key={related.slug}
-                  href={`/posts/${related.slug}`}
-                  className="article-card"
-                >
-                  <div className="article-meta">
-                    <span className="article-category">{related.categories[0]}</span>
-                    <span className="article-stats">
-                      {formatPostDate(related.date)} · {related.reading_time} min read
-                    </span>
-                  </div>
-                  <h3 className="article-title">{related.title}</h3>
-                  <p className="article-desc">{related.excerpt}</p>
-                </a>
-              ))}
-            </div>
-          </section>
-        )}
->>>>>>> b4fd9aa (feat: newsletter via Buttondown API, search + pagination on /posts, related articles, redesigned community page, cover images, analytics, nav subscribe modal trigger)
       </div>
     </ArticleAnimations>
   );
