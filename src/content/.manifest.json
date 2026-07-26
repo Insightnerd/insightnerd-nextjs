@@ -131,6 +131,30 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "00828600da269db9",
+      "title": "Securing the Agentic Frontier: Managing the AI Identity Attack Surface",
+      "category": "AI",
+      "url": "https://www.infosecurity-magazine.com/news/ai-agents-attack-surface/"
+    },
+    {
+      "url_hash": "8c8ac87038c42804",
+      "title": "Beyond the Chatbot: The Real Path to Enterprise AI ROI",
+      "category": "Data Analytics",
+      "url": "https://www.reuters.com/business/sap-cfo-says-ai-must-move-beyond-chatbot-low-hanging-fruit-before-seeing-returns-2026-07-23/"
+    },
+    {
+      "url_hash": "edec894e86de0eb0",
+      "title": "The AI Pivot: Why Tech Giants are Restructuring for the LLM Era",
+      "category": "Career",
+      "url": "https://www.aol.com/articles/monday-com-plans-20-layoffs-170725000.html"
+    },
+    {
+      "url_hash": "973394f50886401f",
+      "title": "Building a Modern Data Stack: A Practical Guide to 2025 Tooling",
+      "category": "Tutorials",
+      "url": "https://www.secoda.co/blog/top-data-engineering-tools"
     }
   ]
 }
