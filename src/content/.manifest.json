@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "683c471a28e068c1",
+      "title": "Meta's Pivot to Agentic AI: Moving Beyond Chatbots to Personal Assistants",
+      "category": "AI",
+      "url": "https://www.axios.com/2026/07/24/meta-muse-spark-agents"
+    },
+    {
+      "url_hash": "02341353b8fcae2b",
+      "title": "Why AI-Powered Data Cleansing is the Real Foundation of Analytics",
+      "category": "Data Analytics",
+      "url": "https://www.itnews.com.au/news/brickworks-lays-ai-foundations-with-ai-powered-data-cleansing-627686"
+    },
+    {
+      "url_hash": "3414489197de9e87",
+      "title": "Solving Vibe-Code Drift in Agentic Software Development",
+      "category": "Coding",
+      "url": "https://sdtimes.com/agentic-ai/cleverbit-addresses-vibe-code-drift-with-nissy-workflow-safety"
+    },
+    {
+      "url_hash": "edec894e86de0eb0",
+      "title": "The AI Pivot: Why Tech Giants are Laying Off to Rebuild",
+      "category": "Career",
+      "url": "https://www.aol.com/articles/monday-com-plans-20-layoffs-170725000.html"
+    },
+    {
+      "url_hash": "74684e3b5926dcf2",
+      "title": "Building Modern Data Pipelines: A Guide to the Data Engineering Stack",
+      "category": "Tutorials",
+      "url": "https://dagster.io/guides/data-engineering-tools-types-features-and-10-essential-tools-xsde6"
     }
   ]
 }
