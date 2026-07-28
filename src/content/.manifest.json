@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "e948739757796584",
+      "title": "The New Normal: How LLM Audits are Accelerating DNS Security Patches",
+      "category": "AI",
+      "url": "https://www.techtimes.com/articles/321328/20260723/bind-9-nine-cve-july-release-llm-code-audits-push-monthly-security-patches.htm"
+    },
+    {
+      "url_hash": "1777dd052e80afa3",
+      "title": "Beyond Regex: Implementing Localized PII Sanitization for LLMs",
+      "category": "Data Analytics",
+      "url": "https://privacyscrubber.com/solutions/tech/pii-detection-tool-free"
+    },
+    {
+      "url_hash": "c6eba9c328be999d",
+      "title": "Beyond Prompt Engineering: Implementing an Agent DLC",
+      "category": "Coding",
+      "url": "https://www.cybersecurity-insiders.com/harness-introduces-agent-dlc-for-the-ai-agent-development-lifecycle"
+    },
+    {
+      "url_hash": "8a61436778a45847",
+      "title": "The Seattle Pivot: Navigating the Shift from Tech to Service",
+      "category": "Career",
+      "url": "https://www.kuow.org/economy/2026-07-22/seattle-area-hiring-is-undergoing-a-drastic-change"
+    },
+    {
+      "url_hash": "67ec0bc6dcb1f47c",
+      "title": "Building a Modern Data Engineering Stack: From CLI to Containers",
+      "category": "Tutorials",
+      "url": "https://motherduck.com/blog/data-engineering-toolkit-essential-tools"
     }
   ]
 }
