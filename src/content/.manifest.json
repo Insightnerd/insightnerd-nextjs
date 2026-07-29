@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "e948739757796584",
+      "title": "The LLM Effect: Why DNS Security Patches are Accelerating",
+      "category": "AI",
+      "url": "https://www.techtimes.com/articles/321328/20260723/bind-9-nine-cve-july-release-llm-code-audits-push-monthly-security-patches.htm"
+    },
+    {
+      "url_hash": "18dc4a861b065993",
+      "title": "Scaling Snowflake Governance: Tag-Based Masking and Managed Access",
+      "category": "Data Analytics",
+      "url": "https://www.youtube.com/watch?v=8lfh5Cn3kcc"
+    },
+    {
+      "url_hash": "4079ff20371ad699",
+      "title": "Engineering for Resilience: Secure Software Practices for 2026",
+      "category": "Coding",
+      "url": "https://www.computer.org/publications/tech-news/trends/secure-software"
+    },
+    {
+      "url_hash": "67bc78aff3cbe32c",
+      "title": "Navigating the Tech Job Market: Strategic Moves for Data and AI Pros",
+      "category": "Career",
+      "url": "https://technical.ly/workforce/this-week-in-jobs-dont-waste-the-good-stuff-apply-to-these-25-tech-career-opportunities"
+    },
+    {
+      "url_hash": "67ec0bc6dcb1f47c",
+      "title": "The Data Engineering Stack: Building a Robust Local Environment",
+      "category": "Tutorials",
+      "url": "https://motherduck.com/blog/data-engineering-toolkit-essential-tools"
     }
   ]
 }
