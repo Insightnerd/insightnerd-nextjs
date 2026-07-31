@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "04dbce82841b589c",
+      "title": "Beyond the Hype: The Engineering Realities of Next-Gen AI Research",
+      "category": "AI",
+      "url": "https://www.asiae.co.kr/en/article/education/2026072915311548291"
+    },
+    {
+      "url_hash": "9c012167ecfba0a9",
+      "title": "Beyond Telemetry: Why AI-Driven Correlation is the New Observability Standard",
+      "category": "Data Analytics",
+      "url": "https://www.infoq.com/news/2026/07/grafana-assistant-data-source"
+    },
+    {
+      "url_hash": "e15f3861e1a3d752",
+      "title": "Hard Constraints: Implementing AI Guardrails in Industrial Software",
+      "category": "Coding",
+      "url": "https://www.hpcwire.com/bigdatawire/2026/07/28/building-industrial-software-with-ai-guardrails-for-systems-where-code-touches-the-physical-world"
+    },
+    {
+      "url_hash": "cfb6a4735a693d08",
+      "title": "Navigating the French Job Market: High-Growth Sectors and Skills",
+      "category": "Career",
+      "url": "https://www.y-axis.com/job-outlook/france"
+    },
+    {
+      "url_hash": "6ef2f3d8d3670d2a",
+      "title": "Building Robust Data Pipelines: A Practitioner's Guide to Data Engineering",
+      "category": "Tutorials",
+      "url": "https://www.tutorialspoint.com/data-engineering/index.htm"
     }
   ]
 }
