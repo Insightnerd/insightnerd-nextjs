@@ -131,6 +131,30 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "6712780a890fcf07",
+      "title": "Beyond Generative AI: The Rise of Autonomous Agents in Music Ops",
+      "category": "AI",
+      "url": "https://www.digitalmusicnews.com/2026/07/29/ai-agents-music-industry-pibox"
+    },
+    {
+      "url_hash": "b03f2ab0be8f42b3",
+      "title": "The Perils of Vibe Coding: Why AI-Assisted Dev Needs Rigor",
+      "category": "Coding",
+      "url": "https://www.i-programmer.info/news/99-professional/18842-acm-on-risks-vibe-coding.html"
+    },
+    {
+      "url_hash": "fd576dac84d51ebf",
+      "title": "Navigating the AI Pivot: Why Tech Layoffs Are Increasing",
+      "category": "Career",
+      "url": "https://www.google.com/goto?url=CAESkgEB7keqTUU6RxWlnd9YsRwfdn28yKHpKHFUtfoBH-sL1IwBDH7a2ODnD6lMlQKab8c6hrxBjwmbbKPCj5KtBCvUXTWA_ktCtiywtfD89TOarqL7znEsZQ-lUBjduAiPLTTMSnNJ1-_YqAhCjWKM4OFgM55LH0dAp40awXYmg8LLPi3r4TGxDopU2qo5zazlOlbsSA%3D%3D"
+    },
+    {
+      "url_hash": "725c97b70d128684",
+      "title": "Mastering Data Engineering: Pipelines, Tools, and Core Concepts",
+      "category": "Tutorials",
+      "url": "https://www.dremio.com/resources/guides/data-engineering"
     }
   ]
 }
