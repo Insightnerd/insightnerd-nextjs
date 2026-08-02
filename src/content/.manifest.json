@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "6712780a890fcf07",
+      "title": "Beyond Generative AI: The Rise of Autonomous Agents in Music",
+      "category": "AI",
+      "url": "https://www.digitalmusicnews.com/2026/07/29/ai-agents-music-industry-pibox"
+    },
+    {
+      "url_hash": "e4f55fdb84f0c08d",
+      "title": "Moving Beyond Dashboards: Building Decision-Centric Analytics",
+      "category": "Data Analytics",
+      "url": "https://solutionsreview.com/business-intelligence/analytics-and-data-science-news-for-the-week-of-july-31-updates-from-databricks-notre-dame-power-bi-more"
+    },
+    {
+      "url_hash": "fdb9effde4662a60",
+      "title": "Navigating JDK 27: Key Features and the Non-LTS Release Cycle",
+      "category": "Coding",
+      "url": "https://www.infoworld.com/article/4202901/jdk-27-the-new-features-of-java-27.html"
+    },
+    {
+      "url_hash": "a09e732599616424",
+      "title": "Navigating the Tech Layoff Wave: AI, Reorganization, and Career Resilience",
+      "category": "Career",
+      "url": "https://www.sfchronicle.com/tech/article/tech-layoff-job-worker-ai-california-22364424.php"
+    },
+    {
+      "url_hash": "aa0fc8c2ef042bf5",
+      "title": "Building an End-to-End Batch Data Pipeline from Scratch",
+      "category": "Tutorials",
+      "url": "https://www.startdataengineering.com/post/data-engineering-project-for-beginners-batch-edition"
     }
   ]
 }
