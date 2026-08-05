@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "45b5ddf1f33eadeb",
+      "title": "Beyond Prompting: Runtime Code Generation with KotlinLLM",
+      "category": "AI",
+      "url": "https://www.google.com/goto?url=CAESnQEB7keqTX6gPWPGtOZ8fwo9pa3_R40POOEh_lmRXS_tBSLgy8Gc3BT1B8oh113PP_pv_AkzekYS_TfdirpYbP41qn2ltY6p-opbClRbo31VGTVbPISMXduzX07KNHGE3VKD-AKAiSXCrjgjXYad6_7-hUepZxtrovNs28FWvyCvoxUbzo06KvOLW5BMVFBcVLh-VS5FP-QRJ9Hs-KBG"
+    },
+    {
+      "url_hash": "ea1afef4fc751532",
+      "title": "Solving the Observability Cost Crisis with Adaptive Profiling",
+      "category": "Data Analytics",
+      "url": "https://itbrief.asia/story/grafana-labs-adds-adaptive-profiles-to-observability-suite"
+    },
+    {
+      "url_hash": "926cf5b85daae771",
+      "title": "Optimizing Linker Performance: A Deep Dive into Wild Linker 0.10",
+      "category": "Coding",
+      "url": "https://www.phoronix.com/news/Wild-Linker-0.10"
+    },
+    {
+      "url_hash": "3492e8b2750f679d",
+      "title": "Navigating the Data Career Landscape: Trends and Shifts for 2026",
+      "category": "Career",
+      "url": "https://www.coursera.org/articles/data-trends"
+    },
+    {
+      "url_hash": "725c97b70d128684",
+      "title": "Mastering Data Engineering: A Practitioner's Guide to Pipelines",
+      "category": "Tutorials",
+      "url": "https://www.dremio.com/resources/guides/data-engineering"
     }
   ]
 }
