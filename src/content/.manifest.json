@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "a9fa5d18b27d8b94",
+      "title": "Scaling LLMs: From Experimental Prototyping to Production",
+      "category": "AI",
+      "url": "https://www.futuremarketinsights.com/reports/large-language-model-llm-market"
+    },
+    {
+      "url_hash": "36121c856be03aec",
+      "title": "Managing AI Observability and Agentic Risk in Modern Data Pipelines",
+      "category": "Data Analytics",
+      "url": "https://www.securityweek.com/black-hat-usa-2026-summary-of-vendor-announcements-part-1/amp"
+    },
+    {
+      "url_hash": "3ce4b79dd73ee35c",
+      "title": "Green Software Engineering: Efficiency Meets Scientific Rigor",
+      "category": "Coding",
+      "url": "https://research.reading.ac.uk/lemontree/iccs-summer-school-2026"
+    },
+    {
+      "url_hash": "d2233ff60185bba9",
+      "title": "Beyond the Spreadsheet: High-Impact Career Paths in Business Analytics",
+      "category": "Career",
+      "url": "https://www.seattleu.edu/business/news-events/pov/2026/-what-can-you-do-with-a-business-analytics-degree-6-career-paths-to-consider.php"
+    },
+    {
+      "url_hash": "74684e3b5926dcf2",
+      "title": "Building Modern Data Pipelines: A Guide to the Engineering Stack",
+      "category": "Tutorials",
+      "url": "https://dagster.io/guides/data-engineering-tools-types-features-and-10-essential-tools-xsde6"
     }
   ]
 }
