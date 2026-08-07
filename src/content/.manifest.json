@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "b54f35a94171481b",
+      "title": "Beyond Fine-Tuning: A Practitioner's Guide to RAG",
+      "category": "AI",
+      "url": "https://techround.co.uk/artificial-intelligence/what-is-retrieval-augmented-generation"
+    },
+    {
+      "url_hash": "204b8d9f7530eabd",
+      "title": "Beyond Alerting: The Shift Toward Root Cause Data Observability",
+      "category": "Data Analytics",
+      "url": "https://natlawreview.com/press-releases/dqlabs-named-representative-vendor-2026-gartnerr-market-guide-data"
+    },
+    {
+      "url_hash": "d84a70ddb0f5158f",
+      "title": "Scaling Security: The Shift to Automated Software Assurance",
+      "category": "Coding",
+      "url": "https://www.dvidshub.net/news/571624/cecom-asic-hosts-summer-2026-system-security-engineering-forum-shape-future-cybersecurity"
+    },
+    {
+      "url_hash": "faabc3742c1ccd32",
+      "title": "The 2026 Data Career Roadmap: Navigating Leadership and AI Shifts",
+      "category": "Career",
+      "url": "https://www.google.com/goto?url=CAESZQHuR6pN6kGSFVVY4X5n22IkqE1ef8rvXbdYP1RKS7NxeALjW05B-yuspi3ssu5XRD8lh7xWZrcFp53_lHN4S2FVphg4FeSVSYygeMgXEnInSqE2kd2-i-IFwSnaPXNCiD7IcBaz"
+    },
+    {
+      "url_hash": "725c97b70d128684",
+      "title": "Building Robust Data Pipelines: A Practical Guide to Data Engineering",
+      "category": "Tutorials",
+      "url": "https://www.dremio.com/resources/guides/data-engineering"
     }
   ]
 }
