@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "47602574149135b0",
+      "title": "Beyond the Prototype: Engineering Production-Ready RAG Pipelines",
+      "category": "AI",
+      "url": "https://tech-insider.org/how-to-build-a-rag-pipeline-2026"
+    },
+    {
+      "url_hash": "8bd5fc870681c018",
+      "title": "Beyond Data Quality: The Rise of AI Observability in Production",
+      "category": "Data Analytics",
+      "url": "https://itbrief.co.uk/story/acceldata-adds-ai-observability-to-xlake-platform"
+    },
+    {
+      "url_hash": "50cecf0137b9a884",
+      "title": "The Rise of the Full-Spectrum Engineer in the Age of AI",
+      "category": "Coding",
+      "url": "https://www.infoq.com/podcasts/infoq-culture-trends-2026"
+    },
+    {
+      "url_hash": "a8003086abff59f8",
+      "title": "Tech Job Market Trends: Navigating the Shift in Demand",
+      "category": "Career",
+      "url": "https://www.prnewswire.com/news-releases/technology-sector-adds-jobs-as-employer-demand-for-tech-talent-remains-strong-comptia-finds-302846164.html"
+    },
+    {
+      "url_hash": "74684e3b5926dcf2",
+      "title": "Building Modern Data Pipelines: A Practical Guide to the Toolchain",
+      "category": "Tutorials",
+      "url": "https://dagster.io/guides/data-engineering-tools-types-features-and-10-essential-tools-xsde6"
     }
   ]
 }
