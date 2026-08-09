@@ -1,0 +1,69 @@
+---
+title: 'The Rise of Agentic Security: Managing AI Risk and Observability'
+date: 2026-08-09 05:42
+categories:
+- Data Analytics
+tags:
+- Data Quality
+- Observability
+author: InsightNerd Team
+reading_time: 6
+excerpt: As enterprises deploy autonomous AI agents, security teams must pivot from
+  static rules to intent-based monitoring and agentic threat prevention.
+source_url: https://www.securityweek.com/black-hat-usa-2026-summary-of-vendor-announcements-part-1
+---
+
+# The Rise of Agentic Security: Managing AI Risk and Observability
+
+We are entering a new phase of the enterprise technology stack. For years, the focus of data engineering and security operations was on managing human-driven events: a user logging in from a new IP, a database query returning an unusual volume of rows, or a firewall blocking a known malicious packet. 
+
+However, the shift toward autonomous AI agents is fundamentally changing the telemetry landscape. We are no longer just monitoring humans; we are monitoring software entities that can reason, make decisions, and execute tool calls. This shift introduces a new class of risk: the "agentic drift," where an AI's actions begin to diverge from its intended purpose through multi-turn reasoning or subtle jailbreaking techniques.
+
+To manage this, the security industry is moving toward two critical pillars: AI Observability and Agentic Threat Prevention.
+
+## From Static Rules to AI Observability
+
+Traditional observability focuses on the health of an application—latency, error rates, and throughput. AI observability, however, requires a deeper look at the decision-making process. When an LLM (Large Language Model) is integrated into a business workflow, the data generated isn't just logs; it is a stream of prompts, completions, tool calls, and reasoning steps.
+
+As highlighted by recent industry shifts, tools like Cribl are evolving to treat AI telemetry as a first-class citizen. The challenge for data practitioners is that AI telemetry is high-volume and high-context. You cannot simply pipe every raw prompt into a SIEM without incurring massive costs and noise. 
+
+Effective AI observability requires three specific capabilities:
+
+### 1. Managing AI Usage and Risk
+Enterprises need to know who is using which model, what data is being sent to it, and whether that usage aligns with corporate policy. This requires a centralized view of the AI lifecycle, tracking the flow of data from the user prompt through the model and back to the application.
+
+### 2. Detection Engineering for AI Gaps
+Security teams must treat AI models as new attack surfaces. This means performing gap analysis on existing security controls. If your current detection rules are designed for SQL injection, they are useless against a prompt injection attack designed to manipulate an agent's reasoning. Detection engineering must evolve to identify where current security coverage fails to account for non-deterministic AI outputs.
+
+### 3. Stream-Native Detections
+Waiting for logs to land in a data lake to run a query is too slow for AI-driven threats. The goal is stream-native detection: identifying high-confidence threats—such as a prompt injection attempting to exfiltrate data—at the moment the telemetry is generated. By processing this data in flight, organizations can intervene before the agent executes a destructive command.
+
+## The Shift to Agentic Threat Prevention
+
+As we move from simple chatbots to autonomous agents capable of executing code and accessing APIs, the threat model shifts from "malicious input" to "malicious intent." 
+
+Standard security tools look for known signatures or anomalous patterns. But what happens when an agent behaves perfectly according to its code, but its *intent* has been hijacked through a multi-step social engineering attack? This is where Agentic Threat Prevention comes in. 
+
+Instead of looking for a single bad packet, agentic security models use autonomous agents to simulate attack paths. By combining network telemetry with security logs, these systems can model how an attacker might chain together seemingly benign actions—like a user accessing a new file, followed by an agent making an external API call—to achieve a malicious goal. This predictive modeling allows defenders to harden environments before an actual exploit occurs.
+
+## Intent-Based Access Control (IBAC)
+
+The most significant technical evolution in this space is the move toward Intent-Based Access Control (IBAC). 
+
+In a traditional RBAC (Role-Based Access Control) system, an agent is given a set of permissions: `Read:Customer_Data` and `Write:Email_Service`. If the agent is compromised via a prompt injection, it can use those permissions to perform unauthorized actions that are technically "allowed" by the permission set.
+
+IBAC changes the paradigm. Rather than just checking *what* an agent is allowed to do, IBAC monitors *why* it is doing it. It compares the agent's reasoning and tool calls against its original, assigned instructions. 
+
+### How IBAC Works in Practice:
+
+1.  **Session-Based Evaluation:** Instead of looking at individual API calls in isolation, the system evaluates the entire session. This is crucial for catching "gradual jailbreaks," where an attacker uses multiple turns of conversation to slowly nudge the AI away from its safety guardrails.
+2.  **Reasoning Validation:** The system inspects the "thought process" of the AI. If the reasoning step doesn't logically lead to the requested task, it triggers a flag.
+3.  **Automated Remediation:** When a violation is detected, the system doesn't just alert; it can take action. This might include quarantining the identity associated with the agent or routing the specific action to a human for manual approval.
+
+## The Data Practitioner's Role in the AI Era
+
+For those of us working in data and security, this evolution means our job description is expanding. We are no longer just moving data from point A to point B; we are becoming the architects of trust for autonomous systems.
+
+This requires a new skill set: understanding the nuances of LLM outputs, managing the massive scale of AI-generated telemetry, and building the logic required for intent-based monitoring. The tools are arriving, but the implementation requires a deep understanding of how data flows through these new, non-deterministic agents. 
+
+As enterprises move from experimenting with AI to deploying it in mission-critical roles, the ability to observe, predict, and control agentic behavior will be the defining factor in a successful AI strategy.
