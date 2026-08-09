@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "f1c7d477b0d440fd",
+      "title": "DevOps vs. MLOps vs. LLMOps: Navigating the Three Paradigms",
+      "category": "AI",
+      "url": "https://www.linkedin.com/posts/lesoame_devops-vs-mlops-vs-llmops-explained-visually-activity-7490062226905686016-Jfz_"
+    },
+    {
+      "url_hash": "4953380e63bbd4b4",
+      "title": "The Rise of Agentic Security: Managing AI Risk and Observability",
+      "category": "Data Analytics",
+      "url": "https://www.securityweek.com/black-hat-usa-2026-summary-of-vendor-announcements-part-1"
+    },
+    {
+      "url_hash": "50cecf0137b9a884",
+      "title": "The Rise of the Full-Spectrum Engineer in the Age of AI",
+      "category": "Coding",
+      "url": "https://www.infoq.com/podcasts/infoq-culture-trends-2026"
+    },
+    {
+      "url_hash": "a8003086abff59f8",
+      "title": "Navigating the Tech Job Market: Demand Trends and Skill Shifts",
+      "category": "Career",
+      "url": "https://www.prnewswire.com/news-releases/technology-sector-adds-jobs-as-employer-demand-for-tech-talent-remains-strong-comptia-finds-302846164.html"
+    },
+    {
+      "url_hash": "725c97b70d128684",
+      "title": "Building Robust Data Pipelines: A Practitioner's Guide",
+      "category": "Tutorials",
+      "url": "https://www.dremio.com/resources/guides/data-engineering"
     }
   ]
 }
