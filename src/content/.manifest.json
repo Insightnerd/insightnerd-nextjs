@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "2cfffb9ad1996fb6",
+      "title": "Scaling AI Agents: Lessons from Duolingo's Production Infrastructure",
+      "category": "AI",
+      "url": "https://www.zenml.io/llmops-database/building-a-production-ready-ai-agent-platform-with-temporal"
+    },
+    {
+      "url_hash": "4953380e63bbd4b4",
+      "title": "Securing the AI Pipeline: Observability and Risk in Modern Data Stacks",
+      "category": "Data Analytics",
+      "url": "https://www.securityweek.com/black-hat-usa-2026-summary-of-vendor-announcements-part-1"
+    },
+    {
+      "url_hash": "4b645930cf4388ff",
+      "title": "Why High-Frequency Trading Demands Modern C++ Mastery",
+      "category": "Coding",
+      "url": "https://finance.yahoo.com/technology/articles/susquehanna-extends-commitment-c-community-165000270.html"
+    },
+    {
+      "url_hash": "4fda6dd95c46551e",
+      "title": "Navigating the Shifting US Labor Market: What Data Practitioners Need to Know",
+      "category": "Career",
+      "url": "https://www.reuters.com/business/us-job-growth-likely-picked-up-july-unemployment-rate-forecast-unchanged-42-2026-08-07"
+    },
+    {
+      "url_hash": "6ef2f3d8d3670d2a",
+      "title": "Mastering Data Engineering: A Practitioner's Roadmap",
+      "category": "Tutorials",
+      "url": "https://www.tutorialspoint.com/data-engineering/index.htm"
     }
   ]
 }
