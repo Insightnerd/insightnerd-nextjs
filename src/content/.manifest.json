@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "9db86bf8002dd722",
+      "title": "LLM Production Ops: A Survival Guide for Inherited Workloads",
+      "category": "AI",
+      "url": "https://opsmatters.com/posts/running-llm-workloads-production-operations-playbook-teams-did-not-sign"
+    },
+    {
+      "url_hash": "456b822d3b6d2078",
+      "title": "Beyond Dashboards: Navigating the Shift to Agentic Observability",
+      "category": "Data Analytics",
+      "url": "https://www.mycarrollcountynews.com/online_features/press_releases/article_ca803ebe-d3a0-5468-925e-04e18670312e.html"
+    },
+    {
+      "url_hash": "926cf5b85daae771",
+      "title": "Optimizing Debugging Workflows: A Deep Dive into Wild Linker 0.10",
+      "category": "Coding",
+      "url": "https://www.phoronix.com/news/Wild-Linker-0.10"
+    },
+    {
+      "url_hash": "b4be75cc6ec136ef",
+      "title": "Navigating the 2026 Tech Job Market: AI, Big Data, and Security",
+      "category": "Career",
+      "url": "https://cio.economictimes.indiatimes.com/amp/news/big-data/ai-big-data-and-cybersecurity-remain-top-tech-hiring-themes-in-q2/133092273"
+    },
+    {
+      "url_hash": "3eb4335479281711",
+      "title": "The Data Engineering Roadmap: From Python Basics to Production Pipelines",
+      "category": "Tutorials",
+      "url": "https://www.startdataengineering.com"
     }
   ]
 }
