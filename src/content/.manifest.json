@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "2cfffb9ad1996fb6",
+      "title": "Scaling AI Agents: Lessons from Duolingo and Notion",
+      "category": "AI",
+      "url": "https://www.zenml.io/llmops-database/building-a-production-ready-ai-agent-platform-with-temporal"
+    },
+    {
+      "url_hash": "0bd789f44e3127dc",
+      "title": "The End of Tool Sprawl: Why Consolidation is the Future of Observability",
+      "category": "Data Analytics",
+      "url": "https://m.investing.com/news/transcripts/dynatrace-at-technology-leadership-forum-2026-ai-drives-observability-growth-93CH-4849870?ampMode=1"
+    },
+    {
+      "url_hash": "78f13566b4686a0f",
+      "title": "Mojo 1.0: Bridging the Gap Between Python and C++",
+      "category": "Coding",
+      "url": "https://www.techzine.eu/news/devops/143570/mojo-programming-language-reaches-version-1-0"
+    },
+    {
+      "url_hash": "a8003086abff59f8",
+      "title": "Navigating the Tech Job Market: Where the Demand Actually Lies",
+      "category": "Career",
+      "url": "https://www.prnewswire.com/news-releases/technology-sector-adds-jobs-as-employer-demand-for-tech-talent-remains-strong-comptia-finds-302846164.html"
+    },
+    {
+      "url_hash": "725c97b70d128684",
+      "title": "Mastering Data Engineering: A Practitioner's Guide to Pipelines",
+      "category": "Tutorials",
+      "url": "https://www.dremio.com/resources/guides/data-engineering"
     }
   ]
 }
