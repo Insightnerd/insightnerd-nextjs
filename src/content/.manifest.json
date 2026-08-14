@@ -131,6 +131,30 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "f7f435b5fc7b4117",
+      "title": "Owning Your Intelligence: Moving Beyond Prompt Engineering",
+      "category": "AI",
+      "url": "https://finance.biggo.com/podcast/0d87dcd94a593979"
+    },
+    {
+      "url_hash": "ffb0cec71a8de6cb",
+      "title": "The AI Observability Explosion: Why Siloed Monitoring is Dead",
+      "category": "Data Analytics",
+      "url": "https://www.tradingview.com/news/marketbeat:37115acbe094b:0-dynatrace-says-ai-workloads-fuel-observability-demand-consumption-growth"
+    },
+    {
+      "url_hash": "9db95753887d06fa",
+      "title": "Navigating the Tech Layoff Surge: Survival in the AI Era",
+      "category": "Career",
+      "url": "https://www.hrdive.com/news/layoffs-slow-hiring-speeds-up-and-the-tech-sector-suffers-most/827425"
+    },
+    {
+      "url_hash": "5f1d0fb513761d86",
+      "title": "Mastering SQL via Python: A Practical Guide for Data Engineers",
+      "category": "Tutorials",
+      "url": "https://medium.com/@kingelin/learning-sql-with-python-a-beginners-practical-guide-d6f395d39f65"
     }
   ]
 }
