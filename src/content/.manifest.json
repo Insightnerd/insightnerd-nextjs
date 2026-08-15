@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "236016fa19e794c0",
+      "title": "Beyond SEO: Mastering Generative Engine Optimization (GEO)",
+      "category": "AI",
+      "url": "https://www.marketscale.com/industries/marketing-tech/92-of-b2b-organizations-are-already-experimenting-with-geo-and-gnw-consultings-new-tool-leo-is-built-to-operationalize-it"
+    },
+    {
+      "url_hash": "6f6afe517e0bf378",
+      "title": "The Rise of AI Observability: Why Dynatrace Bought Arize",
+      "category": "Data Analytics",
+      "url": "https://www.constellationr.com/insights/news/dynatrace-acquires-arize-accelerates-ai-observability-efforts"
+    },
+    {
+      "url_hash": "e87549e82236b9ed",
+      "title": "Optimizing C++ Workflows: Navigating the MSVC Build Tool Updates",
+      "category": "Coding",
+      "url": "https://www.infoworld.com/article/4209411/microsoft-updates-c-plus-plus-build-tools-for-visual-studio.html"
+    },
+    {
+      "url_hash": "2e839f7eb5e53535",
+      "title": "Navigating the Shift: High-Demand Roles in Digital Entertainment",
+      "category": "Career",
+      "url": "https://www.onrec.com/news/why-the-online-entertainment-industry-is-one-of-the-fastest-growing-employers-in-2026"
+    },
+    {
+      "url_hash": "74684e3b5926dcf2",
+      "title": "Building Modern Data Pipelines: A Guide to the Engineering Stack",
+      "category": "Tutorials",
+      "url": "https://dagster.io/guides/data-engineering-tools-types-features-and-10-essential-tools-xsde6"
     }
   ]
 }
