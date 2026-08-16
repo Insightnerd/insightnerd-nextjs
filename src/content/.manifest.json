@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "fa252dbf798513d7",
+      "title": "Beyond the API: Why Post-Training is the New Moat for AI Startups",
+      "category": "AI",
+      "url": "https://app.dealroom.co/news/note/fireworks-ai-ceo-lin-qiao-post-training-is-how-startups-bake-in-their-taste-and-own-their-intelligence"
+    },
+    {
+      "url_hash": "982ec0b341e613a7",
+      "title": "Dynatrace\u2019s $915M Arize Acquisition: Scaling AI Observability",
+      "category": "Data Analytics",
+      "url": "https://simplywall.st/stocks/us/software/nyse-dt/dynatrace/news/what-could-dynatrace-dt-915-million-ai-observability-deal-me"
+    },
+    {
+      "url_hash": "3a57556d69a43dd6",
+      "title": "From Code to Discipline: The Engineering Legacy of Margaret Hamilton",
+      "category": "Coding",
+      "url": "https://www.techradar.com/pro/when-i-first-came-up-with-the-term-no-one-had-heard-of-it-before-quote-of-the-day-by-nasas-former-software-director-margaret-hamilton-on-the-birth-of-software-engineering"
+    },
+    {
+      "url_hash": "4cf28f0dbcc6d986",
+      "title": "Navigating the Tech Job Market: Regional Trends and Skill Shifts",
+      "category": "Career",
+      "url": "https://technical.ly/workforce/this-week-in-jobs-these-25-open-tech-roles-are-just-within-reach"
+    },
+    {
+      "url_hash": "5f1d0fb513761d86",
+      "title": "Mastering SQL via Python: A Practitioner's Guide to SQLite",
+      "category": "Tutorials",
+      "url": "https://medium.com/@kingelin/learning-sql-with-python-a-beginners-practical-guide-d6f395d39f65"
     }
   ]
 }
