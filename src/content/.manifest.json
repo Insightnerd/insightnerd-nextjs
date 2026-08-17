@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "16d3d6d49cdd8066",
+      "title": "LLMOps vs. Platform Engineering: Solving the Ownership Dilemma",
+      "category": "AI",
+      "url": "https://www.cncf.io/blog/2026/08/13/llmops-and-platform-engineering-who-should-own-the-ai-pipeline"
+    },
+    {
+      "url_hash": "91384c71dd0ca3c9",
+      "title": "Observability in the Age of AI: Analyzing Datadog's Growth Strategy",
+      "category": "Data Analytics",
+      "url": "https://www.tradingview.com/news/zacks:232a02027094b:0-is-ddog-stock-worth-investing-in-after-q2-beat-solid-26-guidance"
+    },
+    {
+      "url_hash": "1103835271c08f0c",
+      "title": "Managing the Shadow AI Explosion in Enterprise Workflows",
+      "category": "Coding",
+      "url": "https://solutionsreview.com/enterprise-resource-planning/top-worktech-news-from-the-week-of-august-14th"
+    },
+    {
+      "url_hash": "a21d1d3a92e07b1c",
+      "title": "The Software Developer Paradox: Navigating a Shifting Tech Job Market",
+      "category": "Career",
+      "url": "https://www.calcalistech.com/ctechnews/article/338pvwopf"
+    },
+    {
+      "url_hash": "0b191e613f75558a",
+      "title": "Building the Foundation: A Practical Guide to Data Engineering",
+      "category": "Tutorials",
+      "url": "https://www.olostep.com/blog/data-engineering"
     }
   ]
 }
