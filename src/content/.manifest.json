@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "c4939293a47a6856",
+      "title": "Observability for AI Agents: Measuring the Performance Tax",
+      "category": "AI",
+      "url": "https://aimultiple.com/agentic-monitoring"
+    },
+    {
+      "url_hash": "6f6afe517e0bf378",
+      "title": "The Shift to AI Observability: Why Dynatrace Bought Arize",
+      "category": "Data Analytics",
+      "url": "https://www.constellationr.com/insights/news/dynatrace-acquires-arize-accelerates-ai-observability-efforts"
+    },
+    {
+      "url_hash": "3a57556d69a43dd6",
+      "title": "The Engineering Roots of Software: Lessons from Margaret Hamilton",
+      "category": "Coding",
+      "url": "https://www.techradar.com/pro/when-i-first-came-up-with-the-term-no-one-had-heard-of-it-before-quote-of-the-day-by-nasas-former-software-director-margaret-hamilton-on-the-birth-of-software-engineering"
+    },
+    {
+      "url_hash": "e979569d353ae360",
+      "title": "Navigating the AI Skills Gap: Is a Certificate Worth It?",
+      "category": "Career",
+      "url": "https://www.harpercollege.edu/about/news/archives/2026/ai-certificate-programs.php"
+    },
+    {
+      "url_hash": "0b191e613f75558a",
+      "title": "The Practitioner's Guide to Data Engineering Fundamentals",
+      "category": "Tutorials",
+      "url": "https://www.olostep.com/blog/data-engineering"
     }
   ]
 }
