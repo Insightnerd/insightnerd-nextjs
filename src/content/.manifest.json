@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "ec06583f3b2ec269",
+      "title": "Building Fiduciary-Grade AI: Lessons from Thomson Reuters",
+      "category": "AI",
+      "url": "https://pulse2.com/thomson-reuters-first-production-ready-thomson-llm-delivers-very-strong-evaluation-results-as-big-3-growth-outlook-rises-to-9-5-10"
+    },
+    {
+      "url_hash": "5f527435f9bf5745",
+      "title": "Closing the Loop: Why AI Observability is the Next Frontier",
+      "category": "Data Analytics",
+      "url": "https://www.stocktitan.net/news/DT/dynatrace-to-acquire-ai-observability-leader-ret9idm6oco4.html"
+    },
+    {
+      "url_hash": "30ab90fc3b034fbe",
+      "title": "Safety-Critical AI: Navigating the New MISRA Standards",
+      "category": "Coding",
+      "url": "https://embeddedcomputing.com/technology/security/software-security/upcoming-conference-misra-the-future-and-ai-the-journey-ahead"
+    },
+    {
+      "url_hash": "0bd2889f5678e80a",
+      "title": "Navigating the AI-Driven Job Market: Survival Strategies for Tech Pros",
+      "category": "Career",
+      "url": "https://m.economictimes.com/news/international/global-trends/oracle-isnt-alone-these-companies-have-layoffs-scheduled-for-september-2026-as-ai-restructuring-and-cost-cutting-reshape-jobs/amp_articleshow/133324857.cms"
+    },
+    {
+      "url_hash": "725c97b70d128684",
+      "title": "Mastering Data Engineering: A Practical Guide to Pipelines",
+      "category": "Tutorials",
+      "url": "https://www.dremio.com/resources/guides/data-engineering"
     }
   ]
 }
