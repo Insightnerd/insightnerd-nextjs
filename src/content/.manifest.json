@@ -131,6 +131,36 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "dd371e991f6c7e13",
+      "title": "MLOps vs LLMOps: Navigating the Shift in AI Deployment Patterns",
+      "category": "AI",
+      "url": "https://www.articlecube.com/mlops-vs-llmops-how-modern-enterprise-teams-actually-deploy-ai-systems-2026"
+    },
+    {
+      "url_hash": "2a076bc6fc481ce2",
+      "title": "Moving from Black Box to Glass Box: AI Observability in Production",
+      "category": "Data Analytics",
+      "url": "https://www.opensourceforu.com/2026/08/from-black-box-to-glass-box-observability-strategies-for-production-ai"
+    },
+    {
+      "url_hash": "30ab90fc3b034fbe",
+      "title": "Coding Safety in the Age of AI: Adapting MISRA Standards",
+      "category": "Coding",
+      "url": "https://embeddedcomputing.com/technology/security/software-security/upcoming-conference-misra-the-future-and-ai-the-journey-ahead"
+    },
+    {
+      "url_hash": "0aa8bcba5131b1b6",
+      "title": "Valuation vs. Reality: Lessons from ADP's Market Position",
+      "category": "Career",
+      "url": "https://simplywall.st/stocks/us/commercial-services/nasdaq-adp/automatic-data-processing/news/automatic-data-processing-adp-stock-may-be-fully-priced-afte"
+    },
+    {
+      "url_hash": "0b191e613f75558a",
+      "title": "Building the Foundation: A Practical Guide to Data Engineering",
+      "category": "Tutorials",
+      "url": "https://www.olostep.com/blog/data-engineering"
     }
   ]
 }
