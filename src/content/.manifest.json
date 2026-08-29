@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "a7104668de4f7815",
+      "title": "The Rise of Agent Observability in Data Analytics",
+      "category": "Data Analytics",
+      "url": "https://www.cmswire.com/customer-experience/are-you-judging-your-ai-agents-in-customer-service"
+    },
+    {
+      "url_hash": "3c17647497af8548",
+      "title": "Bridging the Gap: A Practical Guide to Using SQL in Python",
+      "category": "Tutorials",
+      "url": "https://www.sql-easy.com/learn/how-to-use-sql-in-python"
     }
   ]
 }
