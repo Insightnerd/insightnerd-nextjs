@@ -131,6 +131,24 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "34caeea90455b469",
+      "title": "When to Fine-Tune Local LLMs: A Practitioner's Decision Framework",
+      "category": "AI",
+      "url": "https://tech-insider.org/au/fine-tune-local-llm-ollama-2026"
+    },
+    {
+      "url_hash": "f91ae98d33903b56",
+      "title": "Beyond the Dashboard: The Shift Toward Data Agents and Decision Logic",
+      "category": "Data Analytics",
+      "url": "https://solutionsreview.com/business-intelligence/analytics-and-data-science-news-for-the-week-of-august-28-updates-from-anaconda-domino-data-isg-more"
+    },
+    {
+      "url_hash": "01010c94ae221c3f",
+      "title": "From Manual Scripts to Orchestration: Automating Data Pipelines",
+      "category": "Tutorials",
+      "url": "https://www.youtube.com/watch?v=PHsC_t0j1dU"
     }
   ]
 }
