@@ -131,6 +131,12 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "7664dbeaa44af05b",
+      "title": "Mastering Data Replication: CDC and SCD Type 2 in Microsoft Fabric",
+      "category": "Data Analytics",
+      "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new"
     }
   ]
 }
