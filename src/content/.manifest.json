@@ -131,6 +131,12 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "32afe2d53960523d",
+      "title": "The Shadow IT Trap: Managing the Risks of Citizen Developers",
+      "category": "Coding",
+      "url": "https://sdtimes.com/developer-training/citizen-developers-are-the-new-enterprise-threat-vector-so-why-is-nobody-warning-them"
     }
   ]
 }
