@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "e21c94008aedd8fe",
+      "title": "Architecting Scalable Data Pipelines: Beyond Simple ETL",
+      "category": "Data Analytics",
+      "url": "https://www.linkedin.com/jobs/view/data-platform-engineer-at-the-phoenix-group-4459507894"
+    },
+    {
+      "url_hash": "cc6996a5ad98f739",
+      "title": "Automating Documentation: Building Step-by-Step Guides with AI",
+      "category": "Tutorials",
+      "url": "https://www.thepromptwarrior.com/p/create-stunning-howto-guides-ai"
     }
   ]
 }
