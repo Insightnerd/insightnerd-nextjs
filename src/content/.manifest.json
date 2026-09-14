@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "bcf9c89b8276a905",
+      "title": "Choosing the Right Data Pipeline Architecture for SaaS Analytics",
+      "category": "Data Analytics",
+      "url": "https://editorialge.com/best-data-pipeline-tools-for-saas-analytics"
+    },
+    {
+      "url_hash": "3813c2e3892fed77",
+      "title": "Automating Documentation: Building Step-by-Step Guides with AI",
+      "category": "Tutorials",
+      "url": "https://scribe.com/tools/how-to-guide-generator"
     }
   ]
 }
