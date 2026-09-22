@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "fca3fd39e102aba7",
+      "title": "The 2026 Data Engineering Reality: Orchestration, AI, and Production",
+      "category": "Data Analytics",
+      "url": "https://dev.to/datadriven/5800-data-engineers-on-what-is-actually-in-production-in-2026-1570"
+    },
+    {
+      "url_hash": "3eb4335479281711",
+      "title": "The Modern Data Engineer's Roadmap: From Analyst to Architect",
+      "category": "Tutorials",
+      "url": "https://www.startdataengineering.com"
     }
   ]
 }
