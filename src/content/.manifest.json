@@ -131,6 +131,12 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "77416318806b3d5d",
+      "title": "Beyond Dashboards: The Shift to Agentic and Embedded BI",
+      "category": "Data Analytics",
+      "url": "https://dotnetreport.com/blogs/business-intelligence-trends-2027"
     }
   ]
 }
