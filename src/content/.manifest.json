@@ -131,6 +131,12 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "844c3c0d6439238a",
+      "title": "Balancing Data Utility and Privacy in Enterprise AI Training",
+      "category": "Data Analytics",
+      "url": "https://www.micro1.ai/research/pii-transformation-for-enterprise-datasets"
     }
   ]
 }
