@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "280c716833b7cb1c",
+      "title": "Beyond Chatbots: The Shift Toward Agentic AI in the Enterprise",
+      "category": "AI",
+      "url": "https://www.ciodive.com/news/Microsoft-copilot-enterprise-AI-tools/831423"
+    },
+    {
+      "url_hash": "259d088325e14f0e",
+      "title": "Solving the Data Sprawl Crisis in Mission-Critical Systems",
+      "category": "Data Analytics",
+      "url": "https://defensescoop.com/2026/09/22/defense-unified-data-observability-report"
     }
   ]
 }
