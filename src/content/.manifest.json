@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "37edb0ddced33ae3",
+      "title": "Beyond Tool Use: How AI Agents are Learning to Build Their Own",
+      "category": "AI",
+      "url": "https://www.prnewswire.com/apac/news-releases/appier-research-accepted-at-neurips-ai-agents-learn-not-only-to-use-tools-but-to-build-their-own-302894468.html"
+    },
+    {
+      "url_hash": "6eafeffcc8ef5480",
+      "title": "Standardizing Agentic UX: Implementing the AG-UI Protocol in .NET",
+      "category": "Coding",
+      "url": "https://www.infoworld.com/article/4227233/microsoft-releases-net-sdk-for-ag-ui-agent-user-interaction-protocol.html"
     }
   ]
 }
