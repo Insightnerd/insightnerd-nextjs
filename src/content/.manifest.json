@@ -131,6 +131,24 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "03f40606c5b93854",
+      "title": "Beyond the Dashboard: Why CLI-Driven Observability is the Future",
+      "category": "AI",
+      "url": "https://devops.com/new-relic-debuts-command-line-observability-tool-for-developers-and-ai-agents"
+    },
+    {
+      "url_hash": "a747a95aa02b29a0",
+      "title": "Beyond Monitoring: Navigating the Modern Observability Landscape",
+      "category": "Data Analytics",
+      "url": "https://www.modern-datatools.com/best/observability"
+    },
+    {
+      "url_hash": "53b7cb74ec401d66",
+      "title": "Navigating the AI Infrastructure Boom: Career Shifts in Tech",
+      "category": "Career",
+      "url": "https://www.techbuzz.ai/articles/nvidia-micron-rally-as-jobs-data-shakes-market"
     }
   ]
 }
