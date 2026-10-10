@@ -1,0 +1,70 @@
+---
+title: 'Predicting In Vivo Behavior: The Shift from Extrapolation to ML'
+date: 2026-10-10 08:51
+categories:
+- AI
+tags:
+- AI Analytics
+author: InsightNerd Team
+reading_time: 6
+excerpt: How the partnership between insitro and Eli Lilly is moving small molecule
+  drug discovery from in vitro extrapolation to high-fidelity in vivo ML predictions.
+source_url: https://uk.finance.yahoo.com/news/insitro-designed-machine-learning-models-110000805.html
+---
+
+# Moving Beyond Extrapolation: Using ML to Predict In Vivo Pharmacokinetics
+
+In the traditional drug discovery pipeline, a massive bottleneck exists between the laboratory bench and the living organism. For decades, medicinal chemists and pharmacologists have relied on *in vitro* assays—tests performed in controlled environments like test tubes or cell cultures—to predict how a small molecule will behave in a complex biological system. 
+
+The fundamental problem is one of extrapolation. While *in vitro* data provides a snapshot of molecular interaction, it fails to capture the systemic complexity of *in vivo* environments. Factors such as metabolic transformation, organ-to-organ transport, and systemic toxicity are notoriously difficult to simulate in a dish. This gap often leads to high attrition rates, where molecules that look promising in early assays fail catastrophically once they enter animal models or human trials.
+
+Recent developments in machine learning (ML), specifically through the collaboration between insitro and Eli Lilly, suggest a shift in this paradigm. By training models on massive, multi-species preclinical datasets, the industry is moving toward a model where *in vivo* behavior can be predicted before a molecule is even synthesized.
+
+## The Data Problem in ADMET Modeling
+
+To understand why this is a breakthrough, we have to look at the data requirements for ADMET (Absorption, Distribution, Metabolism, Excretion, and Toxicity) modeling. ADMET is the framework used to evaluate the most critical properties of a drug candidate. 
+
+Historically, high-quality ADMET data has been siloed within large pharmaceutical companies. Companies like Eli Lilly have spent decades generating proprietary datasets containing hundreds of thousands of unique molecules. This data isn't just a collection of numbers; it is a longitudinal record of how diverse chemical structures interact with biological systems across multiple species. 
+
+For a machine learning model to accurately predict *in vivo* outcomes, it requires three things:
+1. **Scale:** Millions of data points to cover the vast chemical space.
+2. **Diversity:** Data spanning different species (e.g., rodents vs. non-human primates) to account for biological variance.
+3. **Consistency:** High-fidelity, standardized measurements that allow the model to distinguish between signal and noise.
+
+Small biotech firms often lack the scale to generate this level of data internally. They are forced to rely on the "standard" method: testing a molecule *in vitro* and making an educated guess about its systemic behavior. This is a high-risk, resource-intensive process that often results in "dead-end" molecules moving too far down the pipeline.
+
+## How ML-Driven In Vivo Prediction Works
+
+The integration of insitro’s computational expertise with Lilly’s proprietary datasets represents a new way to leverage "dark data"—the massive amounts of historical research that usually sits behind corporate walls.
+
+Instead of using ML to simply refine *in vitro* predictions, these new models are trained directly on the *in vivo* results. By mapping chemical structures to actual physiological outcomes recorded in preclinical studies, the models learn the latent relationships between molecular architecture and systemic behavior. 
+
+### Virtual Screening at the Pre-Synthesis Stage
+
+The most significant practical application of this technology is the ability to perform virtual screening with high fidelity. In a standard workflow, a chemist synthesizes a batch of molecules, tests them in a lab, and then analyzes the results. 
+
+With high-accuracy *in vivo* ML models, the workflow changes:
+1. **Generative Design:** AI proposes a library of potential small molecules.
+2. **In Silico ADMET Filtering:** The models predict the *in vivo* pharmacokinetic profile of these virtual molecules.
+3. **Prioritization:** Only the molecules with the highest predicted systemic success are sent to the lab for physical synthesis.
+
+This effectively moves the "failure point" from the expensive animal testing phase to the zero-cost computational phase. By weeding out molecules with poor metabolic stability or high toxicity profiles before they are even created, researchers can focus their scarce resources on the candidates most likely to succeed in clinical trials.
+
+## The Implications for Biotech and Drug Discovery
+
+The availability of these models through platforms like Lilly TuneLab signals a democratization of enterprise-grade AI. When high-fidelity predictive models are made available to smaller biotech companies, the barrier to entry for complex drug discovery is lowered.
+
+### 1. Resource Allocation
+In drug discovery, time and capital are the two most constrained resources. Every failed *in vivo* study represents not just lost money, but lost months of research time. Predictive modeling allows for a more surgical approach to resource allocation, ensuring that the most promising chemical series receive the most intensive experimental validation.
+
+### 2. Reducing Animal Testing
+While *in vivo* studies remain a regulatory necessity, the ability to predict outcomes computationally can significantly reduce the number of animal models required during the optimization phase. If a model can accurately predict that a specific scaffold will cause liver toxicity in a multi-species environment, there is no need to conduct a physical study to confirm that failure.
+
+### 3. Accelerating the Design-Make-Test-Analyze (DMTA) Cycle
+The DMTA cycle is the heartbeat of medicinal chemistry. By adding a highly accurate "Predict" step between "Design" and "Make," the cycle becomes much more efficient. The "Analyze" phase becomes less about discovering why a molecule failed and more about refining the next generation of successful candidates.
+
+## The Practitioner's Takeaway
+
+For data scientists and ML engineers working in the life sciences, the lesson here is clear: the value of AI in biology is directly proportional to the quality and scale of the underlying biological data. The breakthrough isn't just the architecture of the neural networks; it is the marriage of advanced computational methods with decades of high-quality, multi-species preclinical measurements.
+
+As we move forward, the ability to bridge the gap between *in vitro* signals and *in vivo* reality will be the defining characteristic of successful AI-driven drug discovery platforms. The industry is moving away from simple pattern recognition in small datasets and toward complex, systemic modeling of human biology.
