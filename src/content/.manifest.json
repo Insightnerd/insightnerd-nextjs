@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "2eb4e24179347675",
+      "title": "Beyond the Prompt: A Practitioner's Guide to LLMOps",
+      "category": "AI",
+      "url": "https://www.instagram.com/reel/DeGKq5KhawT"
+    },
+    {
+      "url_hash": "ebbac6f2bb8d7a59",
+      "title": "Building an Integrated Developer Ecosystem: Lessons from Spotify",
+      "category": "Coding",
+      "url": "https://quasa.io/stories/spotify-is-selling-its-internal-developer-stack-four-tools-now-share-one-home"
     }
   ]
 }
