@@ -131,6 +131,12 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "90a997ed084375a1",
+      "title": "Beyond Tool Sprawl: The Shift to Unified Observability",
+      "category": "Data Analytics",
+      "url": "https://www.databahn.ai/blog/the-state-of-observability-in-2026"
     }
   ]
 }
