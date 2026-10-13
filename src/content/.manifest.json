@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "7ee804c69b6a045f",
+      "title": "Beyond Dashboards: The Shift to Agentic Observability",
+      "category": "Data Analytics",
+      "url": "https://finance.biggo.com/news/5b7e869fccc920db"
+    },
+    {
+      "url_hash": "f9329d46bb8bcdde",
+      "title": "Mastering n8n: A Practitioner's Guide to Workflow Automation",
+      "category": "Tutorials",
+      "url": "https://tech-insider.org/n8n-tutorial-workflow-automation-complete-guide-2026"
     }
   ]
 }
