@@ -131,6 +131,24 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "341b0dd56fd99af0",
+      "title": "Scaling LLM Agents: Managing Context, Costs, and Guardrails",
+      "category": "AI",
+      "url": "https://www.infoq.com/news/2026/10/qcon-ai-newyork-2026-sessionsv2"
+    },
+    {
+      "url_hash": "67bf8ec7154bec82",
+      "title": "Architecting dbt inside Microsoft Fabric: When to Switch",
+      "category": "Data Analytics",
+      "url": "https://www.youtube.com/watch?v=LbYLddq_YnM"
+    },
+    {
+      "url_hash": "317db7e5652abc26",
+      "title": "Bridging the Gap: Integrating SQL with Python using SQLite",
+      "category": "Tutorials",
+      "url": "https://www.youtube.com/watch?v=tXJtY51xHq8"
     }
   ]
 }
