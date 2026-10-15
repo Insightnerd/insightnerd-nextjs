@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "4dba92a52a3432d3",
+      "title": "Eliminating Data Movement: dbt Support for Redshift Data Sharing",
+      "category": "Data Analytics",
+      "url": "https://www.getdbt.com/blog/dbt-now-supports-amazon-redshift-data-sharing"
+    },
+    {
+      "url_hash": "c44d7b0a0fccccdb",
+      "title": "Scaling into Data Leadership: From Analyst to Senior Manager",
+      "category": "Career",
+      "url": "https://www.att.jobs/job/remote/sr-manager-data-analytics/117/101927379312"
     }
   ]
 }
