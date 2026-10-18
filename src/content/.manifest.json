@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "f4048b3af708d9c6",
+      "title": "Moving Beyond Scheduled Exports: Real-Time CDC to Google Cloud Storage",
+      "category": "Data Analytics",
+      "url": "https://molo17.com/solutions/replicate-to-google-cloud-storage"
+    },
+    {
+      "url_hash": "0a433b29c29a5160",
+      "title": "Mastering the AI Stack: From Generative Basics to Model Deployment",
+      "category": "Tutorials",
+      "url": "https://ai.google/learn-ai-skills"
     }
   ]
 }
