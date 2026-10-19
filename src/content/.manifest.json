@@ -131,6 +131,24 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "b1b78295d62782fa",
+      "title": "Beyond Monitoring: Building Resilient Data Products with Observability",
+      "category": "Data Analytics",
+      "url": "https://www.acceldata.io/events/the-ai-summit-newyork-2026"
+    },
+    {
+      "url_hash": "e387b9a556913c80",
+      "title": "Beyond the Prompt: Why Automated Testing is the Backbone of AI Dev",
+      "category": "Coding",
+      "url": "https://federalnewsnetwork.com/commentary/2026/10/agency-ai-success-depends-on-software-quality-and-automated-testing"
+    },
+    {
+      "url_hash": "44a85cd1cbf9621d",
+      "title": "Surviving the Media and Tech Layoff Waves",
+      "category": "Career",
+      "url": "https://deadline.com/feature/hollywood-media-layoffs-list-1236007845"
     }
   ]
 }
