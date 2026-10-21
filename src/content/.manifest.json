@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "ac564932f534eb5c",
+      "title": "The Infrastructure Pivot: Analyzing the Latest Wave of AI Funding",
+      "category": "AI",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-investors-scaled-back-ai-biotech-modal"
+    },
+    {
+      "url_hash": "89bd0805eee16ff2",
+      "title": "Standardizing Data Integrity: Lessons from the 2026 Market Data Framework",
+      "category": "Data Analytics",
+      "url": "https://finance.yahoo.com/markets/articles/ositrustees-introduces-2026-framework-strengthen-204200095.html"
     }
   ]
 }
