@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "af68f847838d65cb",
+      "title": "Optimizing dbt Workloads on Databricks: A Practitioner's Guide",
+      "category": "Data Analytics",
+      "url": "https://www.databricks.com/blog/how-get-most-out-running-dbt-databricks"
+    },
+    {
+      "url_hash": "608a4286f81b4c4c",
+      "title": "Surviving the 2026 Tech Layoff Wave: A Practitioner's Guide",
+      "category": "Career",
+      "url": "https://tech.yahoo.com/general/breaking-news/article/tech-layoffs-2026-tracking-all-the-job-losses-across-netflix-amazon-apple-oracle-tiktok-meta-and-others-122031518.html"
     }
   ]
 }
