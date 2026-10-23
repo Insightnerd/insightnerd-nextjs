@@ -131,6 +131,24 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "79328f368c89c5e6",
+      "title": "Scaling LLM Inference: Lessons from the llm-d 1.0 Release",
+      "category": "AI",
+      "url": "https://www.tradingview.com/news/prnewswire:8e8fd644199d2:0"
+    },
+    {
+      "url_hash": "a22620911f696093",
+      "title": "Why Data Observability is the New Bottleneck for Enterprise AI",
+      "category": "Data Analytics",
+      "url": "https://www.citybiz.co/article/920358/boomi-acquires-elementary-data-to-strengthen-ai-data-quality-and-governance"
+    },
+    {
+      "url_hash": "bd84b3e5fc28c3a7",
+      "title": "A Practical Roadmap to Mastering Data Engineering",
+      "category": "Tutorials",
+      "url": "https://www.reddit.com/r/dataengineering/comments/1mb6wqc/how_should_i_properly_learn_about_data"
     }
   ]
 }
