@@ -131,6 +131,24 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "db06c32a64392cb1",
+      "title": "Breaking Vendor Lock-in: Scaling Open AI Inference with llm-d",
+      "category": "AI",
+      "url": "https://emergent.sh/news/llm-d-1-0-launches-open-ai-inference"
+    },
+    {
+      "url_hash": "78c7e4d80ab01594",
+      "title": "Bridging the Gap: Data Observability and AI-Ready Infrastructure",
+      "category": "Data Analytics",
+      "url": "https://solutionsreview.com/data-management/data-management-news-for-the-week-of-october-23-updates-from-denodo-couchbase-teradata-more"
+    },
+    {
+      "url_hash": "c9a7089436f5a138",
+      "title": "Building Modern Data Pipelines: A Guide to the Engineering Stack",
+      "category": "Tutorials",
+      "url": "https://www.redpanda.com/guides/fundamentals-of-data-engineering-data-engineering-tools"
     }
   ]
 }
