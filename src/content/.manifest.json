@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "78c7e4d80ab01594",
+      "title": "Modernizing Data Infrastructure: Observability, Caching, and AI Readiness",
+      "category": "Data Analytics",
+      "url": "https://solutionsreview.com/data-management/data-management-news-for-the-week-of-october-23-updates-from-denodo-couchbase-teradata-more"
+    },
+    {
+      "url_hash": "49f677a8bbdacd7f",
+      "title": "Beyond Plutus: The Engineering Logic of Cardano's New Language",
+      "category": "Coding",
+      "url": "https://www.coindesk.com/tech/2026/10/19/cardano-founder-charles-hoskinson-is-building-a-new-programming-language-for-the-network"
     }
   ]
 }
