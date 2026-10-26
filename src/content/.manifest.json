@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "321ce04b294c3a31",
+      "title": "The Rise of Sports Business Analytics: Data-Driven Decision Making",
+      "category": "Data Analytics",
+      "url": "https://thebatt.com/news/mays-business-school-offers-new-masters-of-science-program-in-sports-business-analytics"
+    },
+    {
+      "url_hash": "ebcaf56cf70ce662",
+      "title": "Steganography in Code: How the PoeLLM Botnet Uses Poetry",
+      "category": "Coding",
+      "url": "https://www.bgr.com/2291192/botnet-uses-poetry-mine-crypto-ai-servers"
     }
   ]
 }
