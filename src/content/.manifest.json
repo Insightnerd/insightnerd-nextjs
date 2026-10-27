@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "bcbf781168b04aac",
+      "title": "Optimizing dbt Workflows: Understanding dbt State and Fail-Open Logic",
+      "category": "Data Analytics",
+      "url": "https://www.linkedin.com/posts/joel-labes_dbt-state-now-includes-a-baseline-amount-activity-7518880697403736064-9sjt"
+    },
+    {
+      "url_hash": "e2ed8aece1ea2483",
+      "title": "Mastering SQL Fundamentals Using Python and PostgreSQL",
+      "category": "Tutorials",
+      "url": "https://www.patricksoftwareblog.com/learn_sql_with_python_part1.html"
     }
   ]
 }
