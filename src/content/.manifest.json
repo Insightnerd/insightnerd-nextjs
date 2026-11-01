@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "9ec9472f9524c4c1",
+      "title": "The Rise of Agentic Observability: Monitoring the AI Workforce",
+      "category": "Data Analytics",
+      "url": "https://siliconangle.com/2026/10/28/monte-carlo-data-launches-bayes-an-ai-agent-for-autonomously-monitoring-and-fixing-autonomous-agents"
+    },
+    {
+      "url_hash": "a7abc40f3121a285",
+      "title": "The AI-Driven Audit: Why Your Technical Debt is Now a Liability",
+      "category": "Coding",
+      "url": "https://www.malaymail.com/news/tech-gadgets/2026/10/26/old-softwares-tech-debt-is-coming-due-and-ai-is-sending-the-bill/240531"
     }
   ]
 }
