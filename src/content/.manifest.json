@@ -131,6 +131,24 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "53f71e460dd6432b",
+      "title": "The Rise of AgentOps: Managing Enterprise AI Agent Complexity",
+      "category": "AI",
+      "url": "https://www.ibm.com/new/announcements/ibm-watsonx-orchestrate-advances-enterprise-ai-agent-management-with-new-capabilities-at-techxchange-2026"
+    },
+    {
+      "url_hash": "a86bd86cf9003274",
+      "title": "Beyond Dashboards: Building a Semantic Layer for Agentic BI",
+      "category": "Data Analytics",
+      "url": "https://www.varindia.com/news/zoho-introduces-trusted-business-intelligence-layer-in-zoho-analytics"
+    },
+    {
+      "url_hash": "3eb4335479281711",
+      "title": "The Modern Data Engineer's Roadmap: From Python to AI Orchestration",
+      "category": "Tutorials",
+      "url": "https://www.startdataengineering.com"
     }
   ]
 }
