@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "dbfb08b9f739c6f3",
+      "title": "Beyond the Model: Engineering High-Performance RAG Pipelines",
+      "category": "AI",
+      "url": "https://www.ijfmr.com/papers/2026/5/90971.pdf"
+    },
+    {
+      "url_hash": "632626564bcb2318",
+      "title": "Building Data Foundations That Actually Support AI",
+      "category": "Data Analytics",
+      "url": "https://iireporter.com/building-sustainable-data-foundations-for-ai"
     }
   ]
 }
