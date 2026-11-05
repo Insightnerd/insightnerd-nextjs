@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "4ce5752d3450430b",
+      "title": "Observability in Modern Data Stacks: Lessons from dbt and Datadog",
+      "category": "Data Analytics",
+      "url": "https://www.brickster.ai/news"
+    },
+    {
+      "url_hash": "a7ddd6a862ce7dda",
+      "title": "Automating Documentation: A Practical Guide to AI User Manuals",
+      "category": "Tutorials",
+      "url": "https://www.guidde.com/knowledge-hub/ai-tool-creating-user-manuals-guide"
     }
   ]
 }
