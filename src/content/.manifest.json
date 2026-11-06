@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "790b5eb1de68c6b8",
+      "title": "Scaling AI Agents: Lessons from Uber's MCP Gateway Architecture",
+      "category": "AI",
+      "url": "https://www.infoq.com/news/2026/11/uber-mcp-gateway-ai-agents"
+    },
+    {
+      "url_hash": "8941c55b765b1118",
+      "title": "The Evolution of Intelligence: Moving Toward Agentic Analytics",
+      "category": "Data Analytics",
+      "url": "https://diginomica.com/agentic-analytics-business-context-easier-with-time"
     }
   ]
 }
