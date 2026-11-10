@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "4db92d07b6f4ba7b",
+      "title": "Debugging LLM Agents: Integrating Claude with Databricks MLflow",
+      "category": "Data Analytics",
+      "url": "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow"
+    },
+    {
+      "url_hash": "98dc53185d649569",
+      "title": "Mastering Data Engineering in Microsoft Fabric: A Practical Roadmap",
+      "category": "Tutorials",
+      "url": "https://community.fabric.microsoft.com/discussions/ac_dataengineering/how-should-a-beginner-start-learning-data-engineering-in-microsoft-fabric/4911571"
     }
   ]
 }
