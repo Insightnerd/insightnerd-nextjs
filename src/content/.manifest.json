@@ -131,6 +131,24 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "9837060f03c8c4ba",
+      "title": "Beyond the Demo: Technical Due Diligence for AI Model Vendors",
+      "category": "AI",
+      "url": "https://techbullion.com/5-ai-terms-every-technical-buyer-should-know-before-evaluating-a-model-vendor"
+    },
+    {
+      "url_hash": "3836cec902f2be0a",
+      "title": "Analyzing Industrial Data: Lessons from the EV Infrastructure Sector",
+      "category": "Data Analytics",
+      "url": "https://tavily.com/knowledge/company/MdwnOW6L0GX7"
+    },
+    {
+      "url_hash": "69e7ddbb3086de8f",
+      "title": "Mastering AI Agent Workflows: The Context-First Development Method",
+      "category": "Tutorials",
+      "url": "https://www.youtube.com/watch?v=HPw4eiqOZfU"
     }
   ]
 }
