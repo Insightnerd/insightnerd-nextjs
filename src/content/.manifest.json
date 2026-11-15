@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "3fb14a39179f6ec9",
+      "title": "Beyond Data Collection: The Shift Toward Telemetry Value Optimization",
+      "category": "Data Analytics",
+      "url": "https://www.unite.ai/cribl-buys-tero-to-build-observability-for-humans-and-ai-agents"
+    },
+    {
+      "url_hash": "459ab94dc83d6bb8",
+      "title": "The C++26 Delay: Why Contracts are Threatening the Standard",
+      "category": "Coding",
+      "url": "https://www.theregister.com/devops/2026/11/13/c26-stumbles-at-finish-line-over-contracts-dispute/5309526"
     }
   ]
 }
