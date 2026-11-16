@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "223dae9e83f624f7",
+      "title": "Solving the Data Privacy Bottleneck with NVIDIA's Synthetic Datasets",
+      "category": "Data Analytics",
+      "url": "https://finance.biggo.com/news/6990df36-395d-46d8-b7a2-ae169f3368df"
+    },
+    {
+      "url_hash": "317db7e5652abc26",
+      "title": "Integrating SQL with Python: A Practical Guide to SQLite",
+      "category": "Tutorials",
+      "url": "https://www.youtube.com/watch?v=tXJtY51xHq8"
     }
   ]
 }
