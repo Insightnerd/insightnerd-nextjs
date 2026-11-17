@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "e6727f3a01470fe6",
+      "title": "Solving the Observability Paradox in Infrastructure as Code",
+      "category": "Data Analytics",
+      "url": "https://devops.com/spacelift-expands-observability-reach-to-opentofu"
+    },
+    {
+      "url_hash": "2da85f29adcf4b02",
+      "title": "The Agentic Era: How Data Roles are Shifting for 2027",
+      "category": "Career",
+      "url": "https://www.techtarget.com/news/5-data-management-and-analytics-trends-to-watch-for-in-2027/874677"
     }
   ]
 }
