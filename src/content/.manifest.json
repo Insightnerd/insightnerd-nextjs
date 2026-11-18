@@ -131,6 +131,18 @@
       "title": "Demystifying Data Engineering: A Conceptual Roadmap",
       "category": "Tutorials",
       "url": "https://www.udemy.com/course/data-engineering-101-the-beginners-guide"
+    },
+    {
+      "url_hash": "a28c79ccd2a501fa",
+      "title": "Beyond Masking: The Reality of Data Anonymization in the AI Era",
+      "category": "Data Analytics",
+      "url": "https://securiti.ai/what-is-data-anonymization"
+    },
+    {
+      "url_hash": "dc38711eb91725e8",
+      "title": "Beyond the Hype: A Practitioner's Guide to Language Selection",
+      "category": "Coding",
+      "url": "https://thinkpalm.com/blogs/modern-programming-languages-a-use-case-driven-language-selection-guide"
     }
   ]
 }
